@@ -1,19 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.EntityFrameworkCore;
-using Volo.Abp.IdentityServer.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
-
-namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
+﻿namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
@@ -51,6 +36,25 @@ public class OnMuhasebeDbContext :
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
     #endregion
+    public DbSet<Banka> Bankalar { get; set; }
+    public DbSet<BankaSube> BankaSubeler { get; set; }
+    public DbSet<BankaHesap> BankaHesaplar { get; set; }
+    public DbSet<Birim> Birimler { get; set; }
+    public DbSet<Cari> Cariler { get; set; }
+    public DbSet<Depo> Depolar { get; set; }
+    public DbSet<Donem> Donemler { get; set; }
+    public DbSet<FirmaParametre> FirmaParametreleri { get; set; }
+    public DbSet<Fatura> Faturalar { get; set; }
+    public DbSet<Hizmet> Hizmetler { get; set; }
+    public DbSet<Kasa> Kasalar { get; set; }
+    public DbSet<Makbuz> Makbuzlar { get; set; }
+    public DbSet<Masraf> Masraflar { get; set; }
+    public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Stok> Stoklar { get; set; }
+    public DbSet<Sube> Subeler { get; set; }
+
+
+
 
     public OnMuhasebeDbContext(DbContextOptions<OnMuhasebeDbContext> options)
         : base(options)
@@ -75,11 +79,37 @@ public class OnMuhasebeDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(OnMuhasebeConsts.DbTablePrefix + "YourEntities", OnMuhasebeConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Banka>(b =>
+        {
+            b.ToTable(OnMuhasebeConsts.DbTablePrefix + "Bankalar", OnMuhasebeConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            //properties
+            b.Property(x => x.Kod).IsRequired().
+            HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxKodLength);
+
+            b.Property(x=>x.Ad).IsRequired().
+            HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxAdLength);
+
+            b.Property(x=>x.OzelKod1Id).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x=>x.OzelKod2Id).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x=>x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxAciklamaLength);
+
+            b.Property(x => x.Durum).HasColumnType(SqlDbType.Bit.ToString());
+
+            //indexes
+            b.HasIndex(x => x.Kod);
+
+            //relations
+            b.HasOne(x=>x.OzelKod1).WithMany(x=>x.OzelKod1Bankalar).OnDelete(DeleteBehavior.NoAction);
+
+            b.HasOne(x=>x.OzelKod2).WithMany(x=>x.OzelKod2Bankalar).OnDelete(DeleteBehavior.NoAction);
+
+        });
     }
 }
