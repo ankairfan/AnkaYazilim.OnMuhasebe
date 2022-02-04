@@ -9,4 +9,13 @@ public class Kasa:FullAuditedAggregateRoot<Guid>
     public Guid? OzelKod1Id { get; set; }
     public Guid? OzelKod2Id { get; set; }
     public bool Durum { get; set; }
+
+    public Sube Sube { get; set; }
+    public OzelKod OzelKod1 { get; set; }
+    public OzelKod OzelKod2 { get; set; }
+
+    public ICollection<Makbuz> Makbuzlar { get; set; }
+    public ICollection<MakbuzHareket> MakbuzHareketleri { get; set; }
+
+
 }

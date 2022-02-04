@@ -9,4 +9,11 @@ public class Birim : FullAuditedAggregateRoot<Guid>
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
 
+    public OzelKod OzelKod1 { get; set; }
+    public OzelKod OzelKod2 { get; set; }
+
+    public ICollection<Hizmet> Hizmetler { get; set; }
+    public ICollection<Stok> Stoklar { get; set; }
+    public ICollection<Masraf> Masraflar { get; set; }
+
 }

@@ -7,4 +7,8 @@ public class FirmaParametreleri:Entity<Guid>
     public Guid DonemId { get; set; }
     public Guid? DepoId { get; set; }
 
+    public IdentityUser User { get; set; }
+    public Sube Sube { get; set; }
+    public Donem Donem { get; set; }
+    public Depo Depo { get; set; }
 }

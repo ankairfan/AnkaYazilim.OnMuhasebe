@@ -19,5 +19,11 @@ public class MakbuzHareket : FullAuditedEntity<Guid>
     public bool KendiBelgemiz { get; set; }
     public string Aciklama { get; set; }
 
+    public Makbuz Makbuz { get; set; }
+    public Banka CekBanka { get; set; }
+    public BankaSube CekBankaSube { get; set; }
+    public Kasa Kasa { get; set; }
+    public BankaHesap BankaHesap { get; set; }
+
 
 }
