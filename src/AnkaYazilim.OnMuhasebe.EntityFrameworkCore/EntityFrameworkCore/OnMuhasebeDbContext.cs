@@ -1,16 +1,4 @@
-﻿using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
-using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaSubeler;
-using AnkaYazilim.OnMuhasebe.Entities.Finance.Banks;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.EntityFrameworkCore;
-namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
+﻿namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
@@ -91,11 +79,37 @@ public class OnMuhasebeDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(OnMuhasebeConsts.DbTablePrefix + "YourEntities", OnMuhasebeConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Banka>(b =>
+        {
+            b.ToTable(OnMuhasebeConsts.DbTablePrefix + "Bankalar", OnMuhasebeConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            //properties
+            b.Property(x => x.Kod).IsRequired().
+            HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxKodLength);
+
+            b.Property(x=>x.Ad).IsRequired().
+            HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxAdLength);
+
+            b.Property(x=>x.OzelKod1Id).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x=>x.OzelKod2Id).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x=>x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
+            HasMaxLength(EntityConsts.MaxAciklamaLength);
+
+            b.Property(x => x.Durum).HasColumnType(SqlDbType.Bit.ToString());
+
+            //indexes
+            b.HasIndex(x => x.Kod);
+
+            //relations
+            b.HasOne(x=>x.OzelKod1).WithMany(x=>x.OzelKod1Bankalar).OnDelete(DeleteBehavior.NoAction);
+
+            b.HasOne(x=>x.OzelKod2).WithMany(x=>x.OzelKod2Bankalar).OnDelete(DeleteBehavior.NoAction);
+
+        });
     }
 }

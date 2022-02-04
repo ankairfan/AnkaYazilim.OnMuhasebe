@@ -1,15 +1,7 @@
 ﻿global using System;
-global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
-global using Volo.Abp.Domain.Entities.Auditing;
-global using AnkaYazilim.OnMuhasebe.Faturalar;
-global using AnkaYazilim.OnMuhasebe.Makbuzlar;
-global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
-global using AnkaYazilim.OnMuhasebe.KartTurleri;
-global using Volo.Abp.Domain.Entities;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaSubeler;
 global using AnkaYazilim.OnMuhasebe.Entities.OzelKodlar;
 global using AnkaYazilim.OnMuhasebe.Entities.Subeler;
-global using System.Collections.Generic;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Banks;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Kasalar;
@@ -29,7 +21,17 @@ global using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 global using Volo.Abp.SettingManagement.EntityFrameworkCore;
 global using Volo.Abp.TenantManagement;
 global using Volo.Abp.TenantManagement.EntityFrameworkCore;
-
+global using Microsoft.EntityFrameworkCore;
+global using Volo.Abp.AuditLogging.EntityFrameworkCore;
+global using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
+global using Volo.Abp.Data;
+global using Volo.Abp.DependencyInjection;
+global using Volo.Abp.EntityFrameworkCore;
+global using Volo.Abp.FeatureManagement.EntityFrameworkCore;
+global using Volo.Abp.Identity.EntityFrameworkCore;
+global using System.Data;
+global using AnkaYazilim.OnMuhasebe.Consts;
+global using Volo.Abp.EntityFrameworkCore.Modeling;
 
 
 
