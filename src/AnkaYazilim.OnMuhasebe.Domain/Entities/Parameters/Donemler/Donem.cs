@@ -9,6 +9,6 @@ public class Donem : FullAuditedAggregateRoot<Guid>
 
     public ICollection<Fatura> Faturalar { get; set; }
     public ICollection<Makbuz> Makbuzlar { get; set; }
-    public ICollection<FirmaParametreleri> FirmaParametreleri { get; set; }
+    public ICollection<FirmaParametre> FirmaParametreleri { get; set; }
 
 }

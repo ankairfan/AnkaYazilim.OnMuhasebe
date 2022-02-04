@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
+using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaSubeler;
+using AnkaYazilim.OnMuhasebe.Entities.Finance.Banks;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -7,12 +10,6 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
-using Volo.Abp.IdentityServer.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
-
 namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
@@ -51,6 +48,25 @@ public class OnMuhasebeDbContext :
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
     #endregion
+    public DbSet<Banka> Bankalar { get; set; }
+    public DbSet<BankaSube> BankaSubeler { get; set; }
+    public DbSet<BankaHesap> BankaHesaplar { get; set; }
+    public DbSet<Birim> Birimler { get; set; }
+    public DbSet<Cari> Cariler { get; set; }
+    public DbSet<Depo> Depolar { get; set; }
+    public DbSet<Donem> Donemler { get; set; }
+    public DbSet<FirmaParametre> FirmaParametreleri { get; set; }
+    public DbSet<Fatura> Faturalar { get; set; }
+    public DbSet<Hizmet> Hizmetler { get; set; }
+    public DbSet<Kasa> Kasalar { get; set; }
+    public DbSet<Makbuz> Makbuzlar { get; set; }
+    public DbSet<Masraf> Masraflar { get; set; }
+    public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Stok> Stoklar { get; set; }
+    public DbSet<Sube> Subeler { get; set; }
+
+
+
 
     public OnMuhasebeDbContext(DbContextOptions<OnMuhasebeDbContext> options)
         : base(options)

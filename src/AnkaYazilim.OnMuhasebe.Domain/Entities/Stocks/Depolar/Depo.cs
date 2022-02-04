@@ -14,7 +14,7 @@ public class Depo : FullAuditedAggregateRoot<Guid>
     public OzelKod OzelKod2 { get; set; }
     public Sube Sube { get; set; }
 
-    public ICollection<FirmaParametreleri> FirmaParametreleri { get; set; }
+    public ICollection<FirmaParametre> FirmaParametreleri { get; set; }
     public ICollection<FaturaHareket> FaturaHareketleri { get; set; }
 
 
