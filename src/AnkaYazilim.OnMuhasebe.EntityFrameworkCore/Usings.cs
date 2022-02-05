@@ -32,6 +32,15 @@ global using Volo.Abp.Identity.EntityFrameworkCore;
 global using System.Data;
 global using AnkaYazilim.OnMuhasebe.Consts;
 global using Volo.Abp.EntityFrameworkCore.Modeling;
+global using AnkaYazilim.OnMuhasebe.Configurations;
+global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
+global using AnkaYazilim.OnMuhasebe.Cariler;
+global using AnkaYazilim.OnMuhasebe.Faturalar;
+global using AnkaYazilim.OnMuhasebe.Makbuzlar;
+
+
+
+
 
 
 
