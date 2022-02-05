@@ -28,4 +28,5 @@ public class Cari : FullAuditedAggregateRoot<Guid>
     public ICollection<Makbuz> Makbuzlar { get; set; }
 
 
+
 }
