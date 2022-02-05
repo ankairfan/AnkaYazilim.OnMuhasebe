@@ -690,9 +690,9 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAdLength);
 
-            b.Property(x => x.KodTuru).HasColumnType(SqlDbType.Bit.ToString());
+            b.Property(x => x.KodTuru).HasColumnType(SqlDbType.TinyInt.ToString());
 
-            b.Property(x => x.KartTuru).HasColumnType(SqlDbType.Bit.ToString());
+            b.Property(x => x.KartTuru).HasColumnType(SqlDbType.TinyInt.ToString());
 
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
@@ -783,7 +783,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.SubeId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
-            b.Property(x => x.Donem).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+            b.Property(x => x.DonemId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
@@ -868,11 +868,11 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.BankaHesapId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
-            b.Property(x => x.Vade).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.Vade).HasColumnType(SqlDbType.Date.ToString());
 
             b.Property(x => x.BelgeDurumu).HasColumnType(SqlDbType.TinyInt.ToString());
 
-            b.Property(x => x.Tutar).HasColumnType(SqlDbType.Date.ToString());
+            b.Property(x => x.Tutar).HasColumnType(SqlDbType.Money.ToString());
 
             b.Property(x => x.KendiBelgemiz).HasColumnType(SqlDbType.Bit.ToString());
 
