@@ -44,6 +44,8 @@ global using AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 global using Volo.Abp.Domain.Entities;
 global using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 global using System.Linq;
+global using AnkaYazilim.OnMuhasebe.Commons;
+
 
 
 
