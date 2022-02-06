@@ -24,7 +24,9 @@ global using Volo.Abp.Identity;
 global using AnkaYazilim.OnMuhasebe.Entities.Parameters.FirmalarParametre;
 global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Stoklar;
 global using AnkaYazilim.OnMuhasebe.Entities.Masraflar;
-
+global using Volo.Abp.Domain.Repositories;
+global using System.Linq.Expressions;
+global using System.Threading.Tasks;
 
 
 
