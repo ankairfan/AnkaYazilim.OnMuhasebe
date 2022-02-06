@@ -344,7 +344,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
     {
         builder.Entity<Fatura>(b =>
         {
-            b.ToTable(OnMuhasebeConsts.DbTablePrefix + "FAturalar", OnMuhasebeConsts.DbSchema);
+            b.ToTable(OnMuhasebeConsts.DbTablePrefix + "Faturalar", OnMuhasebeConsts.DbSchema);
             b.ConfigureByConvention();
 
             //properties
