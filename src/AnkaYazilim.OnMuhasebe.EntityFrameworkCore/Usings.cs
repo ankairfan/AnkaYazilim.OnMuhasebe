@@ -37,6 +37,15 @@ global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
 global using AnkaYazilim.OnMuhasebe.Cariler;
 global using AnkaYazilim.OnMuhasebe.Faturalar;
 global using AnkaYazilim.OnMuhasebe.Makbuzlar;
+global using System.Collections.Generic;
+global using System.Linq.Expressions;
+global using System.Threading.Tasks;
+global using AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
+global using Volo.Abp.Domain.Entities;
+global using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+global using System.Linq;
+
+
 
 
 
