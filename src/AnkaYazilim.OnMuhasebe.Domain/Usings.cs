@@ -27,6 +27,7 @@ global using AnkaYazilim.OnMuhasebe.Entities.Masraflar;
 global using Volo.Abp.Domain.Repositories;
 global using System.Linq.Expressions;
 global using System.Threading.Tasks;
+global using AnkaYazilim.OnMuhasebe.Commons;
 
 
 
