@@ -12,6 +12,8 @@ global using AnkaYazilim.OnMuhasebe.DTOs.Faturalar;
 global using AnkaYazilim.OnMuhasebe.DTOs.MakbuzHareketler;
 global using AnkaYazilim.OnMuhasebe.KartTurleri;
 global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
+global using System.Threading.Tasks;
+global using Volo.Abp.Application.Services;
 
 
 
