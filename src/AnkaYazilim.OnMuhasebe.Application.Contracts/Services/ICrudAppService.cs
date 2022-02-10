@@ -1,7 +1,7 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Services;
 
 public interface ICrudAppService<TGetOutputDto, TGetListOutputDto, in TGetListInput, in TCreateInput, in TUpdateInput> :
-    IReadOnlyAppService<TGetOutputDto, TGetListOutputDto, Guid>, ICreateAppService<TGetOutputDto, TCreateInput>, IUpdateAppService<TGetOutputDto, Guid, TUpdateInput>
+    IReadOnlyAppService<TGetOutputDto, TGetListOutputDto, Guid, TGetListInput>, ICreateAppService<TGetOutputDto, TCreateInput>, IUpdateAppService<TGetOutputDto, Guid, TUpdateInput>
 
 {
 
