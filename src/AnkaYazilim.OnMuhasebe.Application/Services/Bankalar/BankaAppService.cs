@@ -1,4 +1,6 @@
-﻿namespace AnkaYazilim.OnMuhasebe.Services.Bankalar;
+﻿using Volo.Abp.Domain.Repositories;
+
+namespace AnkaYazilim.OnMuhasebe.Services.Bankalar;
 
 public class BankaAppService : OnMuhasebeAppService, IBankaAppService
 {
@@ -9,36 +11,42 @@ public class BankaAppService : OnMuhasebeAppService, IBankaAppService
         _repository = repository;
     }
 
-    public async Task<SelectBankaDto> CreateAsync(CreateBankaDto input)
+    public virtual async Task<SelectBankaDto> CreateAsync(CreateBankaDto input)
     {
         var entity = ObjectMapper.Map<CreateBankaDto, Banka>(input);
         await _repository.InsertAsync(entity);
         return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
     }
 
-    public Task DeleteAsync(Guid id)
+    public virtual async Task DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+        await _repository.DeleteAsync(id);
     }
 
-    public async Task<SelectBankaDto> GetAsync(Guid id)
+    public virtual async Task<SelectBankaDto> GetAsync(Guid id)
     {
-        var entity = await _repository.GetAsync(id, b => b.Id == id);
+        var entity = await _repository.GetAsync(id, b => b.Id == id, b=>b.OzelKod1, b=>b.OzelKod2);
         return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
     }
 
-    public Task<string> GetCodeAsync(CodeParameterDto input)
+    public virtual async Task<string> GetCodeAsync(CodeParameterDto input)
     {
-        throw new NotImplementedException();
+        return await _repository.GetCodeAsync(b => b.Kod, b => b.Durum == input.Durum);
     }
 
-    public Task<PagedResultDto<ListBankaDto>> GetListAsync(BankaListParameterDto input)
+    public virtual async Task<PagedResultDto<ListBankaDto>> GetListAsync(BankaListParameterDto input)
     {
-        throw new NotImplementedException();
+        var entities = await _repository.GetPagedLastListAsync(input.SkipCount, input.MaxResultCount, b => b.Durum == input.Durum, b => b.Kod, b => b.OzelKod1, b => b.OzelKod2);
+
+        var totalCount = await _repository.CountAsync(b => b.Durum == input.Durum);
+        return new PagedResultDto<ListBankaDto>(totalCount, ObjectMapper.Map<List<Banka>, List<ListBankaDto>>(entities));
     }
 
-    public Task<SelectBankaDto> UpdateAsync(Guid id, UpdateBankaDto input)
+    public virtual async Task<SelectBankaDto> UpdateAsync(Guid id, UpdateBankaDto input)
     {
-        throw new NotImplementedException();
+        var entity = await _repository.GetAsync(id, b => b.Id == id);
+        var mappedEntity = ObjectMapper.Map(input, entity);
+        await _repository.UpdateAsync(mappedEntity);
+        return ObjectMapper.Map<Banka, SelectBankaDto>(mappedEntity);
     }
 }
