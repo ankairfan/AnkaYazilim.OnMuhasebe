@@ -32,6 +32,7 @@ global using Volo.Abp;
 global using Volo.Abp.Domain.Services;
 global using AnkaYazilim.OnMuhasebe.Exceptions;
 global using AnkaYazilim.OnMuhasebe.Extensions;
+global using System.Linq;
 
 
 

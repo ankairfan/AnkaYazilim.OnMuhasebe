@@ -20,6 +20,18 @@ public static class EntityAsyncExtensions
         }
     }
 
+    public static async Task EntityAnyAsync<TEntity>(this IReadOnlyRepository<TEntity> repository, object id,Expression<Func<TEntity,bool>> predicate , bool check = true)
+        where TEntity : class, IEntity
+    {
+        if (check && id != null)
+        {
+            var anyAsync = await repository.AnyAsync(predicate);
+
+            if (!anyAsync)
+                throw new EntityNotFoundException(typeof(TEntity), id);
+        }
+    }
+
     public static async Task RelationalEntityAnyAsync<TEntity>(this IReadOnlyRepository<TEntity> repository, Expression<Func<TEntity, bool>> predicate)
         where TEntity : class, IEntity
     {
