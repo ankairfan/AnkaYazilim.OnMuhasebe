@@ -28,3 +28,4 @@ global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
 
 
 
+

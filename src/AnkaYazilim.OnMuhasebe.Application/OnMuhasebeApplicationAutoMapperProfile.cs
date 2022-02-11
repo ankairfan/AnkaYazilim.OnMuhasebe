@@ -1,6 +1,4 @@
-﻿using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
-
-namespace AnkaYazilim.OnMuhasebe;
+﻿namespace AnkaYazilim.OnMuhasebe;
 
 public class OnMuhasebeApplicationAutoMapperProfile : Profile
 {
@@ -30,6 +28,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //BankaHesap
         CreateMap<BankaHesap, SelectBankaHesapDto>()
+          .ForMember(x => x.BankaId, y => y.MapFrom(z => z.BankaSube.Banka.Id))
         .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Ad))
         .ForMember(x => x.BankaSubeAdi, y => y.MapFrom(z => z.BankaSube.Ad))
         .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
