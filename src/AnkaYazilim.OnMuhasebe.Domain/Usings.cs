@@ -28,6 +28,10 @@ global using Volo.Abp.Domain.Repositories;
 global using System.Linq.Expressions;
 global using System.Threading.Tasks;
 global using AnkaYazilim.OnMuhasebe.Commons;
+global using Volo.Abp;
+global using Volo.Abp.Domain.Services;
+global using AnkaYazilim.OnMuhasebe.Exceptions;
+global using AnkaYazilim.OnMuhasebe.Extensions;
 
 
 
