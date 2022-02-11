@@ -17,6 +17,9 @@ global using Volo.Abp.Application.Services;
 global using AnkaYazilim.OnMuhasebe.DTOs.Bankalar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Banks;
 global using AutoMapper;
+global using AnkaYazilim.OnMuhasebe.DTOs.BankaSubeler;
+global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaSubeler;
+global using Volo.Abp.Domain.Repositories;
 
 
 
