@@ -5,14 +5,18 @@ namespace AnkaYazilim.OnMuhasebe.Services.Bankalar;
 public class BankaAppService : OnMuhasebeAppService, IBankaAppService
 {
     private readonly IBankaRepository _repository;
+    private readonly BankaManager _bankaManager;
 
-    public BankaAppService(IBankaRepository repository)
+    public BankaAppService(IBankaRepository repository, BankaManager bankaManager)
     {
         _repository = repository;
+        _bankaManager = bankaManager;
     }
 
     public virtual async Task<SelectBankaDto> CreateAsync(CreateBankaDto input)
     {
+        await _bankaManager.CheckCreateAsync(input.Kod, input.OzelKod1Id, input.OzelKod2Id);
+
         var entity = ObjectMapper.Map<CreateBankaDto, Banka>(input);
         await _repository.InsertAsync(entity);
         return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
@@ -20,12 +24,13 @@ public class BankaAppService : OnMuhasebeAppService, IBankaAppService
 
     public virtual async Task DeleteAsync(Guid id)
     {
+        await _bankaManager.CheckDeleteAsync(id);
         await _repository.DeleteAsync(id);
     }
 
     public virtual async Task<SelectBankaDto> GetAsync(Guid id)
     {
-        var entity = await _repository.GetAsync(id, b => b.Id == id, b=>b.OzelKod1, b=>b.OzelKod2);
+        var entity = await _repository.GetAsync(id, b => b.Id == id, b => b.OzelKod1, b => b.OzelKod2);
         return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
     }
 
@@ -45,6 +50,7 @@ public class BankaAppService : OnMuhasebeAppService, IBankaAppService
     public virtual async Task<SelectBankaDto> UpdateAsync(Guid id, UpdateBankaDto input)
     {
         var entity = await _repository.GetAsync(id, b => b.Id == id);
+        await _bankaManager.CheckUpdateAsync(id, input.Kod, entity, input.OzelKod1Id, input.OzelKod2Id);
         var mappedEntity = ObjectMapper.Map(input, entity);
         await _repository.UpdateAsync(mappedEntity);
         return ObjectMapper.Map<Banka, SelectBankaDto>(mappedEntity);
