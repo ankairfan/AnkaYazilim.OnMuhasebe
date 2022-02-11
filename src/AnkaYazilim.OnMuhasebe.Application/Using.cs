@@ -20,6 +20,9 @@ global using AutoMapper;
 global using AnkaYazilim.OnMuhasebe.DTOs.BankaSubeler;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaSubeler;
 global using Volo.Abp.Domain.Repositories;
+global using AnkaYazilim.OnMuhasebe.DTOs.BankaHesaplar;
+global using System.Linq;
+global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
 
 
 

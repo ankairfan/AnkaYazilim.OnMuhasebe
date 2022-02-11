@@ -1,4 +1,6 @@
-﻿namespace AnkaYazilim.OnMuhasebe;
+﻿using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
+
+namespace AnkaYazilim.OnMuhasebe;
 
 public class OnMuhasebeApplicationAutoMapperProfile : Profile
 {
@@ -16,7 +18,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //BankaSube
         CreateMap<BankaSube, SelectBankaSubeDto>().ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
-            .ForMember(x=>x.BankaAdi, y=>y.MapFrom(z=>z.Banka.Ad))
+            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.Banka.Ad))
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<BankaSube, ListBankaSubeDto>().ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
@@ -25,5 +27,19 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateBankaSubeDto, BankaSube>();
         CreateMap<UpdateBankaSubeDto, BankaSube>();
+
+        //BankaHesap
+        CreateMap<BankaHesap, SelectBankaHesapDto>()
+        .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+        .ForMember(x => x.BankaSubeAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<BankaHesap, ListBankaHesapDto>()
+             .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+        .ForMember(x => x.BankaSubeAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<CreateBankaHesapDto, BankaHesap>();
+        CreateMap<UpdateBankaHesapDto, BankaHesap>();
     }
 }
