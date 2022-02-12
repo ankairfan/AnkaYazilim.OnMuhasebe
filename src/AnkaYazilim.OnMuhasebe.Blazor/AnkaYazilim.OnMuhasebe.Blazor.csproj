@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.Application\AnkaYazilim.OnMuhasebe.Application.csproj" />
+    <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.DbMigrator\AnkaYazilim.OnMuhasebe.DbMigrator.csproj" />
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.HttpApi\AnkaYazilim.OnMuhasebe.HttpApi.csproj" />
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.EntityFrameworkCore\AnkaYazilim.OnMuhasebe.EntityFrameworkCore.csproj" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="5.1.3" />

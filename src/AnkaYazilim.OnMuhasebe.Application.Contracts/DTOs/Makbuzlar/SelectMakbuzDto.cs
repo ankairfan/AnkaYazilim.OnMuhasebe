@@ -13,12 +13,12 @@ public class SelectMakbuzDto : EntityDto<Guid>, IOzelKod
     public Guid? BankaHesapId { get; set; }
     public string BankaHesapAdi { get; set; }
     public int HareketSayisi { get; set; }
-    public decimal? CekToplamTutar { get; set; }
-    public decimal? SenetToplamTutar { get; set; }
-    public decimal? PosToplamTutar { get; set; }
-    public decimal? NakitToplamTutar { get; set; }
-    public decimal? BankaToplamTutar { get; set; }
-    public decimal? GenelToplam => CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
+    public decimal CekToplamTutar { get; set; }
+    public decimal SenetToplamTutar { get; set; }
+    public decimal PosToplamTutar { get; set; }
+    public decimal NakitToplamTutar { get; set; }
+    public decimal BankaToplamTutar { get; set; }
+    public decimal GenelToplam => CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
     public Guid? OzelKod1Id { get; set; }
     public string OzelKod1Adi { get; set; }
     public Guid? OzelKod2Id { get; set; }

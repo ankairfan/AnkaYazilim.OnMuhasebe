@@ -55,5 +55,28 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<CreateBirimDto, Birim>();
         CreateMap<UpdateBirimDto, Birim>();
 
+        //Cari
+        CreateMap<Cari, SelectCariDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Cari, ListCariDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<CreateCariDto, Cari>();
+        CreateMap<UpdateCariDto, Cari>();
+
+        //Depo
+        CreateMap<Depo, SelectDepoDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Depo, ListDepoDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<CreateDepoDto, Depo>();
+        CreateMap<UpdateDepoDto, Depo>();
     }
 }
