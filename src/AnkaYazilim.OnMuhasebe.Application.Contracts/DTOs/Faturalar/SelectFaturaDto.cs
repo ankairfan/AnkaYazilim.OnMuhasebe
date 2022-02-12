@@ -12,11 +12,11 @@ public class SelectFaturaDto:EntityDto<Guid>, IOzelKod
     public string TcNumarasi { get; set; }
     public string Adres { get; set; }
     public string TelefonNumarasi { get; set; }
-    public decimal? BrutTutar { get; set; }
-    public decimal? IndirimTutari { get; set; }
-    public decimal? NetTutar { get; set; }
-    public decimal? KdvTutar { get; set; }
-    public decimal? GenelTutar { get; set; }
+    public decimal BrutTutar { get; set; }
+    public decimal IndirimTutari { get; set; }
+    public decimal NetTutar { get; set; }
+    public decimal KdvTutar { get; set; }
+    public decimal GenelTutar { get; set; }
     public int? HareketSayisi { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public string OzelKod1Adi { get; set; }

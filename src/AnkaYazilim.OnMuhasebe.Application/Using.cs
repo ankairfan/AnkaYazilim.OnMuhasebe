@@ -25,6 +25,10 @@ global using System.Linq;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
 global using AnkaYazilim.OnMuhasebe.DTOs.Birimler;
 global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Birimler;
+global using AnkaYazilim.OnMuhasebe.DTOs.Cariler;
+global using AnkaYazilim.OnMuhasebe.Entities.Sales.Cariler;
+global using AnkaYazilim.OnMuhasebe.DTOs.Depolar;
+global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Depolar;
 
 
 

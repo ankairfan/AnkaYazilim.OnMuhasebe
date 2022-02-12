@@ -14,6 +14,7 @@ global using AnkaYazilim.OnMuhasebe.KartTurleri;
 global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
 global using System.Threading.Tasks;
 global using Volo.Abp.Application.Services;
+global using AnkaYazilim.OnMuhasebe.DTOs.Makbuzlar;
 
 
 
