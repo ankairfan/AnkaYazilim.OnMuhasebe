@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AnkaYazilim.OnMuhasebe.Localization;
-using Volo.Abp.Application.Services;
+﻿using AnkaYazilim.OnMuhasebe.Localization;
 
 namespace AnkaYazilim.OnMuhasebe;
 

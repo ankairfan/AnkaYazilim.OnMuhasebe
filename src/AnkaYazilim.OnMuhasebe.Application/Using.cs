@@ -23,6 +23,9 @@ global using Volo.Abp.Domain.Repositories;
 global using AnkaYazilim.OnMuhasebe.DTOs.BankaHesaplar;
 global using System.Linq;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar;
+global using AnkaYazilim.OnMuhasebe.DTOs.Birimler;
+global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Birimler;
+
 
 
 
