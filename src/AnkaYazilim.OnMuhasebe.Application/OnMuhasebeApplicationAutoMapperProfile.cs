@@ -78,5 +78,11 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateDepoDto, Depo>();
         CreateMap<UpdateDepoDto, Depo>();
+
+        //Dönem
+        CreateMap<Donem, SelectDonemDto>();
+        CreateMap<Donem, ListDonemDto>();
+        CreateMap<CreateDonemDto, Donem>();
+        CreateMap<UpdateDonemDto, Donem>();
     }
 }
