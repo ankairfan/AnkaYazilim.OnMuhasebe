@@ -21,14 +21,8 @@ public class DepoAppService : OnMuhasebeAppService, IDepoAppService
     {
         var entities = await _repository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, x => x.SubeId == input.SubeId && x.Durum == input.Durum, x => x.Kod);
         var totalCount = await _repository.CountAsync(x => x.SubeId == input.SubeId && x.Durum == input.Durum);
-        var mappedDtos = ObjectMapper.Map<List<Depo>, List<ListDepoDto>>(entities);
-        mappedDtos.ForEach(x =>
-        {
-            x.Giren = x.FaturaHareketler.Where(y => y.Fatura.FaturaTuru == FaturaTuru.Alis).Sum(y => y.Miktar);
-            x.Cikan = x.FaturaHareketler.Where(y => y.Fatura.FaturaTuru == FaturaTuru.satis).Sum(y => y.Miktar);
-        });
 
-        return new PagedResultDto<ListDepoDto>(totalCount, mappedDtos);
+        return new PagedResultDto<ListDepoDto>(totalCount, ObjectMapper.Map<List<Depo>, List<ListDepoDto>>(entities));
     }
 
     public virtual async Task<SelectDepoDto> CreateAsync(CreateDepoDto input)

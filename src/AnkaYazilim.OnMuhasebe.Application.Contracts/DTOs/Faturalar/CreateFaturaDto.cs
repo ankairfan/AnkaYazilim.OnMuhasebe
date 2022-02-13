@@ -18,4 +18,6 @@ public class CreateFaturaDto:IEntityDto
     public Guid? DonemId { get; set; }
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
+    public ICollection<FaturaHareketDto> FaturaHareketler { get; set; }
+
 }
