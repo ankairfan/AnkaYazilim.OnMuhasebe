@@ -31,6 +31,5 @@ public class SelectFaturaHareketDto:EntityDto<Guid>
     public decimal? KdvTutar { get; set; }
     public decimal GenelTutar { get; set; }
     public string Aciklama { get; set; }
-    public SelectFaturaDto Fatura { get; set; }
 }
 
