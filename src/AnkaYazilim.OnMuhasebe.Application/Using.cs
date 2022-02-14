@@ -32,7 +32,10 @@ global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Depolar;
 global using AnkaYazilim.OnMuhasebe.DTOs.Donemler;
 global using AnkaYazilim.OnMuhasebe.Entities.Parameters.Donemler;
 global using AnkaYazilim.OnMuhasebe.Entities.Sales.Faturalar;
-
+global using AnkaYazilim.OnMuhasebe.DTOs.Hizmetler;
+global using AnkaYazilim.OnMuhasebe.Entities.Hizmetler;
+global using AnkaYazilim.OnMuhasebe.DTOs.Kasalar;
+global using AnkaYazilim.OnMuhasebe.Entities.Finance.Kasalar;
 
 
 

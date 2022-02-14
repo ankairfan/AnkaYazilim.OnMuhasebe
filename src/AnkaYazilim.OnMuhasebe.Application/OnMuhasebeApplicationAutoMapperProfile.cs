@@ -125,5 +125,38 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.HareketAdi, y => y.MapFrom(z => z.Stok != null ? z.Stok.Ad : z.Hizmet != null ? z.Hizmet.Ad : z.Masraf != null ? z.Masraf.Ad : null));
 
         CreateMap<FaturaHareketDto, FaturaHareket>();
+
+
+        //Hizmet
+        CreateMap<Hizmet, SelectHizmetDto>()
+        .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+        .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Hizmet, ListHizmetDto>()
+            .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+        .ForMember(x => x.Giren, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.Alis).Sum(x => x.Miktar)))
+        .ForMember(x => x.Cikan, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.satis).Sum(x => x.Miktar)));
+
+        CreateMap<CreateHizmetDto, Hizmet>();
+        CreateMap<UpdateHizmetDto, Hizmet>();
+
+        //Kasa
+        CreateMap<Kasa, SelectKasaDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Kasa, ListKasaDto>()
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+        .ForMember(x => x.Borc, y => y.MapFrom(z => z.MakbuzHareketleri.Where(x => x.BelgeDurumu==BelgeDurumu.TahsilEdildi).Sum(x => x.Tutar)))
+        .ForMember(x => x.Alacak, y => y.MapFrom(z => z.MakbuzHareketleri.Where(x => x.BelgeDurumu == BelgeDurumu.Odendi).Sum(x => x.Tutar)));
+
+
+
+        CreateMap<CreateKasaDto, Kasa>();
+        CreateMap<UpdateKasaDto, Kasa>();
     }
 }
