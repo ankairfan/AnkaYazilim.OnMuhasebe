@@ -12,10 +12,19 @@
     "Enum:BankaHesapTuru:4": "Pos Bloke Hesabı",
     "Enum:BankaHesapTuru:5": "Fon Hesabı",
     "Enum:BankaHesapTuru:6": "Yatırım Hesabı",
-    "Enum:FaturaHareketTuru:1":  "Stok",
-    "Enum:FaturaHareketTuru:2":  "Hizmet",
-    "Enum:FaturaHareketTuru:3":  "Masraf"
-
+    "Enum:FaturaHareketTuru:1": "Stok",
+    "Enum:FaturaHareketTuru:2": "Hizmet",
+    "Enum:FaturaHareketTuru:3": "Masraf",
+    "Enum:OdemeTuru:1": "Çek",
+    "Enum:OdemeTuru:2": "Senet",
+    "Enum:OdemeTuru:3": "Nakit",
+    "Enum:OdemeTuru:4": "Banka",
+    "Enum:OdemeTuru:5": "Pos",
+    "Enum:BelgeDurumu:1": "Portföyde",
+    "Enum:BelgeDurumu:2": "Ödenecek",
+    "Enum:BelgeDurumu:3": "Ciro Edildi",
+    "Enum:BelgeDurumu:4": "Tahsil Edildi",
+    "Enum:BelgeDurumu:5": "Ödendi"
 
   }
 }

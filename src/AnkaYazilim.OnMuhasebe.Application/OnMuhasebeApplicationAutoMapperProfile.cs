@@ -77,9 +77,6 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
         .ForMember(x => x.Giren, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.Alis).Sum(x => x.Miktar)))
         .ForMember(x => x.Cikan, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.satis).Sum(x => x.Miktar)));
-
-
-
         CreateMap<CreateDepoDto, Depo>();
         CreateMap<UpdateDepoDto, Depo>();
 
@@ -151,12 +148,41 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<Kasa, ListKasaDto>()
              .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
         .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
-        .ForMember(x => x.Borc, y => y.MapFrom(z => z.MakbuzHareketleri.Where(x => x.BelgeDurumu==BelgeDurumu.TahsilEdildi).Sum(x => x.Tutar)))
+        .ForMember(x => x.Borc, y => y.MapFrom(z => z.MakbuzHareketleri.Where(x => x.BelgeDurumu == BelgeDurumu.TahsilEdildi).Sum(x => x.Tutar)))
         .ForMember(x => x.Alacak, y => y.MapFrom(z => z.MakbuzHareketleri.Where(x => x.BelgeDurumu == BelgeDurumu.Odendi).Sum(x => x.Tutar)));
-
-
 
         CreateMap<CreateKasaDto, Kasa>();
         CreateMap<UpdateKasaDto, Kasa>();
+
+        //Makbuz
+        CreateMap<Makbuz, SelectMakbuzDto>()
+            .ForMember(x => x.CariAdi, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.CariKodu, y => y.MapFrom(z => z.Cari.Kod))
+            .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
+            .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
+            .ForMember(x => x.SubeAdi, y => y.MapFrom(z => z.Sube.Ad))
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Makbuz, ListMakbuzDto>()
+            .ForMember(x => x.CariAdi, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
+            .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<CreateMakbuzDto, Makbuz>();
+        CreateMap<UpdateMakbuzDto, Makbuz>()
+            .ForMember(x => x.MakbuzHareketleri, y => y.Ignore());
+
+
+        //MakbuzHareket
+        CreateMap<MakbuzHareket, SelectMakbuzHareketDto>()
+            .ForMember(x => x.CekBankaAdi, y => y.MapFrom(z => z.CekBanka.Ad))
+            .ForMember(x => x.CekBankasubeAdi, y => y.MapFrom(z => z.CekBankaSube.Ad))
+            .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
+            .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad));
+
+        CreateMap<MakbuzHareketDto, MakbuzHareket>();
     }
 }
