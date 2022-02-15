@@ -36,6 +36,8 @@ global using AnkaYazilim.OnMuhasebe.DTOs.Hizmetler;
 global using AnkaYazilim.OnMuhasebe.Entities.Hizmetler;
 global using AnkaYazilim.OnMuhasebe.DTOs.Kasalar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Kasalar;
+global using AnkaYazilim.OnMuhasebe.DTOs.Makbuzlar;
+global using AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar;
 
 
 
