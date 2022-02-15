@@ -1,7 +1,6 @@
 ﻿global using System;
 global using Volo.Abp.Identity;
 global using Volo.Abp.TenantManagement;
-global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
 global using Volo.Abp.Application.Dtos;
 global using AnkaYazilim.OnMuhasebe.CommonDtos;
 global using AnkaYazilim.OnMuhasebe.Faturalar;
@@ -10,8 +9,6 @@ global using System.Collections.Generic;
 global using AnkaYazilim.OnMuhasebe.DTOs.FaturaHareketler;
 global using AnkaYazilim.OnMuhasebe.DTOs.Faturalar;
 global using AnkaYazilim.OnMuhasebe.DTOs.MakbuzHareketler;
-global using AnkaYazilim.OnMuhasebe.KartTurleri;
-global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
 global using System.Threading.Tasks;
 global using Volo.Abp.Application.Services;
 global using AnkaYazilim.OnMuhasebe.DTOs.Bankalar;
@@ -38,6 +35,16 @@ global using AnkaYazilim.OnMuhasebe.DTOs.Kasalar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Kasalar;
 global using AnkaYazilim.OnMuhasebe.DTOs.Makbuzlar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar;
+global using AnkaYazilim.OnMuhasebe.DTOs.Masraflar;
+global using AnkaYazilim.OnMuhasebe.Entities.Masraflar;
+global using AnkaYazilim.OnMuhasebe.DTOs.OzelKodlar;
+global using AnkaYazilim.OnMuhasebe.Entities.OzelKodlar;
+global using AnkaYazilim.OnMuhasebe.DTOs.Parametreler;
+global using AnkaYazilim.OnMuhasebe.Entities.Parameters.FirmalarParametre;
+global using AnkaYazilim.OnMuhasebe.DTOs.Stoklar;
+global using AnkaYazilim.OnMuhasebe.Entities.Stocks.Stoklar;
+global using AnkaYazilim.OnMuhasebe.DTOs.Subeler;
+global using AnkaYazilim.OnMuhasebe.Entities.Subeler;
 
 
 

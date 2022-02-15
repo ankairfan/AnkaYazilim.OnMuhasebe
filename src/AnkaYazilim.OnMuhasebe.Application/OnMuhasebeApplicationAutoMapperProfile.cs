@@ -184,5 +184,60 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad));
 
         CreateMap<MakbuzHareketDto, MakbuzHareket>();
+
+        //Masraf
+        CreateMap<Masraf, SelectMasrafDto>()
+        .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+        .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Masraf, ListMasrafDto>()
+            .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+        .ForMember(x => x.Giren, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.Alis).Sum(x => x.Miktar)))
+        .ForMember(x => x.Cikan, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.satis).Sum(x => x.Miktar)));
+
+        CreateMap<CreateMasrafDto, Masraf>();
+        CreateMap<UpdateMasrafDto, Masraf>();
+
+        //OzelKod
+        CreateMap<OzelKod, SelectOzelKodDto>();
+        CreateMap<OzelKod, ListOzelKodDto>();
+        CreateMap<CreateOzelKodDto, OzelKod>();
+        CreateMap<UpdateOzelKodDto, OzelKod>();
+
+        //FirmaParametre
+        CreateMap<FirmaParametre, SelectFirmaParametreDto>()
+        .ForMember(x => x.SubeAdi, y => y.MapFrom(z => z.Sube.Ad))
+        .ForMember(x => x.DepoAdi, y => y.MapFrom(z => z.Depo.Ad))
+        .ForMember(x => x.DonemAdi, y => y.MapFrom(z => z.Donem.Ad));
+
+
+        CreateMap<CreateFirmaParametreDto, FirmaParametre>();
+        CreateMap<UpdateFirmaParametreDto, FirmaParametre>();
+
+        //Stok
+        CreateMap<Stok, SelectStokDto>()
+        .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+        .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Stok, ListStokDto>()
+            .ForMember(x => x.BirimAdi, y => y.MapFrom(z => z.Birim.Ad))
+             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+        .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+        .ForMember(x => x.Giren, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.Alis).Sum(x => x.Miktar)))
+        .ForMember(x => x.Cikan, y => y.MapFrom(z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.satis).Sum(x => x.Miktar)));
+
+        CreateMap<CreateStokDto, Stok>();
+        CreateMap<UpdateStokDto, Stok>();
+
+
+        //Sube
+        CreateMap<Sube, SelectSubeDto>();
+        CreateMap<Sube, ListSubeDto>();
+        CreateMap<CreateSubeDto, Sube>();
+        CreateMap<UpdateSubeDto, Sube>();
     }
 }
