@@ -26,6 +26,7 @@ global using Volo.Abp.Modularity;
 global using Volo.Abp.ObjectExtending;
 global using Volo.Abp.PermissionManagement;
 global using Volo.Abp.SettingManagement;
+global using AnkaYazilim.OnMuhasebe.Cariler;
 
 
 

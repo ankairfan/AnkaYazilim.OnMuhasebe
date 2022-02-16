@@ -34,19 +34,27 @@ public class CreateBankaHesapDtoValidator : AbstractValidator<CreateBankaHesapDt
             .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["AccountNumber"]])
 
             .MaximumLength(BankaHesapConsts.MaxHesapLength)
-            .WithMessage(localizer[OnMuhasebeDomainErrorCodes.MaxLenght, localizer["AccountNumber"], BankaHesapConsts.MaxHesapLength]);
+            .WithMessage(
+                localizer[
+                    OnMuhasebeDomainErrorCodes.MaxLenght,
+                    localizer["AccountNumber"],
+                    BankaHesapConsts.MaxHesapLength]);
 
-        RuleFor(x=>x.IBAN)
+        RuleFor(x => x.IBAN)
             .MaximumLength(BankaHesapConsts.MaxIbanNoLength)
-            .WithMessage(localizer[OnMuhasebeDomainErrorCodes.MaxLenght, localizer["Iban"], BankaHesapConsts.MaxIbanNoLength]);
+            .WithMessage(
+                localizer[OnMuhasebeDomainErrorCodes.MaxLenght, localizer["Iban"], BankaHesapConsts.MaxIbanNoLength]);
 
-        RuleFor(x=>x.SubeId)
-             .Must(x => x.HasValue && x.Value != Guid.Empty)
+        RuleFor(x => x.SubeId)
+            .Must(x => x.HasValue && x.Value != Guid.Empty)
             .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["Branch"]]);
 
-        RuleFor(x=>x.Aciklama)
+        RuleFor(x => x.Aciklama)
             .MaximumLength(EntityConsts.MaxAciklamaLength)
-            .WithMessage(localizer[OnMuhasebeDomainErrorCodes.MaxLenght, localizer["Description"], EntityConsts.MaxAciklamaLength]);
-
+            .WithMessage(
+                localizer[
+                    OnMuhasebeDomainErrorCodes.MaxLenght,
+                    localizer["Description"],
+                    EntityConsts.MaxAciklamaLength]);
     }
 }
