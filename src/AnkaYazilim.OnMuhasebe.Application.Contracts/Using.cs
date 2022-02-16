@@ -15,6 +15,17 @@ global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
 global using System.Threading.Tasks;
 global using Volo.Abp.Application.Services;
 global using AnkaYazilim.OnMuhasebe.DTOs.Makbuzlar;
+global using FluentValidation;
+global using AnkaYazilim.OnMuhasebe.Localization;
+global using Microsoft.Extensions.Localization;
+global using AnkaYazilim.OnMuhasebe.Consts;
+global using Volo.Abp.Account;
+global using Volo.Abp.FeatureManagement;
+global using Volo.Abp.FluentValidation;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.ObjectExtending;
+global using Volo.Abp.PermissionManagement;
+global using Volo.Abp.SettingManagement;
 
 
 
