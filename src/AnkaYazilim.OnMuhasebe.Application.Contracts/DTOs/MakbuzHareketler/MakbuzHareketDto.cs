@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.MakbuzHareketler;
 
-public class MakbuzHareketDto:EntityDto<Guid>
+public class MakbuzHareketDto:EntityDto<Guid?>
 {
     public OdemeTuru? OdemeTuru { get; set; }
     public string TakipNo { get; set; }

@@ -4,7 +4,7 @@ public class UpdateMasrafDto:IEntityDto
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
-    public byte KdvOran { get; set; }
+    public int? KdvOran { get; set; }
     public decimal? BirimFiyat { get; set; }
     public Guid? BirimId { get; set; }
     public Guid? OzelKod1Id { get; set; }
