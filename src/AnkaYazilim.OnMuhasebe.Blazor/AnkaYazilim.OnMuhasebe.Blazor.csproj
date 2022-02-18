@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnkaYazilim.Blazor.Core\AnkaYazilim.Blazor.Core.csproj" />
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.Application\AnkaYazilim.OnMuhasebe.Application.csproj" />
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.DbMigrator\AnkaYazilim.OnMuhasebe.DbMigrator.csproj" />
     <ProjectReference Include="..\AnkaYazilim.OnMuhasebe.HttpApi\AnkaYazilim.OnMuhasebe.HttpApi.csproj" />
