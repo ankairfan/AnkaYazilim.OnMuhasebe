@@ -1,0 +1,24 @@
+﻿<DxGridLayoutItem Column="ColumnIndex"
+                  Row="RowIndex"
+                  ColumnSpan="ColumnSpan"
+                  CssClass="@CssClass"
+                  RowSpan="RowSpan"
+                  Visible="Visible">
+
+    <Template>
+        @Caption
+    </Template>
+
+</DxGridLayoutItem>
+
+@code {
+    [Parameter, EditorRequired] public int ColumnIndex { get; set; }
+    [Parameter] public int ColumnSpan { get; set; }
+    [Parameter] public string CssClass { get; set; } = "caption";
+    [Parameter, EditorRequired] public int RowIndex { get; set; }
+    [Parameter] public int RowSpan { get; set; }
+    [Parameter] public bool Visible { get; set; } = true;
+    [Parameter, EditorRequired] public string Caption { get; set; }
+
+
+}

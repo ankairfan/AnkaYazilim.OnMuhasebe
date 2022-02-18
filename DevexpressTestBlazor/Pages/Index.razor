@@ -1,4 +1,18 @@
 ﻿@page "/"
+@using AnkaYazilim.Blazor.Core.Components.Dev.DataEditors
+@using AnkaYazilim.Blazor.Core.Components.Dev.Layouts
+
+<DevGridLayout ColumnCount="3"
+ColumnSpacing="3px"
+ RowCount="3"
+ RowSpacing="3px">
+
+ <GridLayoutItems>
+      <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>
+ </GridLayoutItems>
+
+</DevGridLayout>
+
 
 <DxGridLayout>
     <Rows>
@@ -14,11 +28,8 @@
     </Columns>
 
     <Items>
-        <DxGridLayoutItem Row="0" Column="0">
-            <Template>
-                 <DxTextBox Text="0-0"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
+       <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>
+
          <DxGridLayoutItem Row="0" Column="1">
             <Template>
                  <DxTextBox Text="0-1"></DxTextBox>

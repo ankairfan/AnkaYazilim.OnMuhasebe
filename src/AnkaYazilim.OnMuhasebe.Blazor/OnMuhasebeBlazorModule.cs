@@ -144,6 +144,7 @@ public class OnMuhasebeBlazorModule : AbpModule
                             bundle.AddFiles("/_content/DevExpress.Blazor/dx-blazor.bs5.css");
                             bundle.AddFiles("/blazor-global-styles.css");
                             bundle.AddFiles("/AnkaYazilim.OnMuhasebe.Blazor.styles.css");
+                            bundle.AddFiles("/_content/AnkaYazilim.Blazor.Core/css/component.css");
                         });
 
                 options.ScriptBundles
