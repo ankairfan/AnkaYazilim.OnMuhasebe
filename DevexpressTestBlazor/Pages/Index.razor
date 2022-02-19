@@ -2,19 +2,29 @@
 @using AnkaYazilim.Blazor.Core.Components.Dev.DataEditors
 @using AnkaYazilim.Blazor.Core.Components.Dev.Layouts
 
-<DevGridLayout ColumnCount="3"
+<DevGridLayout ColumnCount="5"
 ColumnSpacing="3px"
  RowCount="3"
- RowSpacing="3px">
+ RowSpacing="3px"
+ColumnWidhts="@(new[]{"150px","5px","200px"})">
 
  <GridLayoutItems>
-      <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>
+    @*  <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>*@
+      <DevTextEdit Caption="Tamam İnşallah"
+      ColumnIndex="2" RowIndex="0"  
+      NullText="Değer Giriniz...."
+      ColumnSpan="2"
+      IsFocus="true"/>
+
+      <DevTextEdit Caption="Bismillah SübhanAllah"
+      ColumnIndex="2" RowIndex="1"  
+      NullText="Değer Giriniz...."/>
  </GridLayoutItems>
 
 </DevGridLayout>
 
 
-<DxGridLayout>
+@*<DxGridLayout>
     <Rows>
         <DxGridLayoutRow></DxGridLayoutRow>
         <DxGridLayoutRow></DxGridLayoutRow>
@@ -73,4 +83,4 @@ ColumnSpacing="3px"
             </Template>
         </DxGridLayoutItem>
     </Items>
-</DxGridLayout>
+</DxGridLayout>*@

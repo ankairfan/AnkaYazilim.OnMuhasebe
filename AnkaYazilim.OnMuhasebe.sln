@@ -42,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevexpressTestBlazor", "DevexpressTestBlazor\DevexpressTestBlazor.csproj", "{9979BE96-B6CE-4FA6-A012-F01D5A5D301D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnkaYazilim.Blazor.Core", "src\AnkaYazilim.Blazor.Core\AnkaYazilim.Blazor.Core.csproj", "{01B4F6FB-F706-403F-81A2-D5B9631B0924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnkaYazilim.Blazor.Core", "src\AnkaYazilim.Blazor.Core\AnkaYazilim.Blazor.Core.csproj", "{01B4F6FB-F706-403F-81A2-D5B9631B0924}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
