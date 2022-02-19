@@ -12,4 +12,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\AnkaYazilim.Blazor.Core\AnkaYazilim.Blazor.Core.csproj" />
+  </ItemGroup>
 </Project>

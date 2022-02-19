@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>GeneratedFiles</CompilerGeneratedFilesOutputPath>-->
   </PropertyGroup>
 
 
@@ -19,16 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Commonss\Loadings\" />
-    <Folder Include="Components\Dev\DataEditorss\" />
-    <Folder Include="Components\Dev\DataViewerss\" />
-    <Folder Include="Components\Dev\Utilitiess\" />
-    <Folder Include="Components\Dev\Templatess\" />
-    <Folder Include="Helperss\" />
-    <Folder Include="Servicess\" />
-    <Folder Include="wwwroots\css\" />
-    <Folder Include="wwwroots\images\" />
-    <Folder Include="wwwroots\js\" />
+    <Folder Include="Components\Commons\Loadings\" />
+    <Folder Include="Components\Dev\DataViewers\" />
+    <Folder Include="Components\Dev\Utilities\" />
+    <Folder Include="Components\Dev\Templates\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

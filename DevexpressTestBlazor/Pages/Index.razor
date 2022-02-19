@@ -1,6 +1,30 @@
 ﻿@page "/"
+@using AnkaYazilim.Blazor.Core.Components.Dev.DataEditors
+@using AnkaYazilim.Blazor.Core.Components.Dev.Layouts
 
-<DxGridLayout>
+<DevGridLayout ColumnCount="5"
+ColumnSpacing="3px"
+ RowCount="3"
+ RowSpacing="3px"
+ColumnWidhts="@(new[]{"150px","5px","200px"})">
+
+ <GridLayoutItems>
+    @*  <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>*@
+      <DevTextEdit Caption="Tamam İnşallah"
+      ColumnIndex="2" RowIndex="0"  
+      NullText="Değer Giriniz...."
+      ColumnSpan="2"
+      IsFocus="true"/>
+
+      <DevTextEdit Caption="Bismillah SübhanAllah"
+      ColumnIndex="2" RowIndex="1"  
+      NullText="Değer Giriniz...."/>
+ </GridLayoutItems>
+
+</DevGridLayout>
+
+
+@*<DxGridLayout>
     <Rows>
         <DxGridLayoutRow></DxGridLayoutRow>
         <DxGridLayoutRow></DxGridLayoutRow>
@@ -14,11 +38,8 @@
     </Columns>
 
     <Items>
-        <DxGridLayoutItem Row="0" Column="0">
-            <Template>
-                 <DxTextBox Text="0-0"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
+       <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>
+
          <DxGridLayoutItem Row="0" Column="1">
             <Template>
                  <DxTextBox Text="0-1"></DxTextBox>
@@ -62,4 +83,4 @@
             </Template>
         </DxGridLayoutItem>
     </Items>
-</DxGridLayout>
+</DxGridLayout>*@
