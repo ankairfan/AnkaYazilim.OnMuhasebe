@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace AnkaYazilim.Blazor.Core.Components.Dev.DataEditors.Base
 {
-    public class DevBaseEditor : DxComponentBase
+    public abstract class DevBaseEditor : DxComponentBase
     {
         [Parameter] public int ColumnIndex { get; set; }
         [Parameter] public int ColumnSpan { get; set; }
@@ -13,9 +13,9 @@ namespace AnkaYazilim.Blazor.Core.Components.Dev.DataEditors.Base
         [Parameter] public int RowSpan { get; set; }
         [Parameter] public bool Visible { get; set; } = true;
         [Parameter] public DataEditorClearButtonDisplayMode ClearButtonDisplayMode { get; set; } = DataEditorClearButtonDisplayMode.Never;
-        [Parameter] public string EditorCssClass { get; set; }
+        [Parameter] public virtual string EditorCssClass { get; set; }
         [Parameter] public bool Enabled { get; set; } = true;
-        [Parameter] public string InpurCssClass { get; set; }
+        [Parameter] public string InputCssClass { get; set; }
         [Parameter] public string NullText { get; set; }
         [Parameter] public bool ReadOnly { get; set; }
         [Parameter] public string Caption { get; set; }
