@@ -1,5 +1,6 @@
 ﻿@inherits DevBaseEditor
 
+
 <DxGridLayoutItem Column="ColumnIndex"
                   Row="RowIndex"
                   ColumnSpan="ColumnSpan"
@@ -7,15 +8,18 @@
                   RowSpan="RowSpan"
                   Visible="Visible">
     <Template>
-        <DxTextBox @ref="_dxTextBox"
-                   @bind-Text="@Value"
-                   ClearButtonDisplayMode="ClearButtonDisplayMode"
-                   CssClass="@EditorCssClass"
-                   Enabled="Enabled"
-                   InputCssClass="InputCssClass"
-                   NullText="@NullText"
-                   ReadOnly="ReadOnly">
-        </DxTextBox>
+        <DxDateEdit @ref="_dxDateEdit"
+                    @bind-Date="@Value"
+                    CssClass="@EditorCssClass"
+                    Enabled="Enabled"
+                    InputCssClass="@InputCssClass"
+                    Mask="@DateTimeMask.ShortDate"
+                    ReadOnly="ReadOnly">
+            <MaskProperties>
+                <DxDateTimeMaskProperties CaretMode="MaskCaretMode.Advancing"
+                                          Culture="CultureInfo.CurrentCulture" />
+            </MaskProperties>
+        </DxDateEdit>
     </Template>
 </DxGridLayoutItem>
 
@@ -33,16 +37,14 @@
           Visible="Visible && SeperateCaptionVisible">
 </DevLabel>
 
-    @code {
 
-    private DxTextBox _dxTextBox;
-    private string _value;
+@code {
+    private DxDateEdit<DateTime> _dxDateEdit;
+    private DateTime _value;
 
-
-    [Parameter] public EventCallback<string> ValueChanged { get; set; }
-
+    [Parameter] public EventCallback<DateTime> ValueChanged { get; set; }
     [Parameter]
-    public string Value
+    public DateTime Value
     {
         get => _value;
         set
@@ -56,7 +58,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsFocus && Visible && firstRender)
-            await _dxTextBox.FocusAsync();
+            await _dxDateEdit.FocusAsync();
     }
 
 }

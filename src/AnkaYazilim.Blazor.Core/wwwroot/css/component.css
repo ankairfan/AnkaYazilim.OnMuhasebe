@@ -3,3 +3,7 @@
     font-weight: bold;
     font-size: small;
 }
+.number input {
+    text-align: right;
+    padding-right: 29px !important;
+}
