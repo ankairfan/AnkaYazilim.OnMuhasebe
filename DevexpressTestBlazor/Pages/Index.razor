@@ -4,85 +4,26 @@
 
 <DevGridLayout ColumnCount="5"
 ColumnSpacing="3px"
- RowCount="3"
+ RowCount="5"
  RowSpacing="3px"
 ColumnWidhts="@(new[]{"150px","5px","200px"})">
 
  <GridLayoutItems>
-    @*  <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>*@
+     @*  <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>*@
+     <DevCheckEdit Caption="Durum"
+                         ColumnIndex="2" RowIndex="0"
+                         TrueCaption="Aktif"
+                         FalseCaption="Pasif">
+
+     </DevCheckEdit>
       <DevTextEdit Caption="Tamam İnşallah"
-      ColumnIndex="2" RowIndex="0"  
+      ColumnIndex="2" RowIndex="1"  
       NullText="Değer Giriniz...."
       ColumnSpan="2"
      />
 
-      <DevEmailEdit Caption="E-Mail"
-      ColumnIndex="2" 
-      RowIndex="1"  
-     IsFocus="true"/>
      
  </GridLayoutItems>
 
 </DevGridLayout>
 
-
-@*<DxGridLayout>
-    <Rows>
-        <DxGridLayoutRow></DxGridLayoutRow>
-        <DxGridLayoutRow></DxGridLayoutRow>
-        <DxGridLayoutRow></DxGridLayoutRow>
-    </Rows>
-
-    <Columns>
-        <DxGridLayoutColumn Width="33%"></DxGridLayoutColumn>
-        <DxGridLayoutColumn Width="33%"></DxGridLayoutColumn>
-        <DxGridLayoutColumn Width="*"></DxGridLayoutColumn>
-    </Columns>
-
-    <Items>
-       <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>
-
-         <DxGridLayoutItem Row="0" Column="1">
-            <Template>
-                 <DxTextBox Text="0-1"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-         <DxGridLayoutItem Row="0" Column="2">
-            <Template>
-                 <DxTextBox Text="0-2"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-
-         <DxGridLayoutItem Row="1" Column="0">
-            <Template>
-                 <DxTextBox Text="1-0"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-         <DxGridLayoutItem Row="1" Column="1">
-            <Template>
-                 <DxTextBox Text="1-1"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-         <DxGridLayoutItem Row="1" Column="2">
-            <Template>
-                 <DxTextBox Text="1-2"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-
-         <DxGridLayoutItem Row="2" Column="0">
-            <Template>
-                 <DxTextBox Text="2-0"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-         <DxGridLayoutItem Row="2" Column="1">
-            <Template>
-                 <DxTextBox Text="2-1"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-         <DxGridLayoutItem Row="2" Column="2">
-            <Template>
-                 <DxTextBox Text="2-2"></DxTextBox>
-            </Template>
-        </DxGridLayoutItem>
-    </Items>
-</DxGridLayout>*@
