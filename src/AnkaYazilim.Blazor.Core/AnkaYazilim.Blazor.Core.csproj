@@ -26,8 +26,6 @@
     <Folder Include="Components\Dev\DataViewers\" />
     <Folder Include="Components\Dev\Utilities\" />
     <Folder Include="Components\Dev\Templates\" />
-    <Folder Include="Services\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 

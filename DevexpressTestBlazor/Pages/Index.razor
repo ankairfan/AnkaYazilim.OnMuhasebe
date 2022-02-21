@@ -9,13 +9,12 @@ ColumnSpacing="3px"
 ColumnWidhts="@(new[]{"150px","5px","200px"})">
 
  <GridLayoutItems>
-     @*  <DevLabel Caption="Adı Soyadı" ColumnIndex="0" RowIndex="0"/>*@
-     <DevCheckEdit Caption="Durum"
-                         ColumnIndex="2" RowIndex="0"
-                         TrueCaption="Aktif"
-                         FalseCaption="Pasif">
+     <DevButtonEdit Caption="Vaziyetim Nedir?"
+                    ColumnIndex="2" RowIndex="0"
+                    Value="Hayır Olur İnşallah"
+                    Enabled=true>
 
-     </DevCheckEdit>
+     </DevButtonEdit>
       <DevTextEdit Caption="Tamam İnşallah"
       ColumnIndex="2" RowIndex="1"  
       NullText="Değer Giriniz...."
