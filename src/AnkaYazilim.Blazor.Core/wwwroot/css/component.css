@@ -14,4 +14,9 @@
 .text-center input {
     text-align: center;
 }
+.button-edit {
+    background-image: url("/images/buttonedit.svg");
+    width: 16px;
+    height: 16px;
+}
 
