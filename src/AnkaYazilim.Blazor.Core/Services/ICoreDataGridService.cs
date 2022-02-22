@@ -10,4 +10,6 @@ public interface ICoreDataGridService<TDataGridItem>
     public IEnumerable<TDataGridItem> SelectedItems { get; set; }
     public bool ShowFilterRow { get; set; }
     public bool ShowGroupPanel { get; set; }
+    public bool SelectFirstDataRow { get; set; }
+
 }
