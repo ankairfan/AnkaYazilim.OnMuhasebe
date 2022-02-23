@@ -11,5 +11,7 @@ public interface ICoreDataGridService<TDataGridItem>
     public bool ShowFilterRow { get; set; }
     public bool ShowGroupPanel { get; set; }
     public bool SelectFirstDataRow { get; set; }
+    public bool IsLoaded { get; set; }
+
 
 }

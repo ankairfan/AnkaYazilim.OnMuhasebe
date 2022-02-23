@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Commons\Loadings\" />
     <Folder Include="Components\Dev\Templates\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
