@@ -1,28 +1,7 @@
 ﻿@page "/"
+@using AnkaYazilim.Blazor.Core.Components.Commons.Loadings
 @using AnkaYazilim.Blazor.Core.Components.Dev.DataEditors
 @using AnkaYazilim.Blazor.Core.Components.Dev.Layouts
-
-<DevGridLayout ColumnCount="5"
-ColumnSpacing="3px"
- RowCount="5"
- RowSpacing="3px"
-ColumnWidhts="@(new[]{"150px","5px","200px"})">
-
- <GridLayoutItems>
-     <DevButtonEdit Caption="Vaziyetim Nedir?"
-                    ColumnIndex="2" RowIndex="0"
-                    Value="Hayır Olur İnşallah"
-                    Enabled=true>
-
-     </DevButtonEdit>
-      <DevTextEdit Caption="Tamam İnşallah"
-      ColumnIndex="2" RowIndex="1"  
-      NullText="Değer Giriniz...."
-      ColumnSpan="2"
-     />
-
-     
- </GridLayoutItems>
-
-</DevGridLayout>
-
+@using AnkaYazilim.Blazor.Core.Components.Dev.Utilities
+<DevPageHeader Caption="Küçük Feyza"/>
+<CircleLoading Caption="Lütfen Bekleyiniz..." Text="Sayfa yükleniyor..."/>
