@@ -25,6 +25,14 @@ global using AnkaYazilim.OnMuhasebe.DTOs.Masraflar;
 global using AnkaYazilim.OnMuhasebe.DTOs.OzelKodlar;
 global using AnkaYazilim.OnMuhasebe.DTOs.Stoklar;
 global using AnkaYazilim.OnMuhasebe.DTOs.Subeler;
+global using System.Linq;
+global using AnkaYazilim.Blazor.Core.Helpers;
+global using System.Text;
+global using Blazorise;
+global using Volo.Abp.AspNetCore.Components.Messages;
+global using Volo.Abp.BlazoriseUI;
+
+
 
 
 

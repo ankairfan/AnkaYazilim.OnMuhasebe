@@ -15,4 +15,9 @@ public static class Functions
                 DisplayName = localizer[$"Enum:{typeof(TEnum).Name}:{t.To<byte>()}"]
             }).ToList();
     }
+
+    public static string[] RowHeights(params string[] rowHeighta)
+    {
+        return rowHeighta;
+    }
 }

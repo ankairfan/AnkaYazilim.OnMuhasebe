@@ -27,7 +27,7 @@
 
     private async Task CheckedChanged(bool state)
     {
-        state = _state;
+        _state = state;
         await CheckedChangedInvokeFunction.InvokeAsync(state);
     }
 }

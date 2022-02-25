@@ -7,18 +7,21 @@
 <div class="page">
     <DxGridLayout CssClass="page-layout">
         <Rows>
-            @if(IsMobileLayout) {
+            @if (IsMobileLayout)
+            {
                 <DxGridLayoutRow Areas="header" Height="auto"></DxGridLayoutRow>
                 <DxGridLayoutRow Areas="sidebar" Height="auto"></DxGridLayoutRow>
                 <DxGridLayoutRow Areas="content" />
             }
-            else {
+            else
+            {
                 <DxGridLayoutRow Areas="header header" Height="auto" />
                 <DxGridLayoutRow Areas="@(IsSidebarExpanded ? "sidebar content" : "content content")" />
             }
         </Rows>
         <Columns>
-            @if(!IsMobileLayout) {
+            @if (!IsMobileLayout)
+            {
                 <DxGridLayoutColumn Width="auto" />
                 <DxGridLayoutColumn />
             }
@@ -26,51 +29,61 @@
         <Items>
             <DxGridLayoutItem Area="header" CssClass="layout-item">
                 <Template>
-                   
+                    <MainMenu />
                 </Template>
             </DxGridLayoutItem>
             <DxGridLayoutItem Area="content" CssClass="content px-4 layout-item">
                 <Template>
                     @Body
+                    <AnkaYazilim.OnMuhasebe.Blazor.Pages.Abp.UiMessageAlert />
                 </Template>
             </DxGridLayoutItem>
         </Items>
     </DxGridLayout>
-    </div>
+</div>
 
-@code{
+@code {
     string? NavMenuCssClass { get; set; }
     bool _isMobileLayout;
-    bool IsMobileLayout {
+    bool IsMobileLayout
+    {
         get => _isMobileLayout;
-        set {
+        set
+        {
             _isMobileLayout = value;
             IsSidebarExpanded = !_isMobileLayout;
         }
     }
 
     bool _isSidebarExpanded = true;
-    bool IsSidebarExpanded {
+    bool IsSidebarExpanded
+    {
         get => _isSidebarExpanded;
-        set {
-            if(_isSidebarExpanded != value) {
+        set
+        {
+            if (_isSidebarExpanded != value)
+            {
                 NavMenuCssClass = value ? "expand" : "collapse";
                 _isSidebarExpanded = value;
             }
         }
     }
 
-    protected override void OnInitialized() {
+    protected override void OnInitialized()
+    {
         NavigationManager.LocationChanged += OnLocationChanged;
     }
-    async void OnLocationChanged(object? sender, LocationChangedEventArgs args) {
-        if(IsMobileLayout) {
+    async void OnLocationChanged(object? sender, LocationChangedEventArgs args)
+    {
+        if (IsMobileLayout)
+        {
             IsSidebarExpanded = false;
             await InvokeAsync(StateHasChanged);
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         NavigationManager.LocationChanged -= OnLocationChanged;
     }
 }

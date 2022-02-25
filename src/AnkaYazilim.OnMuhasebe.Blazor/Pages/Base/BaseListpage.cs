@@ -13,6 +13,7 @@ where TGetCodeInput : class, IEntityDto, IDurum, new()
         LocalizationResource = typeof(OnMuhasebeResource);
     }
 
+
     #region Services
     protected ICrudAppService<TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput, TGetCodeInput> BaseCrudService { get; set; }
     public BaseService<TGetListOutputDto, TGetOutputDto> BaseService { get; set; }
@@ -100,4 +101,43 @@ where TGetCodeInput : class, IEntityDto, IDurum, new()
         return default;
     }
     #endregion
+    protected override async Task OnParametersSetAsync()
+    {
+        await GetListDataSourceAsync();
+        BaseService.HasChanged = StateHasChanged;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+       BaseService.ShowListPage(firstRender);
+    }
+
+    protected virtual async Task GetListDataSourceAsync()
+    {
+        BaseService.ListDataSource = (await GetListAsync(new TGetListInput
+        {
+            Durum = BaseService.IsActiveCards
+        })).Items.ToList();
+        BaseService.IsLoaded = true;
+    }
+
+    protected virtual async Task DeleteAsync()
+    {
+        BaseService.SelectFirstDataRow = false;
+
+        await BaseService.ConfirmMessage(L["DeleteConfirmMessage"], async () =>
+        {
+            await DeleteAsync(BaseService.SelectedItem.Id);
+            var deletedEntityIndex = BaseService.ListDataSource.FindIndex(x => x.GetEntityId() == BaseService.SelectedItem.GetEntityId());
+
+            await GetListDataSourceAsync();
+            BaseService.HasChanged();
+
+            if (BaseService.ListDataSource.Count > 0)
+                BaseService.SelectedItem = BaseService.ListDataSource.SetSelectedItem(deletedEntityIndex);
+
+        }, L["DeleteConfirmMessageTitle"]);
+    }
+
+
 }
