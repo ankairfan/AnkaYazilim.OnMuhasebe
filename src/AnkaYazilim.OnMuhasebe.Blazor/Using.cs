@@ -31,6 +31,12 @@ global using System.Text;
 global using Blazorise;
 global using Volo.Abp.AspNetCore.Components.Messages;
 global using Volo.Abp.BlazoriseUI;
+global using AnkaYazilim.OnMuhasebe.KartTurleri;
+global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
+global using DevExpress.Blazor;
+global using Microsoft.Extensions.Localization;
+
+
 
 
 

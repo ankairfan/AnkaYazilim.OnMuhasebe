@@ -1,4 +1,6 @@
-﻿namespace AnkaYazilim.Blazor.Core.Services;
+﻿using Volo.Abp.Application.Dtos;
+
+namespace AnkaYazilim.Blazor.Core.Services;
 
 public interface ICoreListPageService
 {
@@ -9,6 +11,12 @@ public interface ICoreListPageService
     public bool IsPopUpListPage { get; set; }
     public bool EditPageVisible { get; set; }
 
+
+    void ShowEditpage();
+    void HideEditPage();
+    void HideListPage();
+    void SelectEntity(IEntityDto targetEntity);
+    void BeforeShowPopupListPage(params object[] prm);
 
 
 

@@ -109,7 +109,7 @@ where TGetCodeInput : class, IEntityDto, IDurum, new()
 
     protected override void OnAfterRender(bool firstRender)
     {
-       BaseService.ShowListPage(firstRender);
+        BaseService.ShowListPage(firstRender);
     }
 
     protected virtual async Task GetListDataSourceAsync()
@@ -139,5 +139,67 @@ where TGetCodeInput : class, IEntityDto, IDurum, new()
         }, L["DeleteConfirmMessageTitle"]);
     }
 
+    protected virtual async Task BeforeInsertAsync()
+    {
+        BaseService.DataSource = new TGetOutputDto();
 
+        var kod = typeof(TGetOutputDto).GetProperty("Kod");
+        var durum = typeof(TGetOutputDto).GetProperty("Durum");
+
+        if (kod != null)
+            kod.SetValue(BaseService.DataSource, await GetCodeAsync(new TGetCodeInput { Durum = BaseService.IsActiveCards }));
+
+        if (durum != null)
+            durum.SetValue(BaseService.DataSource, BaseService.IsActiveCards);
+
+        BaseService.ShowEditpage();
+    }
+
+    protected virtual async Task BeforeUpdateAsync()
+    {
+        if (BaseService.ListDataSource.Count == 0) return;
+
+        BaseService.SelectFirstDataRow = false;
+        BaseService.DataSource = await GetAsync(BaseService.SelectedItem.Id);
+        BaseService.EditPageVisible = true;
+        await InvokeAsync(BaseService.HasChanged);
+    }
+
+    protected virtual async Task OnSubmit()
+    {
+        TGetOutputDto result;
+
+        if (BaseService.DataSource.Id == Guid.Empty)
+        {
+            var createInput = ObjectMapper.Map<TGetOutputDto, TCreateInput>(
+                BaseService.DataSource);
+
+            result = await CreateAsync(createInput);
+        }
+        else
+        {
+            var updateInput = ObjectMapper.Map<TGetOutputDto, TUpdateInput>(
+                BaseService.DataSource);
+
+            result = await UpdateAsync(BaseService.DataSource.Id, updateInput);
+        }
+
+        if (result == null) return;
+
+        var savedEntityIndex = BaseService.ListDataSource.FindIndex(
+            x => x.Id == BaseService.DataSource.Id);
+
+        await GetListDataSourceAsync();
+        BaseService.HideEditPage();
+
+        if (BaseService.DataSource.Id == Guid.Empty)
+            BaseService.DataSource.Id = result.Id;
+
+        if (savedEntityIndex > -1)
+            BaseService.SelectedItem = BaseService.ListDataSource.
+                SetSelectedItem(savedEntityIndex);
+        else
+            BaseService.SelectedItem = BaseService.ListDataSource.
+                GetEntityById(BaseService.DataSource.Id);
+    }
 }

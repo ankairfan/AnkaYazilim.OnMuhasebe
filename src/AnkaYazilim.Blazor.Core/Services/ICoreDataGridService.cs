@@ -13,6 +13,7 @@ public interface ICoreDataGridService<TDataGridItem>
     public bool SelectFirstDataRow { get; set; }
     public bool IsLoaded { get; set; }
     public bool ShowSelectionCheckBox { get; set; }
+    public Guid PopupListPageFocusedRowId { get; set; }
 
     void ShowListPage(bool firstRender);
     void SetDataRowSelected(TDataGridItem item);

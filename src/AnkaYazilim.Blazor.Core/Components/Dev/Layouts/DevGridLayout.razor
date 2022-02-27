@@ -1,5 +1,6 @@
 ﻿<DxGridLayout ColumnSpacing="@ColumnSpacing"
-              RowSpacing="@RowSpacing">
+              RowSpacing="@RowSpacing"
+              style="height: auto">
 
     <Rows>
         @for (var i = 0; i < RowCount; i++)
@@ -47,8 +48,8 @@
 
 
 @code {
-    [Parameter] public string ColumnSpacing { get; set; } = "3px";
-    [Parameter] public string RowSpacing { get; set; } = "3px";
+    [Parameter] public string ColumnSpacing { get; set; } = "6px";
+    [Parameter] public string RowSpacing { get; set; } = "6px";
     [Parameter] public int RowCount { get; set; } = 1;
     [Parameter] public int ColumnCount { get; set; } = 1;
     [Parameter] public string[] RowHeights { get; set; }

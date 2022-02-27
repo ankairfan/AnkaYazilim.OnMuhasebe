@@ -14,11 +14,24 @@ public static class ExtensionFunctions
         if (index == listDataSource.Count)
             nextIndex = index == 0 ? 0 : index - 1;
 
-        if (listDataSource.Count >0)
+        if (listDataSource.Count > 0)
             return listDataSource[nextIndex];
 
         return default;
 
+
+    }
+
+    public static TEntity GetEntityById<TEntity>(this IList<TEntity> entities, Guid id)
+    {
+        var propertyInfo = typeof(TEntity).GetProperty("Id");
+
+        foreach (var entity in entities)
+
+            if (propertyInfo.GetValue(entity).Equals(id))
+                return entity;
+
+        return default;
 
     }
 }

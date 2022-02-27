@@ -1,8 +1,4 @@
-﻿using DevExpress.Blazor;
-using Microsoft.Extensions.Localization;
-using Volo.Abp.AspNetCore.Components.Messages;
-
-namespace AnkaYazilim.OnMuhasebe.Blazor.Services.Base;
+﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Services.Base;
 
 public abstract class BaseService<TDataGridItem, TDataSource> :
     ICoreDataGridService<TDataGridItem>, ICoreEditPageService<TDataSource>,
@@ -30,6 +26,9 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
     public Action HasChanged { get; set; }
     public ComponentBase ActiveEditComponent { get; set; }
     public bool ShowSelectionCheckBox { get; set; }
+    public TDataSource DataSource { get; set; }
+    public Guid PopupListPageFocusedRowId { get; set; }
+
 
     public async Task ConfirmMessage(string message, Action action, string title = null)
     {
@@ -44,6 +43,13 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
         {
             SelectFirstDataRow = true;
             return;
+        }
+
+        if (PopupListPageFocusedRowId != Guid.Empty)
+        {
+            SelectFirstDataRow = false;
+            SelectedItem = ListDataSource.GetEntityById(PopupListPageFocusedRowId);
+            PopupListPageFocusedRowId=Guid.Empty;
         }
 
         if (SelectFirstDataRow)
@@ -65,6 +71,44 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
         ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(item, true);
     }
 
+    public void ShowEditpage()
+    {
+        SelectFirstDataRow = false;
+        EditPageVisible = true;
+        HasChanged();
+    }
+
+    public void HideEditPage()
+    {
+        EditPageVisible = false;
+        HasChanged();
+    }
+
+    public void HideListPage()
+    {
+        IsPopUpListPage = false;
+        ShowSelectionCheckBox = false;
+        SelectedItems = null;
+        ((DxTextBox)ActiveEditComponent)?.FocusAsync();
+    }
+
+    public virtual void SelectEntity(IEntityDto targetEntity) { }
+
+    public virtual void BeforeShowPopupListPage(params object[] prm)
+    {
+        ToolbarCheckBoxVisible = false;
+        IsPopUpListPage = true;
+
+        if (prm.Length > 0)
+            PopupListPageFocusedRowId = prm[0] == null ? Guid.Empty : (Guid)prm[0];
+
+
+    }
+
+    public virtual void ButtonEditDeleteKeyDown(IEntityDto entity, string fieldName) { }
+
+
+
 
     #region Localizer
     private IStringLocalizer _localizer;
@@ -82,4 +126,6 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
 
 
     #endregion
+
+
 }

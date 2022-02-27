@@ -58,6 +58,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateBirimDto, Birim>();
         CreateMap<UpdateBirimDto, Birim>();
+        CreateMap<SelectBirimDto, CreateBirimDto>();
+        CreateMap<SelectBirimDto, UpdateBirimDto>();
 
         //Cari
         CreateMap<Cari, SelectCariDto>()

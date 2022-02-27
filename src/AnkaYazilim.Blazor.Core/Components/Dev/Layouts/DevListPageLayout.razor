@@ -4,7 +4,7 @@
 @if (!DataGridService.IsLoaded)
 {
     <CircleLoading Caption="@ListPageService.LoadingCaption"
-               Text="@ListPageService.LoadingText" />
+                   Text="@ListPageService.LoadingText" />
 
 
 }
@@ -16,11 +16,11 @@ else
     }
 
     <DevGridLayout ColumnCount="ColumnCount"
-               ColumnSpacing="@ColumnSpacing"
-               ColumnWidhts="@ColumnWidhts"
-               RowCount="RowCount"
-               RowHeights="@RowHeights"
-               RowSpacing="@RowSpacing">
+                   ColumnSpacing="@ColumnSpacing"
+                   ColumnWidhts="@ColumnWidhts"
+                   RowCount="RowCount"
+                   RowHeights="@RowHeights"
+                   RowSpacing="@RowSpacing">
 
         <GridLayoutItems>
             @ListPageContext
@@ -30,7 +30,7 @@ else
 
     @if (ListPageService.EditPageVisible)
     {
-        @EditPageContext
+        @EditPageContent
     }
 }
 
@@ -51,5 +51,6 @@ else
     [Parameter]
     public int RowCount { get; set; } = 1;
     [Parameter, EditorRequired] public RenderFragment ListPageContext { get; set; }
-    [Parameter] public RenderFragment EditPageContext { get; set; }
+    [Parameter] public RenderFragment EditPageContent { get; set; }
 }
+

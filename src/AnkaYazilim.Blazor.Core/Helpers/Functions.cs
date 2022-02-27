@@ -16,8 +16,13 @@ public static class Functions
             }).ToList();
     }
 
-    public static string[] RowHeights(params string[] rowHeighta)
+    public static string[] RowHeights(params string[] rowHeights)
     {
-        return rowHeighta;
+        return rowHeights;
+    }
+
+    public static string[] ColumnWidths(params string[] colWidths)
+    {
+        return colWidths;
     }
 }
