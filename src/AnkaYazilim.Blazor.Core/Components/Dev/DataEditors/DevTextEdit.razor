@@ -1,9 +1,9 @@
 ﻿@inherits DevBaseEditor
 
 <DxGridLayoutItem Column="ColumnIndex"
-                  Row="RowIndex"
                   ColumnSpan="ColumnSpan"
                   CssClass="@LayoutItemCssClass"
+                  Row="RowIndex"
                   RowSpan="RowSpan"
                   Visible="Visible">
     <Template>
@@ -12,7 +12,7 @@
                    ClearButtonDisplayMode="ClearButtonDisplayMode"
                    CssClass="@EditorCssClass"
                    Enabled="Enabled"
-                   InputCssClass="InputCssClass"
+                   InputCssClass="@InputCssClass"
                    NullText="@NullText"
                    ReadOnly="ReadOnly">
         </DxTextBox>
@@ -33,11 +33,10 @@
           Visible="Visible && SeperateCaptionVisible">
 </DevLabel>
 
-    @code {
+@code {
 
     private DxTextBox _dxTextBox;
     private string _value;
-
 
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
 
@@ -58,5 +57,4 @@
         if (IsFocus && Visible && firstRender)
             await _dxTextBox.FocusAsync();
     }
-
 }

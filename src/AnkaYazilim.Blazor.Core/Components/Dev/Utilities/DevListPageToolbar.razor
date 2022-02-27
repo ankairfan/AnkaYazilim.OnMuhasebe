@@ -59,8 +59,8 @@
                    Visible="ListPageService.ToolbarCheckBoxVisible">
 
         <DevCheckBox CheckedChangedInvokeFunction="CheckedChangedAsync"
-                     FalseCaption="@L["ActiveCards"]"
-                     TrueCaption="@L["PassiveCards"]">
+                     FalseCaption="@L["PassiveCards"]"
+                     TrueCaption="@L["ActiveCards"]">
 
         </DevCheckBox>
     </DxToolbarItem>
@@ -77,7 +77,9 @@
 
     [Parameter] public ToolbarRenderStyleMode ItemRenderStyleMode { get; set; } = ToolbarRenderStyleMode.Plain;
     [Parameter] public SizeMode ItemSizeMode { get; set; } = SizeMode.Small;
-    [Parameter] public bool NewButtonEnabled { get; set; }
+
+    [Parameter]
+    public bool NewButtonEnabled { get; set; } = true;
     [Parameter] public bool UpdateButtonEnabled { get; set; }
     [Parameter] public bool DeleteButtonEnabled { get; set; }
     [Parameter] public bool ReserveButtonEnabled { get; set; }

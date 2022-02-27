@@ -6,6 +6,7 @@ namespace AnkaYazilim.Blazor.Core.Components.Dev.DataEditors.Base
 {
     public abstract class DevBaseEditor : DxComponentBase
     {
+        [Parameter] public bool IsFocus { get; set; }
         [Parameter] public int ColumnIndex { get; set; }
         [Parameter] public int ColumnSpan { get; set; }
         [Parameter] public string LayoutItemCssClass { get; set; }
@@ -23,7 +24,7 @@ namespace AnkaYazilim.Blazor.Core.Components.Dev.DataEditors.Base
         [Parameter] public bool CaptionVisible { get; set; }=true;
         [Parameter] public string SeperateCaption { get; set; } = ":";
         [Parameter] public bool SeperateCaptionVisible { get; set; }=true ;
-        [Parameter] public bool IsFocus { get; set; }
+        
 
 
     }
