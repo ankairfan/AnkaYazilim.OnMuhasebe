@@ -1,6 +1,5 @@
 ﻿@typeparam TDataSource
 
-
 <DxPopup @ref="_dxPopup"
          ApplyBackgroundShading="ApplyBackgroundShading"
          Closed="Closed"
@@ -8,7 +7,7 @@
          CloseOnEscape="CloseOnEscape"
          CloseOnOutsideClick="CloseOnOutsideClick"
          HeaderCssClass="@HeaderCssClass"
-         HeaderText="@HeaderText"
+         HeaderText="@Caption"
          Height="@Height"
          HorizontalAlignment="HorizontalAlignment"
          MaxHeight="@MaxHeight"
@@ -28,8 +27,10 @@
     </BodyContentTemplate>
 
     <FooterContentTemplate>
-        <DxButton Click=" async()=> await SelectButtonClickAsync()"
-                  Enabled="DataGridService.ShowSelectionCheckBox? DataGridService.SelectedItems?.Count()>0 : DataGridService.ListDataSource?.Count>0"
+        <DxButton Click="async ()=> await SelectButtonClickAsync()"
+                  Enabled="DataGridService.ShowSelectionCheckBox ?
+                           DataGridService.SelectedItems?.Count() > 0 :
+                           DataGridService.ListDataSource?.Count > 0"
                   IconCssClass="selectimage"
                   RenderStyle="SelectButtonRenderStyle"
                   RenderStyleMode="SelectButtonRenderStyleMode"
@@ -46,15 +47,12 @@
     </FooterContentTemplate>
 </DxPopup>
 
-
-
-
 @code {
 
     private DxPopup _dxPopup;
 
-    [Parameter] public RenderFragment ListPageContent { get; set; }
     [Parameter] public ICoreDataGridService<TDataSource> DataGridService { get; set; }
+    [Parameter] public RenderFragment ListPageContent { get; set; }
 
     [Parameter] public bool ApplyBackgroundShading { get; set; } = true;
     [Parameter] public EventCallback<PopupClosedEventArgs> Closed { get; set; }
@@ -62,7 +60,7 @@
     [Parameter] public bool CloseOnEscape { get; set; } = true;
     [Parameter] public bool CloseOnOutsideClick { get; set; }
     [Parameter] public string HeaderCssClass { get; set; } = "bg-primary text-white";
-    [Parameter] public string HeaderText { get; set; }
+    [Parameter] public string Caption { get; set; }
     [Parameter] public string Height { get; set; }
     [Parameter] public HorizontalAlignment? HorizontalAlignment { get; set; }
     [Parameter] public string MaxHeight { get; set; }
@@ -77,9 +75,7 @@
     [Parameter] public string Width { get; set; } = "660px";
     [Parameter] public EventCallback SelectButtonInvokeFunction { get; set; }
     [Parameter] public bool Visible { get; set; }
-
-    [Parameter]
-    public bool SelectButtonVisible { get; set; } = true;
+    [Parameter] public bool SelectButtonVisible { get; set; } = true;
 
     [Parameter]
     public ButtonRenderStyle SelectButtonRenderStyle { get; set; }
@@ -110,9 +106,8 @@
         });
     }
 
-    protected override Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        return base.OnAfterRenderAsync(firstRender);
+        await InvokeAsync(StateHasChanged);
     }
-
 }

@@ -108,7 +108,8 @@
             Attributes = new Dictionary<string, object>();
             Attributes.Add("disabled", "disabled");
         }
-
+        else
+            Attributes?.Remove("disabled");
     }
 
 }

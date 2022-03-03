@@ -1,5 +1,4 @@
 ﻿@inherits BaseEditPage
-
 @inject BirimService Service
 @inject OzelKodService OzelKodService
 
@@ -7,7 +6,7 @@
 
 <DevPopUpEditpageLayout CancelButtonText="@L["Cancel"]"
                         EditPageService="Service"
-                        HeaderText="@L["UnitCard"]"
+                        Caption="@L["UnitCard"]"
                         Height="300px"
                         ListPageService="Service"
                         OnSubmit="OnSubmit"
@@ -15,7 +14,7 @@
                         Width="670px">
     <EditPageContent>
         <DevGridLayout ColumnCount="7"
-                       ColumnWidhts="@ColumnWidths("80", "3", "170", "50", "80", "3", "170")"
+                       ColumnWidths="@ColumnWidths("80", "3", "170", "50", "80", "3", "170")"
                        RowCount="4">
 
             <GridLayoutItems>
@@ -30,8 +29,8 @@
                               FalseCaption="@L["Passive"]"
                               RowIndex="0"
                               TrueCaption="@L["Active"]"
-                              @bind-Value="@Service.DataSource.Durum"
-                              SeperateCaptionVisible="false">
+                              @bind-Value="@Service.DataSource.Durum">
+
                 </DevCheckEdit>
 
                 <DevTextEdit Caption="@L["Name"]"
@@ -79,21 +78,19 @@
 
 </DevPopUpEditpageLayout>
 
-@if (OzelKodService.IsPopUpListPage)
+@if (OzelKodService.IsPopupListPage)
 {
     <DevPopupListpageLayout DataGridService="OzelKodService"
-                            CancelButtonText="@L["Cancel"]"
-                            HeaderText="@L["CustomCodeCards"]"
-                            Closed="OzelKodService.HideListPage"
-                            SelectButtonInvokeFunction="(() => { OzelKodService.SelectEntity(Service.DataSource); })"
-                            SelectButtonText="@L["Select"]"
-                            Visible="true"
-                            Width="1000px">
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["CustomCodeCards"]"
+                        Closed="OzelKodService.HideListPage"
+                        SelectButtonInvokeFunction="(() => { OzelKodService.SelectEntity(Service.DataSource); })"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
         <ListPageContent>
-            <OzelKodListPage/>
+            <OzelKodListPage />
         </ListPageContent>
 
     </DevPopupListpageLayout>
 }
-
-

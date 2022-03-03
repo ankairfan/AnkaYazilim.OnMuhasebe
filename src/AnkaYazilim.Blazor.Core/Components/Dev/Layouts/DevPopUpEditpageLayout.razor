@@ -2,14 +2,13 @@
 
 <EditForm Model="EditPageService.DataSource"
           Context="EditFormContext">
-
     <DxPopup ApplyBackgroundShading="ApplyBackgroundShading"
              Closed="Closed"
              Closing="Closing"
              CloseOnEscape="CloseOnEscape"
              CloseOnOutsideClick="CloseOnOutsideClick"
              HeaderCssClass="@HeaderCssClass"
-             HeaderText="@HeaderText"
+             HeaderText="@Caption"
              Height="@Height"
              HorizontalAlignment="HorizontalAlignment"
              MaxHeight="@MaxHeight"
@@ -48,8 +47,6 @@
     </DxPopup>
 </EditForm>
 
-
-
 @code {
 
     [Parameter] public ICoreListPageService ListPageService { get; set; }
@@ -62,7 +59,7 @@
     [Parameter] public bool CloseOnEscape { get; set; } = true;
     [Parameter] public bool CloseOnOutsideClick { get; set; }
     [Parameter] public string HeaderCssClass { get; set; } = "bg-primary text-white";
-    [Parameter] public string HeaderText { get; set; }
+    [Parameter] public string Caption { get; set; }
     [Parameter] public string Height { get; set; }
     [Parameter] public HorizontalAlignment? HorizontalAlignment { get; set; }
     [Parameter] public string MaxHeight { get; set; }
@@ -77,22 +74,18 @@
     [Parameter] public string Width { get; set; } = "660px";
     [Parameter] public EventCallback OnSubmit { get; set; }
 
-    [Parameter]
-    public ButtonRenderStyle SubmitButtonRenderStyle { get; set; }
+    [Parameter] public ButtonRenderStyle SubmitButtonRenderStyle { get; set; }
                        = ButtonRenderStyle.Secondary;
 
-    [Parameter]
-    public ButtonRenderStyleMode SubmitButtonRenderStyleMode { get; set; }
+    [Parameter] public ButtonRenderStyleMode SubmitButtonRenderStyleMode { get; set; }
                        = ButtonRenderStyleMode.Outline;
 
     [Parameter] public string SubmitButtonText { get; set; }
 
-    [Parameter]
-    public ButtonRenderStyle CancelButtonRenderStyle { get; set; }
+    [Parameter] public ButtonRenderStyle CancelButtonRenderStyle { get; set; }
                        = ButtonRenderStyle.Secondary;
 
-    [Parameter]
-    public ButtonRenderStyleMode CancelButtonRenderStyleMode { get; set; }
+    [Parameter] public ButtonRenderStyleMode CancelButtonRenderStyleMode { get; set; }
                        = ButtonRenderStyleMode.Outline;
 
     [Parameter] public string CancelButtonText { get; set; }

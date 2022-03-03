@@ -25,7 +25,7 @@ public class OzelKodService : BaseService<ListOzelKodDto, SelectOzelKodDto>, ISc
     public override void BeforeShowPopupListPage(params object[] prm)
     {
         ToolbarCheckBoxVisible = false;
-        IsPopUpListPage = true;
+        IsPopupListPage = true;
 
         KodTuru = (OzelKodTuru)prm[0];
         KartTuru = (KartTuru)prm[1];

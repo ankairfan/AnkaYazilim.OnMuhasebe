@@ -21,7 +21,7 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
     public bool IsActiveCards { get; set; } = true;
     public string LoadingCaption => L["PleaseWait"];
     public string LoadingText => L["Loading"];
-    public bool IsPopUpListPage { get; set; }
+    public bool IsPopupListPage { get; set; }
     public bool EditPageVisible { get; set; }
     public Action HasChanged { get; set; }
     public ComponentBase ActiveEditComponent { get; set; }
@@ -86,7 +86,7 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
 
     public void HideListPage()
     {
-        IsPopUpListPage = false;
+        IsPopupListPage = false;
         ShowSelectionCheckBox = false;
         SelectedItems = null;
         ((DxTextBox)ActiveEditComponent)?.FocusAsync();
@@ -97,7 +97,7 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
     public virtual void BeforeShowPopupListPage(params object[] prm)
     {
         ToolbarCheckBoxVisible = false;
-        IsPopUpListPage = true;
+        IsPopupListPage = true;
 
         if (prm.Length > 0)
             PopupListPageFocusedRowId = prm[0] == null ? Guid.Empty : (Guid)prm[0];

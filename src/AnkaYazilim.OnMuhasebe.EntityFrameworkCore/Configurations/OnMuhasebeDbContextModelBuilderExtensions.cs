@@ -136,7 +136,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.HesapNo).IsRequired().HasColumnType(SqlDbType.VarChar.ToString()).HasMaxLength(BankaHesapConsts.MaxHesapLength);
 
-            b.Property(x => x.IBAN).HasColumnType(SqlDbType.VarChar.ToString()).HasMaxLength(BankaHesapConsts.MaxIbanNoLength);
+            b.Property(x => x.IbanNo).HasColumnType(SqlDbType.VarChar.ToString()).HasMaxLength(BankaHesapConsts.MaxIbanNoLength);
 
             b.Property(x => x.BankaSubeId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
@@ -892,7 +892,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.HasOne(x => x.Kasa).WithMany(x => x.MakbuzHareketleri).OnDelete(DeleteBehavior.NoAction);
 
-            b.HasOne(x => x.BankaHesap).WithMany(x => x.MakbuzHareketleri).OnDelete(DeleteBehavior.NoAction);
+            b.HasOne(x => x.BankaHesap).WithMany(x => x.MakbuzHareketler).OnDelete(DeleteBehavior.NoAction);
 
         });
 

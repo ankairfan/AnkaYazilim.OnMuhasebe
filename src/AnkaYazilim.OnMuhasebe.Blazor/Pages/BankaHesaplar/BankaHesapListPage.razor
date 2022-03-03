@@ -1,0 +1,115 @@
+﻿@page "/bankaccountcards"
+
+@inherits BaseListpage<SelectBankaHesapDto, ListBankaHesapDto, BankaHesapListParameterDto, CreateBankaHesapDto, UpdateBankaHesapDto, BankaHesapCodeParameterDto>
+@inject BankaHesapAppService CrudService
+@inject BankaHesapService Service
+@inject BankaSubeService BankaSubeService
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["BankAccountCards"]"
+                   RowHeights="@RowHeights("*")">
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()"
+                     HorizontalScrollBarMode="ScrollBarMode.Visible">
+            <HeaderTemplate>
+                <DevListPageToolbar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async () => await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async () => await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async () => await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async () => await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+                </DevListPageToolbar>
+            </HeaderTemplate>
+
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListBankaHesapDto.Kod)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListBankaHesapDto.Ad)"
+                                  Width="250px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["Debit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankaHesapDto.Borc)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["Credit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankaHesapDto.Alacak)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["DebitBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankaHesapDto.BorcBakiye)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["CreditBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankaHesapDto.AlacakBakiye)"
+                                          Width="110px" />
+
+                <DxDataGridColumn Caption="@L["AccountType"]"
+                                  Field="@nameof(ListBankaHesapDto.HesapTuruAdi)"
+                                  Width="165px" />
+
+                <DxDataGridColumn Caption="@L["Bank"]"
+                                  Field="@nameof(ListBankaHesapDto.BankaAdi)"
+                                  Width="165px" />
+
+                <DxDataGridColumn Caption="@L["BankBranch"]"
+                                  Field="@nameof(ListBankaHesapDto.BankaSubeAdi)"
+                                  Width="165px" />
+
+                <DxDataGridColumn Caption="@L["AccountNumber"]"
+                                  Field="@nameof(ListBankaHesapDto.HesapNo)"
+                                  Width="120px" />
+
+                <DxDataGridColumn Caption="@L["IbanNo"]"
+                                  Field="@nameof(ListBankaHesapDto.IbanNo)"
+                                  Width="205px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode1"]"
+                                  Field="@nameof(ListBankaHesapDto.OzelKod1Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode2"]"
+                                  Field="@nameof(ListBankaHesapDto.OzelKod2Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListBankaHesapDto.Aciklama)"
+                                  Width="*" />
+            </Columns>
+
+        </DevDataGrid>
+    </ListPageContext>
+
+    <EditPageContent>
+        <BankaHesapEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+        BaseService = Service;
+    }
+
+}

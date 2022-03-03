@@ -1,22 +1,22 @@
 ﻿@inherits DevBaseEditor
 
 <DxGridLayoutItem Column="ColumnIndex"
-                  Row="RowIndex"
                   ColumnSpan="ColumnSpan"
                   CssClass="@LayoutItemCssClass"
+                  Row="RowIndex"
                   RowSpan="RowSpan"
                   Visible="Visible">
     <Template>
         <DxSpinEdit @ref="_dxSpinEdit"
                     @bind-Value="@Value"
+                    AllowMouseWheel="true"
                     CssClass="@EditorCssClass"
                     Enabled="Enabled"
-                    InputCssClass="InputCssClass"
-                    ReadOnly="ReadOnly"
-                    AllowMouseWheel="true"
+                    InputCssClass="@InputCssClass"
                     Mask="@NumericMask.WholeNumber"
                     MaxValue="MaxValue"
-                    MinValue="MinValue">
+                    MinValue="MinValue"
+                    ReadOnly="ReadOnly">
         </DxSpinEdit>
     </Template>
 </DxGridLayoutItem>
@@ -35,7 +35,6 @@
           Visible="Visible && SeperateCaptionVisible">
 </DevLabel>
 
-
 @code {
 
     private DxSpinEdit<int> _dxSpinEdit;
@@ -43,10 +42,8 @@
 
     [Parameter] public int MaxValue { get; set; } = 100;
     [Parameter] public int MinValue { get; set; } = 0;
+    [Parameter] public override string EditorCssClass { get; set; } = "number";
     [Parameter] public EventCallback<int> ValueChanged { get; set; }
-
-    [Parameter]
-    public override string EditorCssClass { get; set; } = "number";
 
     [Parameter]
     public int Value
@@ -59,9 +56,11 @@
             ValueChanged.InvokeAsync(value);
         }
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsFocus && Visible && firstRender)
             await _dxSpinEdit.FocusAsync();
     }
+
 }

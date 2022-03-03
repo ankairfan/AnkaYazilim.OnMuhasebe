@@ -15,7 +15,10 @@ where TGetCodeInput : class, IEntityDto, IDurum, new()
 
 
     #region Services
-    protected ICrudAppService<TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput, TGetCodeInput> BaseCrudService { get; set; }
+    protected ICrudAppService<TGetOutputDto, TGetListOutputDto, TGetListInput,
+        TCreateInput, TUpdateInput, TGetCodeInput> BaseCrudService
+    { get; set; }
+
     public BaseService<TGetListOutputDto, TGetOutputDto> BaseService { get; set; }
     #endregion
 

@@ -15,6 +15,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateBankaDto, Banka>();
         CreateMap<UpdateBankaDto, Banka>();
+        CreateMap<SelectBankaDto, CreateBankaDto>();
+        CreateMap<SelectBankaDto, UpdateBankaDto>();
 
         //BankaSube
         CreateMap<BankaSube, SelectBankaSubeDto>()
@@ -29,23 +31,27 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateBankaSubeDto, BankaSube>();
         CreateMap<UpdateBankaSubeDto, BankaSube>();
+        CreateMap<SelectBankaSubeDto, CreateBankaSubeDto>();
+        CreateMap<SelectBankaSubeDto, UpdateBankaSubeDto>();
 
         //BankaHesap
         CreateMap<BankaHesap, SelectBankaHesapDto>()
             .ForMember(x => x.BankaId, y => y.MapFrom(z => z.BankaSube.Banka.Id))
-            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Banka.Ad))
             .ForMember(x => x.BankaSubeAdi, y => y.MapFrom(z => z.BankaSube.Ad))
             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<BankaHesap, ListBankaHesapDto>()
-            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Ad))
+            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.BankaSube.Banka.Ad))
             .ForMember(x => x.BankaSubeAdi, y => y.MapFrom(z => z.BankaSube.Ad))
             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<CreateBankaHesapDto, BankaHesap>();
         CreateMap<UpdateBankaHesapDto, BankaHesap>();
+        CreateMap<SelectBankaHesapDto, CreateBankaHesapDto>();
+        CreateMap<SelectBankaHesapDto, UpdateBankaHesapDto>();
 
         //Birim
         CreateMap<Birim, SelectBirimDto>()
@@ -251,6 +257,9 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<OzelKod, ListOzelKodDto>();
         CreateMap<CreateOzelKodDto, OzelKod>();
         CreateMap<UpdateOzelKodDto, OzelKod>();
+        CreateMap<SelectOzelKodDto, CreateOzelKodDto>();
+        CreateMap<SelectOzelKodDto, UpdateOzelKodDto>();
+
 
         //FirmaParametre
         CreateMap<FirmaParametre, SelectFirmaParametreDto>()
