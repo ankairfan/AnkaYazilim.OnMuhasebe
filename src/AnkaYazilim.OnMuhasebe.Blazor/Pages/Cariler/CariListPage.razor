@@ -1,0 +1,131 @@
+﻿@page "/customercards"
+
+@using AnkaYazilim.OnMuhasebe.Services.Cariler
+@inherits BaseListpage<SelectCariDto, ListCariDto, CariListParameterDto, CreateCariDto, UpdateCariDto, CodeParameterDto>
+
+@inject CariAppService CrudService
+@inject CariService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["CustomerCards"]"
+                   RowHeights="@RowHeights("*")">
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolbar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async () => await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async () => await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async () => await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async () => await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+                </DevListPageToolbar>
+            </HeaderTemplate>
+
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListCariDto.Kod)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["CompanyName"]"
+                                  Field="@nameof(ListCariDto.Unvan)"
+                                  Width="400px" />
+
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListCariDto.Ad)"
+                                  Width="250px" />
+
+                <DxDataGridColumn Caption="@L["LastName"]"
+                                  Field="@nameof(ListCariDto.Soyad)"
+                                  Width="250px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["Debit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListCariDto.Borc)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["Credit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListCariDto.Alacak)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["DebitBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListCariDto.BorcBakiye)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["CreditBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListCariDto.AlacakBakiye)"
+                                          Width="110px" />
+
+                <DxDataGridColumn Caption="@L["TaxAdministration"]"
+                                  Field="@nameof(ListCariDto.VergiDairesi)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["TaxNumber"]"
+                                  Field="@nameof(ListCariDto.VergiNumarasi)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["NationalNumber"]"
+                                  Field="@nameof(ListCariDto.TcNumarasi)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["Phone"]"
+                                  Field="@nameof(ListCariDto.Telefon)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["MobilPhone"]"
+                                  Field="@nameof(ListCariDto.MobilTelefon)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["E-Mail"]"
+                                  Field="@nameof(ListCariDto.Email)"
+                                  Width="250px" />
+
+                <DxDataGridColumn Caption="@L["Address"]"
+                                  Field="@nameof(ListCariDto.Adres)"
+                                  Width="500px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode1"]"
+                                  Field="@nameof(ListCariDto.OzelKod1Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode2"]"
+                                  Field="@nameof(ListCariDto.OzelKod2Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListCariDto.Aciklama)"
+                                  Width="*" />
+            </Columns>
+
+        </DevDataGrid>
+    </ListPageContext>
+
+    <EditPageContent>
+        <CariEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+        BaseService = Service;
+    }
+
+}

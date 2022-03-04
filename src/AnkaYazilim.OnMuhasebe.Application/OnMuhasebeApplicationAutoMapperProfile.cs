@@ -78,6 +78,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateCariDto, Cari>();
         CreateMap<UpdateCariDto, Cari>();
+        CreateMap<SelectCariDto, CreateCariDto>();
+        CreateMap<SelectCariDto, UpdateCariDto>();
 
         //Depo
         CreateMap<Depo, SelectDepoDto>()
