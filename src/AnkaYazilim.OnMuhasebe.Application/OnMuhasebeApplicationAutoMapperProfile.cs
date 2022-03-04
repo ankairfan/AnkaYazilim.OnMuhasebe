@@ -99,12 +99,16 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
                     z => z.FaturaHareketleri.Where(x => x.Fatura.FaturaTuru == FaturaTuru.satis).Sum(x => x.Miktar)));
         CreateMap<CreateDepoDto, Depo>();
         CreateMap<UpdateDepoDto, Depo>();
+        CreateMap<SelectDepoDto, CreateDepoDto>();
+        CreateMap<SelectDepoDto, UpdateDepoDto>();
 
         //Dönem
         CreateMap<Donem, SelectDonemDto>();
         CreateMap<Donem, ListDonemDto>();
         CreateMap<CreateDonemDto, Donem>();
         CreateMap<UpdateDonemDto, Donem>();
+        CreateMap<SelectDonemDto, CreateDonemDto>();
+        CreateMap<SelectDonemDto, UpdateDonemDto>();
 
         //Fatura
         CreateMap<Fatura, SelectFaturaDto>()
