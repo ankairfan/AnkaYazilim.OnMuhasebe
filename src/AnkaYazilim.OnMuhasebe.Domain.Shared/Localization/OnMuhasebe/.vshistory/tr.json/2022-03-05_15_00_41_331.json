@@ -24,7 +24,6 @@
     "BankTransactionReceipts": "Banka İşlem Makbuzları",
     "Barcode": "Barkod",
     "Branch": "Şube",
-    "BranchCard": "Şube Kartı",
     "BranchCards": "Şube Kartları",
     "Cancel": "Vazgeç",
     "Cards": "Kartlar",
@@ -149,7 +148,6 @@
     "PrincipalDebtor": "Asıl borçlu",
     "Print": "Yazdır",
     "PurchaseInvoices": "Alış Faturaları",
-    "PurchasePrice": "Alış Fiyatı",
     "Quantity": "Miktar",
     "ReceiptNumber": "Makbuz numarası",
     "Receipts": "Makbuzlar",
@@ -161,7 +159,6 @@
     "SafeCard": "Kasa Kartı",
     "SafeCards": "Kasa Kartları",
     "SafeTransactionReceipts": "Kasa İşlem Makbuzları",
-    "SalePrice": "Satış Fiyatı",
     "SalesInvoices": "Satış Faturaları",
     "Save": "Kaydet",
     "Select": "Seç",
@@ -173,7 +170,6 @@
     "ShowFilterRow": "Filtreleme panelini göster",
     "ShowGroupPanel": "Gruplama panelini göster",
     "Stock": "Stok",
-    "StockCard": "Stok Kartı",
     "StockCards": "Stok Kartları",
     "SuccessMessageTitle": "İşleminiz Başarılı",
     "TaxAdministration": "Vergi Dairesi",
@@ -198,6 +194,9 @@
     "WarehouseCards": "Depo Kartları",
     "WarningMessageTitle": "Dikkat !!",
     "Web": "Web",
+    "StockCard": "Stok Kartı",
+    "PurchasePrice": "Alış Fiyatı",
+    "SalePrice": "Satış Fiyatı",
     "Welcome": "Hoşgeldiniz"
   }
 }

@@ -1,13 +1,13 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Stoklar;
 
-public class ListStokDto : EntityDto<Guid>
+public class ListStokDto:EntityDto<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
-    public int KdvOran { get; set; }
+    public byte? KdvOran { get; set; }
     public string Barkod { get; set; }
-    public decimal SatisFiyat { get; set; }
-    public decimal AlisFiyat { get; set; }
+    public decimal? SatisFiyat { get; set; }
+    public decimal? AlisFiyat { get; set; }
     public string BirimAdi { get; set; }
     public string OzelKod1Adi { get; set; }
     public string OzelKod2Adi { get; set; }

@@ -15,11 +15,6 @@ public class BirimService : BaseService<ListBirimDto, SelectBirimDto>, IScopedDe
                 masraf.BirimId = SelectedItem.Id;
                 masraf.BirimAdi = SelectedItem.Ad;
                 break;
-
-            case SelectStokDto stok:
-                stok.BirimId = SelectedItem.Id;
-                stok.BirimAdi = SelectedItem.Ad;
-                break;
         }
     }
 }

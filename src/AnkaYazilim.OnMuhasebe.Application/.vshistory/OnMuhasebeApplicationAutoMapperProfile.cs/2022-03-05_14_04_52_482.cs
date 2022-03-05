@@ -308,7 +308,5 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<Sube, ListSubeDto>();
         CreateMap<CreateSubeDto, Sube>();
         CreateMap<UpdateSubeDto, Sube>();
-        CreateMap<SelectSubeDto, CreateSubeDto>();
-        CreateMap<SelectSubeDto, UpdateSubeDto>();
     }
 }
