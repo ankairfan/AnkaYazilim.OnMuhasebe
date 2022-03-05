@@ -7,5 +7,5 @@ public abstract class BaseEditPage : AbpComponentBase
         LocalizationResource = typeof(OnMuhasebeResource);
     }
 
-    [Parameter, EditorRequired] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
 }

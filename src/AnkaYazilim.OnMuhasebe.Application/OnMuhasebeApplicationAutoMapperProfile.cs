@@ -204,6 +204,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateKasaDto, Kasa>();
         CreateMap<UpdateKasaDto, Kasa>();
+        CreateMap<SelectKasaDto, CreateKasaDto>();
+        CreateMap<SelectKasaDto, UpdateKasaDto>();
 
         //Makbuz
         CreateMap<Makbuz, SelectMakbuzDto>()
@@ -257,6 +259,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateMasrafDto, Masraf>();
         CreateMap<UpdateMasrafDto, Masraf>();
+        CreateMap<SelectMasrafDto, CreateMasrafDto>();
+        CreateMap<SelectMasrafDto, UpdateMasrafDto>();
 
         //OzelKod
         CreateMap<OzelKod, SelectOzelKodDto>();

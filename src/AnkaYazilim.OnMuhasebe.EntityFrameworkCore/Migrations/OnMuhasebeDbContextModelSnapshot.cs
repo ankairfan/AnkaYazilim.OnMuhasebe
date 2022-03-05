@@ -714,7 +714,10 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("VarChar(100)");
 
-                    b.Property<decimal?>("BirimFiyat")
+                    b.Property<string>("Barkod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("BirimFiyat")
                         .HasColumnType("Money");
 
                     b.Property<Guid>("BirimId")

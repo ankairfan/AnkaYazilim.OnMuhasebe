@@ -4,10 +4,17 @@ public class BirimService : BaseService<ListBirimDto, SelectBirimDto>, IScopedDe
 {
     public override void SelectEntity(IEntityDto targetEntity)
     {
-        if (targetEntity is SelectHizmetDto hizmet)
+        switch (targetEntity)
         {
-            hizmet.BirimId = SelectedItem.Id;
-            hizmet.BirimAdi = SelectedItem.Ad;
+            case SelectHizmetDto hizmet:
+                hizmet.BirimId = SelectedItem.Id;
+                hizmet.BirimAdi = SelectedItem.Ad;
+                break;
+
+            case SelectMasrafDto masraf:
+                masraf.BirimId = SelectedItem.Id;
+                masraf.BirimAdi = SelectedItem.Ad;
+                break;
         }
     }
 }

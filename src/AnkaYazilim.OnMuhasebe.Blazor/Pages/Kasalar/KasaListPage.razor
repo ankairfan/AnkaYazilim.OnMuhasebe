@@ -1,0 +1,95 @@
+﻿@page "/safecards"
+@inherits BaseListpage<SelectKasaDto, ListKasaDto,KasaListParameterDto,CreateKasaDto,UpdateKasaDto,KasaCodeParameterDto>
+
+@inject KasaAppService CrudService
+@inject KasaService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["SafeCards"]"
+                   RowHeights="@RowHeights("*")">
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async ()=> await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolbar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async ()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+                </DevListPageToolbar>
+            </HeaderTemplate>
+
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListKasaDto.Kod)"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListKasaDto.Ad)"
+                                  Width="250px" />
+
+
+                <DxDataGridSpinEditColumn Caption="@L["Debit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListKasaDto.Borc)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["Credit"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListKasaDto.Alacak)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["DebitBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListKasaDto.BorcBakiye)"
+                                          Width="110px" />
+
+                <DxDataGridSpinEditColumn Caption="@L["CreditBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListKasaDto.AlacakBakiye)"
+                                          Width="110px" />
+
+
+                <DxDataGridColumn Caption="@L["CustomCode1"]"
+                                  Field="@nameof(ListKasaDto.OzelKod1Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode2"]"
+                                  Field="@nameof(ListKasaDto.OzelKod2Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListKasaDto.Aciklama)"
+                                  Width="*" />
+            </Columns>
+
+        </DevDataGrid>
+    </ListPageContext>
+
+    <EditPageContent>
+        <KasaEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+        BaseService = Service;
+    }
+
+}
