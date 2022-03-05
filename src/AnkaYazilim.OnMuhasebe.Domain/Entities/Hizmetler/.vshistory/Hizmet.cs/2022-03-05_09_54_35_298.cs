@@ -1,10 +1,10 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.Hizmetler;
 
-public class Hizmet : FullAuditedAggregateRoot<Guid>
+public class Hizmet:FullAuditedAggregateRoot<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
-    public int KdvOrani { get; set; }
+    public byte? KdvOrani { get; set; }
     public decimal BirimFiyat { get; set; }
     public string Barkod { get; set; }
     public Guid BirimId { get; set; }
@@ -18,4 +18,6 @@ public class Hizmet : FullAuditedAggregateRoot<Guid>
     public OzelKod OzelKod2 { get; set; }
 
     public ICollection<FaturaHareket> FaturaHareketleri { get; set; }
+
 }
+

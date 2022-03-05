@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Hizmetler;
 
-public class UpdateHizmetDto:IEntityDto
+public class UpdateHizmetDto : IEntityDto
 {
     public string Kod { get; set; }
     public string Ad { get; set; }

@@ -1,11 +1,11 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Hizmetler;
 
-public class ListHizmetDto:EntityDto<Guid>
+public class ListHizmetDto : EntityDto<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
-    public byte? KdvOrani { get; set; }
-    public decimal? BirimFiyat { get; set; }
+    public int KdvOrani { get; set; }
+    public decimal BirimFiyat { get; set; }
     public string Barkod { get; set; }
     public string BirimAdi { get; set; }
     public string OzelKod1Adi { get; set; }
@@ -14,4 +14,3 @@ public class ListHizmetDto:EntityDto<Guid>
     public decimal Cikan { get; set; }
     public string Aciklama { get; set; }
 }
-
