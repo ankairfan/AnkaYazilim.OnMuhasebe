@@ -300,15 +300,11 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         CreateMap<CreateStokDto, Stok>();
         CreateMap<UpdateStokDto, Stok>();
-        CreateMap<SelectStokDto, CreateStokDto>();
-        CreateMap<SelectStokDto, UpdateStokDto>();
 
         //Sube
         CreateMap<Sube, SelectSubeDto>();
         CreateMap<Sube, ListSubeDto>();
         CreateMap<CreateSubeDto, Sube>();
         CreateMap<UpdateSubeDto, Sube>();
-        CreateMap<SelectSubeDto, CreateSubeDto>();
-        CreateMap<SelectSubeDto, UpdateSubeDto>();
     }
 }
