@@ -47,6 +47,8 @@
     [Parameter] public string TrueCaption { get; set; }
     [Parameter] public string FalseCaption { get; set; }
     [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+    [Parameter] public override bool SeperateCaptionVisible { get; set; } = false;
+    [Parameter] public override bool CaptionVisible { get; set; } = false;
 
 
     [Parameter]

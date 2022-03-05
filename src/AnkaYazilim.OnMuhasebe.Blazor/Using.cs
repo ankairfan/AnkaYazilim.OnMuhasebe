@@ -35,6 +35,13 @@ global using AnkaYazilim.OnMuhasebe.KartTurleri;
 global using AnkaYazilim.OnMuhasebe.OzelKodTurleri;
 global using DevExpress.Blazor;
 global using Microsoft.Extensions.Localization;
+global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
+global using AnkaYazilim.OnMuhasebe.Blazor.Services;
+global using AnkaYazilim.OnMuhasebe.DTOs.Parametreler;
+global using AnkaYazilim.Blazor.Core.Models;
+
+
+
 
 
 

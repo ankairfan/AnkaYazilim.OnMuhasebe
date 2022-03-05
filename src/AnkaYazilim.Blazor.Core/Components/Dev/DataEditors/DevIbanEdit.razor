@@ -1,20 +1,20 @@
 ﻿@inherits DevBaseEditor
 
 <DxGridLayoutItem Column="ColumnIndex"
-                  Row="RowIndex"
                   ColumnSpan="ColumnSpan"
                   CssClass="@LayoutItemCssClass"
+                  Row="RowIndex"
                   RowSpan="RowSpan"
                   Visible="Visible">
     <Template>
         <DxMaskedInput @ref="_dxMaskedInput"
                        @bind-Value="@Value"
-                       CssClass="@EditorCssClass"
+                       CssClass="@EditorCssClass"                       
                        Enabled="Enabled"
-                       InputCssClass="InputCssClass"
-                       ReadOnly="ReadOnly"
-                       Mask="LL00 0000 0000 0000 0000 0000 00">
-            <DxTextMaskProperties Placeholder="'_'" SaveLiteral="false"/>
+                       InputCssClass="@InputCssClass"
+                       Mask="LL00 0000 0000 0000 0000 0000 00"
+                       ReadOnly="ReadOnly">
+            <DxTextMaskProperties Placeholder="'_'" SaveLiteral="false" />
         </DxMaskedInput>
     </Template>
 </DxGridLayoutItem>
@@ -33,12 +33,11 @@
           Visible="Visible && SeperateCaptionVisible">
 </DevLabel>
 
-
-
 @code {
+
     private DxMaskedInput<string> _dxMaskedInput;
     private string _value;
-      
+
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
 
     [Parameter]
@@ -52,9 +51,11 @@
             ValueChanged.InvokeAsync(value);
         }
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsFocus && Visible && firstRender)
             await _dxMaskedInput.FocusAsync();
     }
+
 }

@@ -78,7 +78,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                     b.Property<byte>("HesapTuru")
                         .HasColumnType("TinyInt");
 
-                    b.Property<string>("IBAN")
+                    b.Property<string>("IbanNo")
                         .HasMaxLength(26)
                         .HasColumnType("VarChar(26)");
 
@@ -624,7 +624,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("VarChar(128)");
 
-                    b.Property<decimal?>("BirimFiyat")
+                    b.Property<decimal>("BirimFiyat")
                         .HasColumnType("Money");
 
                     b.Property<Guid>("BirimId")
@@ -665,7 +665,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("IsDeleted");
 
-                    b.Property<byte?>("KdvOrani")
+                    b.Property<byte>("KdvOrani")
                         .HasColumnType("TinyInt");
 
                     b.Property<string>("Kod")
@@ -1194,7 +1194,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
 
                     b.HasIndex("SubeId");
 
-                    b.ToTable("AppFAturalar", (string)null);
+                    b.ToTable("AppFaturalar", (string)null);
                 });
 
             modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Sales.Faturalar.FaturaHareket", b =>
@@ -3710,7 +3710,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
             modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar.MakbuzHareket", b =>
                 {
                     b.HasOne("AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar.BankaHesap", "BankaHesap")
-                        .WithMany("MakbuzHareketleri")
+                        .WithMany("MakbuzHareketler")
                         .HasForeignKey("BankaHesapId")
                         .OnDelete(DeleteBehavior.NoAction);
 
@@ -4273,7 +4273,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
 
             modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Finance.BankaHesaplar.BankaHesap", b =>
                 {
-                    b.Navigation("MakbuzHareketleri");
+                    b.Navigation("MakbuzHareketler");
 
                     b.Navigation("Makbuzlar");
                 });

@@ -10,7 +10,6 @@ global using AnkaYazilim.OnMuhasebe.DTOs.FaturaHareketler;
 global using AnkaYazilim.OnMuhasebe.DTOs.Faturalar;
 global using AnkaYazilim.OnMuhasebe.DTOs.MakbuzHareketler;
 global using System.Threading.Tasks;
-global using Volo.Abp.Application.Services;
 global using AnkaYazilim.OnMuhasebe.DTOs.Bankalar;
 global using AnkaYazilim.OnMuhasebe.Entities.Finance.Banks;
 global using AutoMapper;

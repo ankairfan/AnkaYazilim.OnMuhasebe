@@ -43,7 +43,7 @@
 </div>
 
 @code {
-    string? NavMenuCssClass { get; set; }
+    string NavMenuCssClass { get; set; }
     bool _isMobileLayout;
     bool IsMobileLayout
     {
@@ -73,7 +73,7 @@
     {
         NavigationManager.LocationChanged += OnLocationChanged;
     }
-    async void OnLocationChanged(object? sender, LocationChangedEventArgs args)
+    async void OnLocationChanged(object sender, LocationChangedEventArgs args)
     {
         if (IsMobileLayout)
         {
