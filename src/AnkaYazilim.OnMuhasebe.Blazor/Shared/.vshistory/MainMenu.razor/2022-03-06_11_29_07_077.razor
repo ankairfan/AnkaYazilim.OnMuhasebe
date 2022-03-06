@@ -112,7 +112,7 @@
                 <DxMenuItem Text="@L["Parameters"]" IconCssClass="fas fa-clipboard-check">
                     <Items>
                         <DxMenuItem Text="@L["FirmParameters"]"
-                                    Click="() => AppService.ShowFirmaParametreEditPage=true"
+                                    Click="() => { }"
                                     IconCssClass="fas fa-clipboard-check" />
                     </Items>
                 </DxMenuItem>
@@ -162,18 +162,9 @@
     </div>
 </div>
 
-@if (AppService.ShowFirmaParametreEditPage)
-{
-    <FirmaParametreEditPage/>
-}
 
 
 
 @code {
-
-    protected override void OnInitialized()
-    {
-        AppService.HasChanged = StateHasChanged;
-    }
 
 }

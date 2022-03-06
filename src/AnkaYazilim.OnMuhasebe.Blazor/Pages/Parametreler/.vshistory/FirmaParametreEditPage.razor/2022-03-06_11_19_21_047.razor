@@ -1,0 +1,146 @@
+﻿@inherits BaseUpdatePage<SelectFirmaParametreDto,SelectFirmaParametreDto,FirmaParametreListParameterDto,CreateFirmaParametreDto,UpdateFirmaParametreDto>
+
+@inject SubeService SubeService
+@inject DonemService DonemService
+@inject DepoService DepoService
+@inject AppService AppService
+@inject FirmaParametreAppService CrudService
+@inject NavigationManager NavigationManager
+
+
+<DevPopupPageLayout ActionButtonEnabled="true"
+                    ActionButtonIconCssClass="PredicateOperator-2 fas fa-save"
+                    ActionButtonInvokeFunction="Save"
+                    ActionButtonText="@L["Save"]"
+                    ActionButtonVisible="true"
+                    CancelButtonText="@L["Cancel"]"
+                    Caption="@L["FirmParameters"]"
+                    Height="225px"
+                    Visible="true"
+                    Closing="Closing"
+                    Width="435px">
+    <PageContent>
+        <DevGridLayout ColumnCount="3"
+                       ColumnWidths="@ColumnWidths("80", "3", "300")"
+                       RowCount="3">
+
+            <GridLayoutItems>
+
+
+                <DevButtonEdit ButtonClickInvokeFunction="() => { SubeService.BeforeShowPopupListPage(  ((SelectFirmaParametreDto)AppService.FirmaParametre).SubeId); }"
+                               Caption="@L["Branch"]"
+                               ColumnIndex="2"
+                               IsFocus="true"
+                               NullText="@L["SelectCard"]"
+                               RowIndex="0"
+                               Service="SubeService"
+                               @bind-Value="@(((SelectFirmaParametreDto)AppService.FirmaParametre).SubeAdi)">
+
+                </DevButtonEdit>
+
+                <DevButtonEdit ButtonClickInvokeFunction="() => { DonemService.BeforeShowPopupListPage(  ((SelectFirmaParametreDto)AppService.FirmaParametre).DonemId); }"
+                               Caption="@L["Period"]"
+                               ColumnIndex="2"
+                               NullText="@L["SelectCard"]"
+                               RowIndex="1"
+                               Service="DonemService"
+                               @bind-Value="@(((SelectFirmaParametreDto)AppService.FirmaParametre).DonemAdi)">
+
+                </DevButtonEdit>
+
+                <DevButtonEdit ButtonClickInvokeFunction="() => { DepoService.BeforeShowPopupListPage(  ((SelectFirmaParametreDto)AppService.FirmaParametre).DepoId); }"
+                               Caption="@L["Warehouse"]"
+                               ColumnIndex="2"
+                               NullText="@L["SelectCard"]"
+                               RowIndex="2"
+                               Service="DepoService"
+                               @bind-Value="@(((SelectFirmaParametreDto)AppService.FirmaParametre).DepoAdi)">
+
+                </DevButtonEdit>
+
+
+            </GridLayoutItems>
+        </DevGridLayout>
+
+    </PageContent>
+
+</DevPopupPageLayout>
+
+@if (SubeService.IsPopupListPage)
+{
+    <DevPopupListpageLayout DataGridService="SubeService"
+                            CancelButtonText="@L["Cancel"]"
+                            Caption="@L["BranchCards"]"
+                            Closed="SubeService.HideListPage"
+                            SelectButtonInvokeFunction="(() => { SubeService.SelectEntity(AppService.FirmaParametre); })"
+                            SelectButtonText="@L["Select"]"
+                            Visible="true"
+                            Width="1000px">
+        <ListPageContent>
+            <BirimListPage />
+        </ListPageContent>
+
+    </DevPopupListpageLayout>
+}
+
+@if (DonemService.IsPopupListPage)
+{
+    <DevPopupListpageLayout DataGridService="DonemService"
+                            CancelButtonText="@L["Cancel"]"
+                            Caption="@L["PeriodCards"]"
+                            Closed="DonemService.HideListPage"
+                            SelectButtonInvokeFunction="(() => { DonemService.SelectEntity(AppService.FirmaParametre); })"
+                            SelectButtonText="@L["Select"]"
+                            Visible="true"
+                            Width="1000px">
+        <ListPageContent>
+            <BirimListPage />
+        </ListPageContent>
+
+    </DevPopupListpageLayout>
+}
+
+@if (DepoService.IsPopupListPage)
+{
+    <DevPopupListpageLayout DataGridService="DepoService"
+                            CancelButtonText="@L["Cancel"]"
+                            Caption="@L["WarehouseCards"]"
+                            Closed="DepoService.HideListPage"
+                            SelectButtonInvokeFunction="(() => { DepoService.SelectEntity(AppService.FirmaParametre); })"
+                            SelectButtonText="@L["Select"]"
+                            Visible="true"
+                            Width="1000px">
+        <ListPageContent>
+            <BirimListPage />
+        </ListPageContent>
+
+    </DevPopupListpageLayout>
+}
+
+
+
+@code {
+
+    private async Task Save()
+    {
+        await UpdateAsync(CurrentUser.Id.Value, new UpdateFirmaParametreDto()
+            {
+                SubeId = ((SelectFirmaParametreDto)AppService.FirmaParametre).SubeId,
+                DonemId = ((SelectFirmaParametreDto)AppService.FirmaParametre).DonemId,
+                DepoId = ((SelectFirmaParametreDto)AppService.FirmaParametre).DepoId
+
+            });
+    }
+
+
+    private void Closing(PopupClosingEventArgs arg)
+    {
+        AppService.ShowFirmaParametreEditPage = true;
+        AppService.HasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+    }
+}
