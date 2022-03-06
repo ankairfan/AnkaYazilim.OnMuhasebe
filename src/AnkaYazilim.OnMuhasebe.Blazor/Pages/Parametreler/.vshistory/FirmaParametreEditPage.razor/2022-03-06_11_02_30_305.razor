@@ -1,0 +1,88 @@
+﻿@inherits BaseUpdatePage<SelectFirmaParametreDto,SelectFirmaParametreDto,FirmaParametreListParameterDto,CreateFirmaParametreDto,UpdateFirmaParametreDto>
+
+@inject SubeService SubeService
+@inject DonemService DonemService
+@inject DepoService DepoService
+@inject AppService AppService
+@inject FirmaParametreAppService CrudService
+@inject NavigationManager NavigationManager
+
+
+<DevPopupPageLayout ActionButtonEnabled="true"
+                    ActionButtonIconCssClass="PredicateOperator-2 fas fa-save"
+                    ActionButtonInvokeFunction="Save"
+                    ActionButtonText="@L["Save"]"
+                    ActionButtonVisible="true"
+                    CancelButtonText="@L["Cancel"]"
+                    Caption="@L["FirmParameters"]"
+                    Height="225px"
+                    Visible="true"
+                    Closing="Closing"
+                    Width="435px">
+    <PageContent>
+        <DevGridLayout ColumnCount="3"
+                       ColumnWidths="@ColumnWidths("80", "3", "300")"
+                       RowCount="3">
+
+            <GridLayoutItems>
+
+
+                <DevButtonEdit ButtonClickInvokeFunction="() => { SubeService.BeforeShowPopupListPage(  ((SelectFirmaParametreDto)AppService.FirmaParametre).SubeId); }"
+                               Caption="@L["Branch"]"
+                               ColumnIndex="2"
+                               NullText="@L["SelectCard"]"
+                               RowIndex="0"
+                               Service="SubeService"
+                               @bind-Value="@(((SelectFirmaParametreDto)AppService.FirmaParametre).SubeAdi)">
+
+                </DevButtonEdit>
+
+                <DevMemoEdit Caption="@L["Description"]"
+                             ColumnIndex="2"
+                             ColumnSpan="5"
+                             NullText="@L["EnterDescription"]"
+                             RowIndex="3"
+                             RowSpan="2"
+                             @bind-Value="Service.DataSource.Aciklama">
+                </DevMemoEdit>
+
+            </GridLayoutItems>
+        </DevGridLayout>
+
+    </PageContent>
+
+</DevPopupPageLayout>
+
+
+
+
+
+
+
+
+
+@code {
+
+    private async Task Save()
+    {
+        await UpdateAsync(CurrentUser.Id.Value, new UpdateFirmaParametreDto()
+            {
+                SubeId = ((SelectFirmaParametreDto)AppService.FirmaParametre).SubeId,
+                DonemId = ((SelectFirmaParametreDto)AppService.FirmaParametre).DonemId,
+                DepoId = ((SelectFirmaParametreDto)AppService.FirmaParametre).DepoId
+
+            });
+    }
+
+
+    private void Closing(PopupClosingEventArgs arg)
+    {
+        AppService.ShowFirmaParametreEditPage = true;
+        AppService.HasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+    }
+}

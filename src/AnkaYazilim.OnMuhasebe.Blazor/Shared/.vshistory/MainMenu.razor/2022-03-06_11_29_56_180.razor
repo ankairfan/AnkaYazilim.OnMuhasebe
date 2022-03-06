@@ -162,18 +162,9 @@
     </div>
 </div>
 
-@if (AppService.ShowFirmaParametreEditPage)
-{
-    <FirmaParametreEditPage/>
-}
 
 
 
 @code {
-
-    protected override void OnInitialized()
-    {
-        AppService.HasChanged = StateHasChanged;
-    }
 
 }
