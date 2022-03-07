@@ -29,7 +29,6 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
     public TDataSource DataSource { get; set; }
     public Guid PopupListPageFocusedRowId { get; set; }
 
-
     public async Task ConfirmMessage(string message, Action action, string title = null)
     {
         var confirmed = await MessageService.Confirm(message, title);
@@ -49,7 +48,7 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
         {
             SelectFirstDataRow = false;
             SelectedItem = ListDataSource.GetEntityById(PopupListPageFocusedRowId);
-            PopupListPageFocusedRowId=Guid.Empty;
+            PopupListPageFocusedRowId = Guid.Empty;
         }
 
         if (SelectFirstDataRow)
@@ -92,7 +91,8 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
         ((DxTextBox)ActiveEditComponent)?.FocusAsync();
     }
 
-    public virtual void SelectEntity(IEntityDto targetEntity) { }
+    public virtual void SelectEntity(IEntityDto targetEntity)
+    { }
 
     public virtual void BeforeShowPopupListPage(params object[] prm)
     {
@@ -101,16 +101,21 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
 
         if (prm.Length > 0)
             PopupListPageFocusedRowId = prm[0] == null ? Guid.Empty : (Guid)prm[0];
-
-
     }
 
-    public virtual void ButtonEditDeleteKeyDown(IEntityDto entity, string fieldName) { }
+    public virtual void ButtonEditDeleteKeyDown(IEntityDto entity, string fieldName)
+    { }
 
+    public void SetDataRowSelected(bool first)
+    {
+        ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(first ? ListDataSource.FirstOrDefault() : ListDataSource.LastOrDefault(), true);
+    }
 
-
+    public virtual void FillTable<TItem>(ICoreHareketService<TItem> hareketService, Action hasChanged)
+    { }
 
     #region Localizer
+
     private IStringLocalizer _localizer;
 
     public IStringLocalizer L
@@ -120,12 +125,8 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
             if (_localizer == null)
                 _localizer = StringLocalizerFactory.Create(typeof(OnMuhasebeResource));
             return _localizer;
-
         }
     }
 
-
-    #endregion
-
-
+    #endregion Localizer
 }
