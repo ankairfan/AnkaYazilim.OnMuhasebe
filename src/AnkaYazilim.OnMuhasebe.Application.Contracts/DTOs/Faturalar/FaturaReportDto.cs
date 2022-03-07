@@ -6,7 +6,7 @@ public class FaturaReportDto:IEntityDto
 {
     public string FaturaNo { get; set; }
     public DateTime? Tarih { get; set; }
-    public string CariAdi { get; set; }
+    public string Unvan { get; set; }
     public string VergiDairesi { get; set; }
     public string VergiNumarasi { get; set; }
     public string TcNumarasi { get; set; }

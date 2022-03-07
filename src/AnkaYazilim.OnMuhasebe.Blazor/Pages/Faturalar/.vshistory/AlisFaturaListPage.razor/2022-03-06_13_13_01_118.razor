@@ -1,0 +1,80 @@
+﻿@page "/purchaseinvoicecards"
+
+@inherits BaseListpage<SelectFaturaDto, ListFaturaDto,FaturaListParameterDto,CreateFaturaDto,UpdateFaturaDto,FaturaNoParameterDto>
+
+@inject FaturaAppService CrudService
+@inject FaturaService Service
+@inject AppService AppService
+
+<DevListPageLayout DataGridService="Service"
+                    ListPageService="Service"
+                    Caption="@L["PurchaseInvoiceCards"]"
+                    RowHeights="@RowHeights("*")">
+   <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async ()=> await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolbar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async ()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+                </DevListPageToolbar>
+            </HeaderTemplate>
+
+            <Columns>
+                <DxDataGridColumn Caption="@L["InvoiceNumber"]"
+                                  Field="@nameof(ListFaturaDto.FaturaNo)"
+                                  Width="150px" />
+                
+                <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                          Field="@nameof(ListFaturaDto.Tarih)"
+                                          DisplayFormat="@L["DateFormat"]"
+                                  Width="150px" />
+
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListFaturaDto.Ad)"
+                                  Width="250px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode1"]"
+                                  Field="@nameof(ListFaturaDto.OzelKod1Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["CustomCode2"]"
+                                  Field="@nameof(ListFaturaDto.OzelKod2Adi)"
+                                  Width="175px" />
+
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListFaturaDto.Aciklama)"
+                                  Width="*" />
+            </Columns>
+
+        </DevDataGrid>
+    </ListPageContext>
+    
+    <EditPageContent>
+        <BirimEditPage OnSubmit="OnSubmit"/>
+    </EditPageContent>
+
+</DevListPageLayout>
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        BaseCrudService = CrudService;
+        BaseService = Service;
+    }
+
+}

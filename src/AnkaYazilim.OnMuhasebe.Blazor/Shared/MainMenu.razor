@@ -64,11 +64,11 @@
                 <DxMenuItem Text="@L["Invoices"]" IconCssClass="fas fa-file-invoice">
                     <Items>
                         <DxMenuItem Text="@L["PurchaseInvoices"]"
-                                    NavigateUrl="purchaseinvoices"
+                                    NavigateUrl="purchaseinvoicecards"
                                     IconCssClass="fa fa-clone" />
 
                         <DxMenuItem Text="@L["SalesInvoices"]"
-                                    NavigateUrl="salesinvoices"
+                                    NavigateUrl="salesinvoicescards"
                                     IconCssClass="fa fa-clone" />
                     </Items>
                 </DxMenuItem>
@@ -149,11 +149,12 @@
                     </Items>
                 </DxMenuItem>
 
-                <DxMenuItem Click="() => { }"
+                <DxMenuItem Click="() => AppService.ShowSubeDonemEditPage=true"
                             Position="ItemPosition.End"
                             BeginGroup="true">
                     <TextTemplate>
-                        <i class="far fa-building" />&ensp;@("Firma Adı")&ensp;| &ensp;<i class="fa fa-calendar-alt" />&ensp;@("Dönem Adı")
+                        <i class="far fa-building" />&ensp;@(((SelectFirmaParametreDto)AppService.FirmaParametre).SubeAdi)&ensp;|
+                        &ensp;<i class="fa fa-calendar-alt" />&ensp;@(((SelectFirmaParametreDto)AppService.FirmaParametre).DonemAdi)
                     </TextTemplate>
                 </DxMenuItem>
             </Items>
@@ -164,15 +165,26 @@
 
 @if (AppService.ShowFirmaParametreEditPage)
 {
-    <FirmaParametreEditPage/>
+    <FirmaParametreEditPage />
 }
 
+@if (AppService.ShowSubeDonemEditPage)
+{
+    <SubeDonemSecimEditpage />
+}
 
 
 @code {
 
     protected override void OnInitialized()
     {
+        var url = NavigationManager.Uri.RemovePreFix(NavigationManager.BaseUri).EnsureStartsWith('/');
+
+        if (url != "/")
+        {
+            NavigationManager.NavigateTo("/", true);
+        }
+
         AppService.HasChanged = StateHasChanged;
     }
 

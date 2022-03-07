@@ -1147,8 +1147,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                     b.Property<int>("HareketSayisi")
                         .HasColumnType("Int");
 
-                    b.Property<decimal?>("IndirimTutari")
-                        .IsRequired()
+                    b.Property<decimal>("IndirimTutari")
                         .HasColumnType("Money");
 
                     b.Property<bool>("IsDeleted")

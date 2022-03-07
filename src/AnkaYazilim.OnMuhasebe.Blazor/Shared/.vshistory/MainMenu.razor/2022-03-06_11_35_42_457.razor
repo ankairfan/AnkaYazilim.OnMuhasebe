@@ -1,0 +1,179 @@
+﻿@inject IStringLocalizer<OnMuhasebeResource> L
+@inject AppService AppService
+@inject NavigationManager NavigationManager
+
+<div class="card w-100 bg-light">
+    <div class="card-body p-0">
+        <DxMenu Title="@($"Anka {L["Pre-Accounting"]}")"
+                ItemsPosition="ItemPosition.Start"
+                CollapseItemsToHamburgerMenu="true">
+
+            <Items>
+                <DxMenuItem Text="@L["Home"]"
+                            NavigateUrl="/"
+                            IconCssClass="fa fa-home"
+                            BeginGroup="true" />
+                <DxMenuItem Text="@L["Cards"]" IconCssClass="fa fa-clone">
+                    <Items>
+                        <DxMenuItem Text="@L["UnitCards"]"
+                                    NavigateUrl="unitcards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["BankCards"]"
+                                    NavigateUrl="bankcards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["BankAccountCards"]"
+                                    NavigateUrl="bankaccountcards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["CustomerCards"]"
+                                    NavigateUrl="customercards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["SafeCards"]"
+                                    NavigateUrl="safecards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["WarehouseCards"]"
+                                    NavigateUrl="warehousecards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["StockCards"]"
+                                    NavigateUrl="stokcards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["ServiceCards"]"
+                                    NavigateUrl="servicecards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["ExpenseCards"]"
+                                    NavigateUrl="expensecards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["BranchCards"]"
+                                    NavigateUrl="branchcards"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["PeriodCards"]"
+                                    NavigateUrl="periodcards"
+                                    IconCssClass="fa fa-clone" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Text="@L["Invoices"]" IconCssClass="fas fa-file-invoice">
+                    <Items>
+                        <DxMenuItem Text="@L["PurchaseInvoices"]"
+                                    NavigateUrl="purchaseinvoices"
+                                    IconCssClass="fa fa-clone" />
+
+                        <DxMenuItem Text="@L["SalesInvoices"]"
+                                    NavigateUrl="salesinvoices"
+                                    IconCssClass="fa fa-clone" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Text="@L["Receipts"]" IconCssClass="fas fa-receipt">
+                    <Items>
+                        <DxMenuItem Text="@L["CollectionReceipts"]"
+                                    NavigateUrl="collectionreceipts"
+                                    IconCssClass="fas fa-receipt" />
+
+                        <DxMenuItem Text="@L["PaymentReceipts"]"
+                                    NavigateUrl="paymentreceipts"
+                                    IconCssClass="fas fa-receipt" />
+
+                        <DxMenuItem Text="@L["SafeTransactionReceipts"]"
+                                    NavigateUrl="safetransactionreceipts"
+                                    IconCssClass="fas fa-receipt" />
+
+                        <DxMenuItem Text="@L["BankTransactionReceipts"]"
+                                    NavigateUrl="banktransactionreceipts"
+                                    IconCssClass="fas fa-receipt" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Text="@L["MeansOfPayment"]" IconCssClass="fa fa-money-check">
+                    <Items>
+                        <DxMenuItem Text="@L["MeansOfPayment"]"
+                                    NavigateUrl="meansofpayment"
+                                    IconCssClass="fa fa-money-check" />
+
+                        <DxMenuItem Text="@L["ReceiveMeansOfPayment"]"
+                                    NavigateUrl="receivemeansofpayment"
+                                    IconCssClass="fa fa-money-check" />
+
+                        <DxMenuItem Text="@L["OurOwnMeansOfPayment"]"
+                                    NavigateUrl="ourownmeansofpayment"
+                                    IconCssClass="fa fa-money-check" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Text="@L["Parameters"]" IconCssClass="fas fa-clipboard-check">
+                    <Items>
+                        <DxMenuItem Text="@L["FirmParameters"]"
+                                    Click="() => AppService.ShowFirmaParametreEditPage=true"
+                                    IconCssClass="fas fa-clipboard-check" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Text="@L["Administration"]" IconCssClass="fas fa-wrench">
+                    <Items>
+                        <DxMenuItem Text="@L["TenantManagement"]"
+                                    IconCssClass="fas fa-user">
+                            <Items>
+                                <DxMenuItem Text="@L["Tenants"]"
+                                            NavigateUrl="tenant-management/tenants"
+                                            IconCssClass="fas fa-user" />
+                            </Items>
+
+                        </DxMenuItem>
+
+                        <DxMenuItem Text="@L["IdentityManagement"]"
+                                    IconCssClass="fas fa-user-lock">
+                            <Items>
+                                <DxMenuItem Text="@L["Roles"]"
+                                            NavigateUrl="Identity/Roles"
+                                            IconCssClass="fas fa-user-lock" />
+
+                                <DxMenuItem Text="@L["Users"]"
+                                            NavigateUrl="Identity/Users"
+                                            IconCssClass="fas fa-user-lock" />
+                            </Items>
+
+                        </DxMenuItem>
+
+                        <DxMenuItem Text="@L["Setting"]"
+                                    NavigateUrl="setting-management"
+                                    IconCssClass="fas fa-cog" />
+                    </Items>
+                </DxMenuItem>
+
+                <DxMenuItem Click="() => { }"
+                            Position="ItemPosition.End"
+                            BeginGroup="true">
+                    <TextTemplate>
+                        <i class="far fa-building" />&ensp;@("Firma Adı")&ensp;| &ensp;<i class="fa fa-calendar-alt" />&ensp;@("Dönem Adı")
+                    </TextTemplate>
+                </DxMenuItem>
+            </Items>
+
+        </DxMenu>
+    </div>
+</div>
+
+@if (AppService.ShowFirmaParametreEditPage)
+{
+    <FirmaParametreEditPage/>
+}
+
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        AppService.HasChanged = StateHasChanged;
+    }
+
+}

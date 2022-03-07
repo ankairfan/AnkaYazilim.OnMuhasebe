@@ -6,7 +6,7 @@ public class Fatura:FullAuditedAggregateRoot<Guid>
     public string FaturaNo { get; set; }
     public DateTime Tarih { get; set; }
     public decimal BrutTutar { get; set; }
-    public decimal? IndirimTutari { get; set; }
+    public decimal IndirimTutari { get; set; }
     public decimal NetTutar { get; set; }
     public decimal KdvTutar { get; set; }
     public decimal GenelTutar { get; set; }

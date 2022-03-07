@@ -24,11 +24,11 @@ public class SelectFaturaHareketDto:EntityDto<Guid>
     public decimal Miktar { get; set; }
     public decimal Fiyat { get; set; }
     public byte? IndirimOran { get; set; }
-    public byte? KdvOran { get; set; }
+    public byte KdvOran { get; set; }
     public decimal BrutTutar { get; set; }
-    public decimal? IndirimTutar { get; set; }
+    public decimal IndirimTutar { get; set; }
     public decimal NetTutar { get; set; }
-    public decimal? KdvTutar { get; set; }
+    public decimal KdvTutar { get; set; }
     public decimal GenelTutar { get; set; }
     public string Aciklama { get; set; }
 }
