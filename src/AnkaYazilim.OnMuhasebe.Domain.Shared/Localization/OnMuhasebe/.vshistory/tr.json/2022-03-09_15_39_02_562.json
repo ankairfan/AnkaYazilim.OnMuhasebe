@@ -129,7 +129,6 @@
     "InvoiceRow": "Fatura Hareketi",
     "InvoiceRows": "Fatura Hareketleri",
     "Invoices": "Faturalar",
-    "InvoiceSubtotals": "Fatura Alt Toplamları",
     "InvoiceSubTotals": "Fatura Alt Toplamları",
     "InvoiceType": "Fatura türü",
     "LastName": "Soyadı",
@@ -179,7 +178,6 @@
     "SalePrice": "Satış Fiyatı",
     "SalesInvoiceCards": "Satış Faturası Kartları",
     "SalesInvoices": "Satış Faturaları",
-    "SalesPrice": "Satış Fiyatı",
     "Save": "Kaydet",
     "Select": "Seç",
     "SelectCard": "Kart Seçiniz",
@@ -221,6 +219,7 @@
     "WarehouseCards": "Depo Kartları",
     "WarningMessageTitle": "Dikkat !!",
     "Web": "Web",
+    "SalesPrice": "Satış Fiyatı",
     "Welcome": "Hoşgeldiniz"
   }
 }
