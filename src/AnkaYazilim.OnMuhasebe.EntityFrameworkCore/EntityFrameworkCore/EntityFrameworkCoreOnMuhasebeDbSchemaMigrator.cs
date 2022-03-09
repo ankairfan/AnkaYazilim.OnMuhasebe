@@ -1,9 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using AnkaYazilim.OnMuhasebe.Data;
 using Microsoft.Extensions.DependencyInjection;
-using AnkaYazilim.OnMuhasebe.Data;
-using Volo.Abp.DependencyInjection;
 
 namespace AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 
@@ -18,7 +14,7 @@ public class EntityFrameworkCoreOnMuhasebeDbSchemaMigrator
         _serviceProvider = serviceProvider;
     }
 
-    public async Task MigrateAsync()
+    public Task MigrateAsync()
     {
         /* We intentionally resolving the OnMuhasebeDbContext
          * from IServiceProvider (instead of directly injecting it)
@@ -26,7 +22,7 @@ public class EntityFrameworkCoreOnMuhasebeDbSchemaMigrator
          * current scope.
          */
 
-        await _serviceProvider
+        return _serviceProvider
             .GetRequiredService<OnMuhasebeDbContext>()
             .Database
             .MigrateAsync();

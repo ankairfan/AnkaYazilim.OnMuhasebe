@@ -10,4 +10,12 @@ public interface ICoreHareketService<TDataGridItem> : ICoreDataGridService<TData
     void BeforeInsert();
 
     Task DeleteAsync();
+
+    public TDataGridItem TempDataSource { get; set; }
+
+    void OnSubmit();
+
+    void InsertOrUpdate();
+
+    void Hesapla(object value, string propertyName);
 }

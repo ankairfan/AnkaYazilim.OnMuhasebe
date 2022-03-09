@@ -46,6 +46,7 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
     public string LoadingText { get; }
     public bool IsPopupListPage { get; set; }
     public bool EditPageVisible { get; set; }
+    public TDataGridItem TempDataSource { get; set; }
 
     public void ShowEditpage()
     {
@@ -54,7 +55,8 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
 
     public void HideEditPage()
     {
-        throw new NotImplementedException();
+        EditPageVisible = false;
+        HasChanged();
     }
 
     public void HideListPage()
@@ -107,6 +109,30 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
             GetTotal();
             HasChanged();
         }, L["DeleteConfirmMessageTitle"]);
+    }
+
+    public virtual void OnSubmit()
+    { }
+
+    public virtual void InsertOrUpdate()
+    {
+        if (((IEntityDto<Guid>)DataSource).Id == Guid.Empty)
+        {
+            ((IEntityDto<Guid>)DataSource).Id = GuidGenerator.Create();
+            ListDataSource.Add(DataSource);
+        }
+        else
+        {
+            var itemIndex = ListDataSource.FindIndex(x => ((IEntityDto<Guid>)x).Id == ((IEntityDto<Guid>)SelectedItem).Id);
+            ListDataSource[itemIndex] = DataSource;
+        }
+        EditPageVisible = false;
+        SetDataRowSelected(DataSource);
+        GetTotal();
+    }
+
+    public virtual void Hesapla(object value, string propertyName)
+    {
     }
 
     public Action HasChanged { get; set; }

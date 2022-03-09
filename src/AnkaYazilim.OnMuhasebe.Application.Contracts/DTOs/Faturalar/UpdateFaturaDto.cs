@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Faturalar;
 
-public class UpdateFaturaDto:IEntityDto
+public class UpdateFaturaDto : IEntityDto
 {
     public string FaturaNo { get; set; }
     public DateTime Tarih { get; set; }
@@ -15,5 +15,5 @@ public class UpdateFaturaDto:IEntityDto
     public Guid? OzelKod2Id { get; set; }
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
-    public IList<FaturaHareketDto> FaturaHareketler { get; set; }
+    public IList<FaturaHareketDto> FaturaHareketleri { get; set; }
 }

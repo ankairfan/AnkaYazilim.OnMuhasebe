@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Faturalar;
 
-public class SelectFaturaDto:EntityDto<Guid>, IOzelKod
+public class SelectFaturaDto : EntityDto<Guid>, IOzelKod
 {
     public FaturaTuru? FaturaTuru { get; set; }
     public string FaturaNo { get; set; }
@@ -17,7 +17,7 @@ public class SelectFaturaDto:EntityDto<Guid>, IOzelKod
     public decimal NetTutar { get; set; }
     public decimal KdvTutar { get; set; }
     public decimal GenelTutar { get; set; }
-    public int? HareketSayisi { get; set; }
+    public int HareketSayisi { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public string OzelKod1Adi { get; set; }
     public Guid? OzelKod2Id { get; set; }
@@ -26,6 +26,5 @@ public class SelectFaturaDto:EntityDto<Guid>, IOzelKod
     public bool Durum { get; set; }
     public Guid SubeId { get; set; }
     public Guid DonemId { get; set; }
-    public List<SelectFaturaHareketDto> FaturaHareketler { get; set; }
+    public List<SelectFaturaHareketDto> FaturaHareketleri { get; set; }
 }
-

@@ -6,7 +6,6 @@ public class FaturaAppService : OnMuhasebeAppService, IFaturaAppService
     private readonly FaturaManager _faturaManager;
     private readonly FaturaHareketManager _hareketManager;
 
-
     public FaturaAppService(IFaturaRepository repository, FaturaManager faturaManager, FaturaHareketManager hareketManager)
     {
         _repository = repository;
@@ -19,7 +18,7 @@ public class FaturaAppService : OnMuhasebeAppService, IFaturaAppService
         var entity = await _repository.GetAsync(id, x => x.Id == id);
 
         var mappedDto = ObjectMapper.Map<Fatura, SelectFaturaDto>(entity);
-        mappedDto.FaturaHareketler.ForEach(x =>
+        mappedDto.FaturaHareketleri.ForEach(x =>
         {
             x.HareketTuruAdi = L[$"Enum:FaturaHareketTuru:{(byte)x.HareketTuru}"];
         });
@@ -40,11 +39,13 @@ public class FaturaAppService : OnMuhasebeAppService, IFaturaAppService
 
     public virtual async Task<SelectFaturaDto> CreateAsync(CreateFaturaDto input)
     {
-        await _faturaManager.CheckCreateAsync(input.FaturaNo, input.CariId, input.OzelKod1Id, input.OzelKod2Id, input.SubeId, input.DonemId);
+        await _faturaManager.CheckCreateAsync(input.FaturaNo, input.CariId, input.OzelKod1Id,
+      input.OzelKod2Id, input.SubeId, input.DonemId);
 
-        foreach (var faturaHareket in input.FaturaHareketler)
+        foreach (var faturaHareket in input.FaturaHareketleri)
         {
-            await _hareketManager.CheckCreateAsync(faturaHareket.StokId, faturaHareket.HizmetId, faturaHareket.MasrafId, faturaHareket.DepoId);
+            await _hareketManager.CheckCreateAsync(faturaHareket.StokId,
+                faturaHareket.HizmetId, faturaHareket.MasrafId, faturaHareket.DepoId);
         }
 
         var entity = ObjectMapper.Map<CreateFaturaDto, Fatura>(input);
@@ -54,22 +55,35 @@ public class FaturaAppService : OnMuhasebeAppService, IFaturaAppService
 
     public virtual async Task<SelectFaturaDto> UpdateAsync(Guid id, UpdateFaturaDto input)
     {
-        var entity = await _repository.GetAsync(id, x => x.Id == id, x => x.FaturaHareketleri);
-        await _faturaManager.CheckUpdateAsync(id, input.FaturaNo, entity, input.CariId, input.OzelKod1Id, input.OzelKod2Id);
-        foreach (var faturaHareketDto in input.FaturaHareketler)
+        var entity = await _repository.GetAsync(id, x => x.Id == id,
+    x => x.FaturaHareketleri);
+
+        await _faturaManager.CheckUpdateAsync(id, input.FaturaNo, entity, input.CariId,
+            input.OzelKod1Id, input.OzelKod2Id);
+
+        foreach (var faturaHareketDto in input.FaturaHareketleri)
         {
-            await _hareketManager.CheckUpdateAsync(faturaHareketDto.StokId, faturaHareketDto.HizmetId, faturaHareketDto.MasrafId, faturaHareketDto.DepoId);
-            var faturaHareket = entity.FaturaHareketleri.FirstOrDefault(x => x.Id == faturaHareketDto.Id);
+            await _hareketManager.CheckUpdateAsync(faturaHareketDto.StokId,
+                faturaHareketDto.HizmetId, faturaHareketDto.MasrafId, faturaHareketDto.DepoId);
+
+            var faturaHareket = entity.FaturaHareketleri.FirstOrDefault(
+                x => x.Id == faturaHareketDto.Id);
 
             if (faturaHareket == null)
             {
-                entity.FaturaHareketleri.Add(ObjectMapper.Map<FaturaHareketDto, FaturaHareket>(faturaHareketDto));
+                entity.FaturaHareketleri.Add(
+                    ObjectMapper.Map<FaturaHareketDto, FaturaHareket>(faturaHareketDto));
                 continue;
             }
+
             ObjectMapper.Map(faturaHareketDto, faturaHareket);
         }
-        var deletedEntities = entity.FaturaHareketleri.Where(x => input.FaturaHareketler.Select(y => y.Id).ToList().IndexOf(x.Id) == -1);
+
+        var deletedEntities = entity.FaturaHareketleri.Where(
+            x => input.FaturaHareketleri.Select(y => y.Id).ToList().IndexOf(x.Id) == -1);
+
         entity.FaturaHareketleri.RemoveAll(deletedEntities);
+
         ObjectMapper.Map(input, entity);
         await _repository.UpdateAsync(entity);
         return ObjectMapper.Map<Fatura, SelectFaturaDto>(entity);
@@ -86,5 +100,4 @@ public class FaturaAppService : OnMuhasebeAppService, IFaturaAppService
     {
         return _repository.GetCodeAsync(x => x.FaturaNo, x => x.FaturaTuru == input.FaturaTuru && x.SubeId == input.SubeId && x.DonemId == input.DonemId && x.Durum == input.Durum);
     }
-
 }

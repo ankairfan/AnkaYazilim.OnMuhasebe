@@ -11,7 +11,7 @@
                     AllowColumnDragDrop="AllowColumnDragDrop"
                     AllowSort="AllowSort"
                     ColumnResizeMode="ColumnResizeMode"
-                    Data="Service.ListDataSource"
+                    Data="DataSource"
                     DataNavigationMode="DataNavigationMode"
                     HorizontalScrollBarMode="HorizontalScrollBarMode"
                     SelectionMode="SelectionMode"
@@ -68,6 +68,7 @@
 @code {
 
     [Parameter] public ICoreHareketService<TDataGridItem> Service { get; set; }
+    [Parameter] public IEnumerable<TDataGridItem> DataSource { get; set; }
     [Parameter] public bool AllowColumnDragDrop { get; set; } = true;
     [Parameter] public bool AllowSort { get; set; } = true;
 

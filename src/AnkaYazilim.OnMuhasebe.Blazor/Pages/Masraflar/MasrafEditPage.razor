@@ -66,8 +66,14 @@
                 <DevCurrencyEdit Caption="@L["UnitPrice"]"
                                  ColumnIndex="2"
                                  RowIndex="3"
-                                 @bind-Value="@Service.DataSource.BirimFiyat">
+                                 @bind-Value="@Service.DataSource.AlisFiyat">
                 </DevCurrencyEdit>
+
+               @* <DevCurrencyEdit Caption="@L["UnitPrice"]"
+                                 ColumnIndex="2"
+                                 RowIndex="3"
+                                 @bind-Value="@Service.DataSource.SatisFiyat">
+                </DevCurrencyEdit>*@
 
                 <DevSpinEdit Caption="@L["TaxRate"]"
                              ColumnIndex="6"

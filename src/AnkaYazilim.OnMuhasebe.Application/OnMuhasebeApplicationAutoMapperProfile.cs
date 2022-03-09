@@ -112,14 +112,14 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //Fatura
         CreateMap<Fatura, SelectFaturaDto>()
-            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Unvan))
-            .ForMember(x => x.VergiDairesi, y => y.MapFrom(z => z.Cari.VergiDairesi))
-            .ForMember(x => x.VergiNumarasi, y => y.MapFrom(z => z.Cari.VergiNumarasi))
-            .ForMember(x => x.TcNumarasi, y => y.MapFrom(z => z.Cari.TcNumarasi))
-            .ForMember(x => x.Adres, y => y.MapFrom(z => z.Cari.Adres))
-            .ForMember(x => x.TelefonNumarasi, y => y.MapFrom(z => z.Cari.Telefon))
-            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
-            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+     .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Unvan))
+     .ForMember(x => x.VergiDairesi, y => y.MapFrom(z => z.Cari.VergiDairesi))
+     .ForMember(x => x.VergiNumarasi, y => y.MapFrom(z => z.Cari.VergiNumarasi))
+     .ForMember(x => x.TcNumarasi, y => y.MapFrom(z => z.Cari.TcNumarasi))
+     .ForMember(x => x.Adres, y => y.MapFrom(z => z.Cari.Adres))
+     .ForMember(x => x.TelefonNumarasi, y => y.MapFrom(z => z.Cari.Telefon))
+     .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+     .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<Fatura, ListFaturaDto>()
             .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Unvan))
@@ -127,7 +127,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<CreateFaturaDto, Fatura>();
-        CreateMap<UpdateFaturaDto, Fatura>().ForMember(x => x.FaturaHareketleri, y => y.Ignore());
+        CreateMap<UpdateFaturaDto, Fatura>()
+            .ForMember(x => x.FaturaHareketleri, y => y.Ignore());
         CreateMap<SelectFaturaDto, CreateFaturaDto>();
         CreateMap<SelectFaturaDto, UpdateFaturaDto>();
 
@@ -152,6 +153,41 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
                 z.Masraf != null ? z.Masraf.Ad : null));
 
         CreateMap<FaturaHareketDto, FaturaHareket>();
+        CreateMap<SelectFaturaHareketDto, FaturaHareketDto>();
+        CreateMap<SelectFaturaHareketDto, SelectFaturaHareketDto>();
+
+        CreateMap<FaturaHareket, ListCariHareketDto>()
+    .ForMember(x => x.CariId, y => y.MapFrom(z => z.Fatura.CariId))
+    .ForMember(x => x.Tarih, y => y.MapFrom(z => z.Fatura.Tarih))
+    .ForMember(x => x.BelgeNo, y => y.MapFrom(z => z.Fatura.FaturaNo))
+    .ForMember(x => x.FaturaTuru, y => y.MapFrom(z => z.Fatura.FaturaTuru))
+    .ForMember(x => x.Tutar, y => y.MapFrom(z => z.NetTutar))
+    .ForMember(x => x.Aciklama,
+        y => y.MapFrom(z => string.IsNullOrEmpty(z.Fatura.Aciklama) ? z.Aciklama : z.Fatura.Aciklama));
+
+        CreateMap<FaturaHareket, ListStokHareketDto>()
+            .ForMember(x => x.Tarih, y => y.MapFrom(z => z.Fatura.Tarih))
+            .ForMember(x => x.BelgeNo, y => y.MapFrom(z => z.Fatura.FaturaNo))
+            .ForMember(x => x.FaturaTuru, y => y.MapFrom(z => z.Fatura.FaturaTuru))
+            .ForMember(x => x.Tutar, y => y.MapFrom(z => z.Fatura.NetTutar))
+            .ForMember(x => x.Aciklama,
+                y => y.MapFrom(z => string.IsNullOrEmpty(z.Fatura.Aciklama) ? z.Aciklama : z.Fatura.Aciklama));
+
+        CreateMap<FaturaHareket, ListHizmetHareketDto>()
+            .ForMember(x => x.Tarih, y => y.MapFrom(z => z.Fatura.Tarih))
+            .ForMember(x => x.BelgeNo, y => y.MapFrom(z => z.Fatura.FaturaNo))
+            .ForMember(x => x.FaturaTuru, y => y.MapFrom(z => z.Fatura.FaturaTuru))
+            .ForMember(x => x.Tutar, y => y.MapFrom(z => z.Fatura.NetTutar))
+            .ForMember(x => x.Aciklama,
+                y => y.MapFrom(z => string.IsNullOrEmpty(z.Fatura.Aciklama) ? z.Aciklama : z.Fatura.Aciklama));
+
+        CreateMap<FaturaHareket, ListMasrafHareketDto>()
+            .ForMember(x => x.Tarih, y => y.MapFrom(z => z.Fatura.Tarih))
+            .ForMember(x => x.BelgeNo, y => y.MapFrom(z => z.Fatura.FaturaNo))
+            .ForMember(x => x.FaturaTuru, y => y.MapFrom(z => z.Fatura.FaturaTuru))
+            .ForMember(x => x.Tutar, y => y.MapFrom(z => z.Fatura.NetTutar))
+            .ForMember(x => x.Aciklama,
+                y => y.MapFrom(z => string.IsNullOrEmpty(z.Fatura.Aciklama) ? z.Aciklama : z.Fatura.Aciklama));
 
         //Hizmet
         CreateMap<Hizmet, SelectHizmetDto>()

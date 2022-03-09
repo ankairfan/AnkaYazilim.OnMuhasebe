@@ -1,11 +1,9 @@
-﻿using AnkaYazilim.OnMuhasebe.DTOs.FaturaHareketler;
-using AnkaYazilim.OnMuhasebe.Faturalar;
-
-namespace AnkaYazilim.OnMuhasebe.Blazor.Pages.Faturalar;
+﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Pages.Faturalar;
 
 public partial class AlisFaturaListPage
 {
     public AppService AppService { get; set; }
+
     protected override async Task GetListDataSourceAsync()
     {
         Service.ListDataSource = (await GetListAsync(new FaturaListParameterDto
@@ -14,7 +12,6 @@ public partial class AlisFaturaListPage
             SubeId = AppService.FirmaParametre.SubeId,
             DonemId = AppService.FirmaParametre.DonemId,
             Durum = Service.IsActiveCards
-
         })).Items.ToList();
 
         Service.IsLoaded = true;
@@ -29,13 +26,10 @@ public partial class AlisFaturaListPage
             SubeId = AppService.FirmaParametre.SubeId,
             DonemId = AppService.FirmaParametre.DonemId,
             Durum = Service.IsActiveCards,
-            FaturaHareketler = new List<SelectFaturaHareketDto>()
-
+            FaturaHareketleri = new List<SelectFaturaHareketDto>()
         };
 
         Service.ShowEditpage();
         return Task.CompletedTask;
-
     }
-
 }

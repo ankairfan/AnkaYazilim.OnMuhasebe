@@ -620,105 +620,12 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("VarChar(100)");
 
+                    b.Property<decimal>("AlisFiyat")
+                        .HasColumnType("Money");
+
                     b.Property<string>("Barkod")
                         .HasMaxLength(128)
                         .HasColumnType("VarChar(128)");
-
-                    b.Property<decimal>("BirimFiyat")
-                        .HasColumnType("Money");
-
-                    b.Property<Guid>("BirimId")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<bool>("Durum")
-                        .HasColumnType("Bit");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<byte>("KdvOrani")
-                        .HasColumnType("TinyInt");
-
-                    b.Property<string>("Kod")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("VarChar(50)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<Guid?>("OzelKod1Id")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.Property<Guid?>("OzelKod2Id")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BirimId");
-
-                    b.HasIndex("Kod");
-
-                    b.HasIndex("OzelKod1Id");
-
-                    b.HasIndex("OzelKod2Id");
-
-                    b.ToTable("AppHizmetler", (string)null);
-                });
-
-            modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Masraflar.Masraf", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Aciklama")
-                        .HasMaxLength(250)
-                        .HasColumnType("VarChar(250)");
-
-                    b.Property<string>("Ad")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("VarChar(100)");
-
-                    b.Property<string>("Barkod")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("BirimFiyat")
-                        .HasColumnType("Money");
 
                     b.Property<Guid>("BirimId")
                         .HasColumnType("UniqueIdentifier");
@@ -779,6 +686,105 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
 
                     b.Property<Guid?>("OzelKod2Id")
                         .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("SatisFiyat")
+                        .HasColumnType("Money");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BirimId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.ToTable("AppHizmetler", (string)null);
+                });
+
+            modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Masraflar.Masraf", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(250)
+                        .HasColumnType("VarChar(250)");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VarChar(100)");
+
+                    b.Property<decimal>("AlisFiyat")
+                        .HasColumnType("Money");
+
+                    b.Property<string>("Barkod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("BirimId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<byte>("KdvOran")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar(50)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("SatisFiyat")
+                        .HasColumnType("Money");
 
                     b.HasKey("Id");
 
@@ -1208,6 +1214,9 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("VarChar(250)");
 
+                    b.Property<decimal>("AlisFiyat")
+                        .HasColumnType("Money");
+
                     b.Property<decimal>("BrutTutar")
                         .HasColumnType("Money");
 
@@ -1233,9 +1242,6 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                     b.Property<Guid>("FaturaId")
                         .HasColumnType("UniqueIdentifier");
 
-                    b.Property<decimal>("Fiyat")
-                        .HasColumnType("Money");
-
                     b.Property<decimal>("GenelTutar")
                         .HasColumnType("Money");
 
@@ -1245,10 +1251,10 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                     b.Property<Guid?>("HizmetId")
                         .HasColumnType("UniqueIdentifier");
 
-                    b.Property<byte?>("IndirimOran")
+                    b.Property<byte>("IndirimOran")
                         .HasColumnType("TinyInt");
 
-                    b.Property<decimal?>("IndirimTutar")
+                    b.Property<decimal>("IndirimTutar")
                         .HasColumnType("Money");
 
                     b.Property<bool>("IsDeleted")
@@ -1257,10 +1263,10 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("IsDeleted");
 
-                    b.Property<byte?>("KdvOran")
+                    b.Property<byte>("KdvOran")
                         .HasColumnType("TinyInt");
 
-                    b.Property<decimal?>("KdvTutar")
+                    b.Property<decimal>("KdvTutar")
                         .HasColumnType("Money");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -1278,6 +1284,9 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .HasColumnType("Money");
 
                     b.Property<decimal>("NetTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<decimal>("SatisFiyat")
                         .HasColumnType("Money");
 
                     b.Property<Guid?>("StokId")

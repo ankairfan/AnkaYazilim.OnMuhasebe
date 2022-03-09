@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.Sales.Faturalar;
 
-public class Fatura:FullAuditedAggregateRoot<Guid>
+public class Fatura : FullAuditedAggregateRoot<Guid>
 {
     public FaturaTuru FaturaTuru { get; set; }
     public string FaturaNo { get; set; }
@@ -26,7 +26,4 @@ public class Fatura:FullAuditedAggregateRoot<Guid>
     public Donem Donem { get; set; }
 
     public ICollection<FaturaHareket> FaturaHareketleri { get; set; }
-
-
-
 }

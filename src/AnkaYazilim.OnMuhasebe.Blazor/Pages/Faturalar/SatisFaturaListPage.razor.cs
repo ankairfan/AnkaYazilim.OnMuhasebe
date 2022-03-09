@@ -1,11 +1,9 @@
-﻿using AnkaYazilim.OnMuhasebe.DTOs.FaturaHareketler;
-using AnkaYazilim.OnMuhasebe.Faturalar;
-
-namespace AnkaYazilim.OnMuhasebe.Blazor.Pages.Faturalar;
+﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Pages.Faturalar;
 
 public partial class SatisFaturaListPage
 {
     public AppService AppService { get; set; }
+
     protected override async Task GetListDataSourceAsync()
     {
         Service.ListDataSource = (await GetListAsync(new FaturaListParameterDto
@@ -14,7 +12,6 @@ public partial class SatisFaturaListPage
             SubeId = AppService.FirmaParametre.SubeId,
             DonemId = AppService.FirmaParametre.DonemId,
             Durum = Service.IsActiveCards
-
         })).Items.ToList();
 
         Service.IsLoaded = true;
@@ -24,25 +21,22 @@ public partial class SatisFaturaListPage
     {
         Service.DataSource = new SelectFaturaDto()
         {
-          FaturaNo = await GetCodeAsync(new FaturaNoParameterDto
-          {
-              FaturaTuru = FaturaTuru.satis,
-              SubeId = AppService.FirmaParametre.SubeId,
-              DonemId = AppService.FirmaParametre.DonemId,
-              Durum = Service.IsActiveCards
-          }),
+            FaturaNo = await GetCodeAsync(new FaturaNoParameterDto
+            {
+                FaturaTuru = FaturaTuru.satis,
+                SubeId = AppService.FirmaParametre.SubeId,
+                DonemId = AppService.FirmaParametre.DonemId,
+                Durum = Service.IsActiveCards
+            }),
 
-          FaturaTuru = FaturaTuru.satis,
-          Tarih = DateTime.Now.Date,
-          SubeId = AppService.FirmaParametre.SubeId,
-          DonemId = AppService.FirmaParametre.DonemId,
-          Durum = Service.IsActiveCards,
-          FaturaHareketler = new List<SelectFaturaHareketDto>()
-
+            FaturaTuru = FaturaTuru.satis,
+            Tarih = DateTime.Now.Date,
+            SubeId = AppService.FirmaParametre.SubeId,
+            DonemId = AppService.FirmaParametre.DonemId,
+            Durum = Service.IsActiveCards,
+            FaturaHareketleri = new List<SelectFaturaHareketDto>()
         };
 
         Service.ShowEditpage();
-
     }
-
 }

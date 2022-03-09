@@ -6,7 +6,7 @@ public class FaturaService : BaseService<ListFaturaDto, SelectFaturaDto>, IScope
     {
         if (hareketService is FaturaHareketService faturaHareketService)
         {
-            faturaHareketService.ListDataSource = DataSource.FaturaHareketler ?? new List<DTOs.FaturaHareketler.SelectFaturaHareketDto>();
+            faturaHareketService.ListDataSource = DataSource.FaturaHareketleri ?? new List<SelectFaturaHareketDto>();
             faturaHareketService.HasChanged = hasChanged;
             faturaHareketService.GetTotal();
         }

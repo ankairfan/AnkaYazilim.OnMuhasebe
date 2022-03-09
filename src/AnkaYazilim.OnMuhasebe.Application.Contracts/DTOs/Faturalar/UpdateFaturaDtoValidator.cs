@@ -17,7 +17,6 @@ public class UpdateFaturaDtoValidator : AbstractValidator<UpdateFaturaDto>
 
         RuleFor(x => x.Tarih).NotEmpty().WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["Date"]]);
 
-
         RuleFor(x => x.BrutTutar)
             .GreaterThanOrEqualTo(0)
             .WithMessage(
@@ -84,7 +83,7 @@ public class UpdateFaturaDtoValidator : AbstractValidator<UpdateFaturaDto>
                   localizer["Description"],
                   EntityConsts.MaxAciklamaLength]);
 
-        RuleForEach(x => x.FaturaHareketler)
+        RuleForEach(x => x.FaturaHareketleri)
             .SetValidator(y => new FaturaHareketDtoValidator(localizer));
     }
 }

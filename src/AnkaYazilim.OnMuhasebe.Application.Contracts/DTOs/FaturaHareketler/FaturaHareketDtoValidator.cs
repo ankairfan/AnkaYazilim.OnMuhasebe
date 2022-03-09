@@ -44,7 +44,7 @@ public class FaturaHareketDtoValidator : AbstractValidator<FaturaHareketDto>
                     localizer["ToZero"],
                     localizer["ThanZero"]]);
 
-        RuleFor(x => x.Fiyat)
+        RuleFor(x => x.AlisFiyat)
             .GreaterThanOrEqualTo(0)
             .WithMessage(
                 localizer[
@@ -52,6 +52,15 @@ public class FaturaHareketDtoValidator : AbstractValidator<FaturaHareketDto>
                     localizer["Price"],
                     localizer["ToZero"],
                     localizer["ThanZero"]]);
+
+        RuleFor(x => x.SatisFiyat)
+    .GreaterThanOrEqualTo(0)
+    .WithMessage(
+        localizer[
+            OnMuhasebeDomainErrorCodes.GreaterThanOrEqual,
+            localizer["Price"],
+            localizer["ToZero"],
+            localizer["ThanZero"]]);
 
         RuleFor(x => x.IndirimOran)
             .GreaterThanOrEqualTo(0)

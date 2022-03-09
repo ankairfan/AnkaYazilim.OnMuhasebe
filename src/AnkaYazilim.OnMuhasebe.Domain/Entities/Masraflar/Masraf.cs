@@ -5,7 +5,8 @@ public class Masraf : FullAuditedAggregateRoot<Guid>
     public string Kod { get; set; }
     public string Ad { get; set; }
     public int KdvOran { get; set; }
-    public decimal BirimFiyat { get; set; }
+    public decimal AlisFiyat { get; set; }
+    public decimal SatisFiyat { get; set; }
     public string Barkod { get; set; }
     public Guid BirimId { get; set; }
     public Guid? OzelKod1Id { get; set; }

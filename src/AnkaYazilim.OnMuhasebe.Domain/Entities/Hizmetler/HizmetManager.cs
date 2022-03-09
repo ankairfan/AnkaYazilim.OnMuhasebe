@@ -29,8 +29,8 @@ public class HizmetManager : DomainService
         await _ozelKodRepository.EntityAnyAsync(ozelKod2Id, OzelKodTuru.OzelKod2, KartTuru.Hizmet, entity.OzelKod2Id != ozelKod2Id);
     }
 
-    public async Task CheckDeleteAsync(Guid id)
+    public Task CheckDeleteAsync(Guid id)
     {
-        await _hizmetRepository.RelationalEntityAnyAsync(x => x.FaturaHareketleri.Any(y => y.HizmetId == id));
+        return _hizmetRepository.RelationalEntityAnyAsync(x => x.FaturaHareketleri.Any(y => y.HizmetId == id));
     }
 }

@@ -27,7 +27,7 @@ public class CreateHizmetDtoValidator : AbstractValidator<CreateHizmetDto>
                     localizer["ToZero"],
                     localizer["ThanZero"]]);
 
-        RuleFor(x => x.BirimFiyat)
+        RuleFor(x => x.AlisFiyat)
           .GreaterThanOrEqualTo(0)
           .WithMessage(
               localizer[
@@ -35,6 +35,15 @@ public class CreateHizmetDtoValidator : AbstractValidator<CreateHizmetDto>
                   localizer["UnitPrice"],
                   localizer["ToZero"],
                   localizer["ThanZero"]]);
+
+        RuleFor(x => x.SatisFiyat)
+  .GreaterThanOrEqualTo(0)
+  .WithMessage(
+      localizer[
+          OnMuhasebeDomainErrorCodes.GreaterThanOrEqual,
+          localizer["UnitPrice"],
+          localizer["ToZero"],
+          localizer["ThanZero"]]);
 
         RuleFor(x => x.Barkod)
          .MaximumLength(EntityConsts.MaxBarkodLength)
