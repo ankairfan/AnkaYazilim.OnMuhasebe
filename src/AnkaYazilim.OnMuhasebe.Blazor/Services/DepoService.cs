@@ -10,6 +10,11 @@ public class DepoService : BaseService<ListDepoDto, SelectDepoDto>, IScopedDepen
                 firmaParametre.DepoId = SelectedItem.Id;
                 firmaParametre.DepoAdi = SelectedItem.Ad;
                 break;
+
+            case SelectFaturaHareketDto faturaHareket:
+                faturaHareket.DepoId = SelectedItem.Id;
+                faturaHareket.DepoAdi = SelectedItem.Ad;
+                break;
         }
     }
 }

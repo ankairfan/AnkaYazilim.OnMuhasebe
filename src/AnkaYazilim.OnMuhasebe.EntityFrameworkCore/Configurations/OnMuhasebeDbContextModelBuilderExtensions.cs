@@ -34,9 +34,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod1).WithMany(x => x.OzelKod1Bankalar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Bankalar).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureBanka(this ModelBuilder builder)
@@ -71,7 +69,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod1).WithMany(x => x.OzelKod1Bankalar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Bankalar).OnDelete(DeleteBehavior.NoAction);
-
         });
     }
 
@@ -112,7 +109,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod1).WithMany(x => x.OzelKod1BankaSubeler).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2BankaSubeler).OnDelete(DeleteBehavior.NoAction);
-
         });
     }
 
@@ -162,9 +158,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.BankaSube).WithMany(x => x.BankaHesaplar).OnDelete(DeleteBehavior.Cascade);
 
             b.HasOne(x => x.Sube).WithMany(x => x.BankaHesaplar).OnDelete(DeleteBehavior.Cascade);
-
         });
-
     }
 
     public static void ConfigureBirim(this ModelBuilder builder)
@@ -199,9 +193,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod1).WithMany(x => x.OzelKod1Birimler).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Birimler).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureCari(this ModelBuilder builder)
@@ -263,9 +255,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod1).WithMany(x => x.OzelKod1Cariler).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Cariler).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureDepo(this ModelBuilder builder)
@@ -304,9 +294,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Depolar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Sube).WithMany(x => x.Depolar).OnDelete(DeleteBehavior.Cascade);
-
         });
-
     }
 
     public static void ConfigureDonem(this ModelBuilder builder)
@@ -325,7 +313,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAdLength);
 
-
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
 
@@ -335,9 +322,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasIndex(x => x.Kod);
 
             //relations
-
         });
-
     }
 
     public static void ConfigureFatura(this ModelBuilder builder)
@@ -404,10 +389,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.Donem).WithMany(x => x.Faturalar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Sube).WithMany(x => x.Faturalar).OnDelete(DeleteBehavior.NoAction);
-
-
         });
-
     }
 
     public static void ConfigureFaturaHareket(this ModelBuilder builder)
@@ -436,7 +418,8 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.Miktar).HasColumnType(SqlDbType.Money.ToString());
 
-            b.Property(x => x.Fiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.AlisFiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.SatisFiyat).HasColumnType(SqlDbType.Money.ToString());
 
             b.Property(x => x.IndirimOran).HasColumnType(SqlDbType.TinyInt.ToString());
 
@@ -452,7 +435,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.GenelTutar).HasColumnType(SqlDbType.Money.ToString());
 
-
             //indexes
 
             //relations
@@ -465,9 +447,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.Masraf).WithMany(x => x.FaturaHareketleri).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Depo).WithMany(x => x.FaturaHareketleri).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureFirmaParametre(this ModelBuilder builder)
@@ -487,9 +467,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.DepoId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
-
             //indexes
-
 
             //relations
             b.HasOne(x => x.Sube).WithMany(x => x.FirmaParametreleri).OnDelete(DeleteBehavior.NoAction);
@@ -498,10 +476,8 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.HasOne(x => x.Depo).WithMany(x => x.FirmaParametreleri).OnDelete(DeleteBehavior.NoAction);
 
-            b.HasOne(x => x.User).WithOne().HasForeignKey<FirmaParametre>(x=>x.UserId);
-
+            b.HasOne(x => x.User).WithOne().HasForeignKey<FirmaParametre>(x => x.UserId);
         });
-
     }
 
     public static void ConfigureHizmet(this ModelBuilder builder)
@@ -526,9 +502,10 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.BirimId).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
-            b.Property(x => x.KdvOrani).HasColumnType(SqlDbType.TinyInt.ToString());
+            b.Property(x => x.KdvOran).HasColumnType(SqlDbType.TinyInt.ToString());
 
-            b.Property(x => x.BirimFiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.AlisFiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.SatisFiyat).HasColumnType(SqlDbType.Money.ToString());
 
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
@@ -547,9 +524,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Hizmetler).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Birim).WithMany(x => x.Hizmetler).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureKasa(this ModelBuilder builder)
@@ -588,9 +563,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Kasalar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Sube).WithMany(x => x.Kasalar).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureSube(this ModelBuilder builder)
@@ -609,7 +582,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAdLength);
 
-
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
 
@@ -619,9 +591,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasIndex(x => x.Kod);
 
             //relations
-
         });
-
     }
 
     public static void ConfigureStok(this ModelBuilder builder)
@@ -669,9 +639,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Stoklar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Birim).WithMany(x => x.Stoklar).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureOzelKod(this ModelBuilder builder)
@@ -703,9 +671,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasIndex(x => x.Kod);
 
             //relations
-
         });
-
     }
 
     public static void ConfigureMasraf(this ModelBuilder builder)
@@ -726,7 +692,8 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.Property(x => x.KdvOran).HasColumnType(SqlDbType.TinyInt.ToString());
 
-            b.Property(x => x.BirimFiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.AlisFiyat).HasColumnType(SqlDbType.Money.ToString());
+            b.Property(x => x.SatisFiyat).HasColumnType(SqlDbType.Money.ToString());
 
             b.Property(x => x.OzelKod1Id).HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
@@ -748,9 +715,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod2).WithMany(x => x.OzelKod2Masraflar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Birim).WithMany(x => x.Masraflar).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 
     public static void ConfigureMakbuz(this ModelBuilder builder)
@@ -825,10 +790,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.Sube).WithMany(x => x.Makbuzlar).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.Donem).WithMany(x => x.Makbuzlar).OnDelete(DeleteBehavior.NoAction);
-
-
         });
-
     }
 
     public static void ConfigureMakbuzHareket(this ModelBuilder builder)
@@ -879,7 +841,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.Property(x => x.Aciklama).HasColumnType(SqlDbType.VarChar.ToString()).
             HasMaxLength(EntityConsts.MaxAciklamaLength);
 
-
             //indexes
             b.HasIndex(x => x.TakipNo);
 
@@ -893,8 +854,6 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.Kasa).WithMany(x => x.MakbuzHareketleri).OnDelete(DeleteBehavior.NoAction);
 
             b.HasOne(x => x.BankaHesap).WithMany(x => x.MakbuzHareketler).OnDelete(DeleteBehavior.NoAction);
-
         });
-
     }
 }

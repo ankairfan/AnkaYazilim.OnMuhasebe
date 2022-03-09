@@ -1,0 +1,65 @@
+﻿@inherits DevBaseEditor
+
+<DxGridLayoutItem Column="ColumnIndex"
+                  Row="RowIndex"
+                  ColumnSpan="ColumnSpan"
+                  CssClass="@LayoutItemCssClass"
+                  RowSpan="RowSpan"
+                  Visible="Visible">
+    <Template>
+        <DxMaskedInput @ref="_dxMaskedInput"
+                       @bind-Value="@Value"
+                       CssClass="@EditorCssClass"
+                       DisplayFormat="n2"
+                       Enabled="Enabled"
+                       InputCssClass="InputCssClass"
+                       ReadOnly="ReadOnly"
+                       Mask="#,###,###,##0.00">
+            <DxNumericMaskProperties Culture="CultureInfo.CurrentCulture">
+
+            </DxNumericMaskProperties>
+        </DxMaskedInput>
+    </Template>
+</DxGridLayoutItem>
+
+<DevLabel Caption="@Caption"
+          ColumnIndex="ColumnIndex-2"
+          CssClass="@CaptionCssClass"
+          RowIndex="RowIndex"
+          Visible="Visible && CaptionVisible">
+</DevLabel>
+
+<DevLabel Caption="@SeperateCaption"
+          ColumnIndex="ColumnIndex-1"
+          CssClass="@CaptionCssClass"
+          RowIndex="RowIndex"
+          Visible="Visible && SeperateCaptionVisible">
+</DevLabel>
+
+
+    @code {
+    private DxMaskedInput<decimal> _dxMaskedInput;
+    private decimal _value;
+      
+    [Parameter] public EventCallback<decimal> ValueChanged { get; set; }
+
+        [Parameter]
+        public override string EditorCssClass { get; set; } = "currency";
+
+    [Parameter]
+    public decimal Value
+    {
+        get => _value;
+        set
+        {
+            if (_value == value) return;
+            _value = value;
+            ValueChanged.InvokeAsync(value);
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (IsFocus && Visible && firstRender)
+            await _dxMaskedInput.FocusAsync();
+    }
+    }

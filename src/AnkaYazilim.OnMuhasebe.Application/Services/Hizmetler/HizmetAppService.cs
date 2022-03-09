@@ -4,6 +4,7 @@ public class HizmetAppService : OnMuhasebeAppService, IHizmetAppService
 {
     private readonly IHizmetRepository _repository;
     private readonly HizmetManager _manager;
+
     public HizmetAppService(IHizmetRepository repository, HizmetManager manager)
     {
         _repository = repository;
@@ -31,7 +32,6 @@ public class HizmetAppService : OnMuhasebeAppService, IHizmetAppService
         return ObjectMapper.Map<Hizmet, SelectHizmetDto>(entity);
     }
 
-
     public virtual async Task<SelectHizmetDto> UpdateAsync(Guid id, UpdateHizmetDto input)
     {
         var entity = await _repository.GetAsync(id, x => x.Id == id);
@@ -47,8 +47,8 @@ public class HizmetAppService : OnMuhasebeAppService, IHizmetAppService
         await _repository.DeleteAsync(id);
     }
 
-    public virtual async Task<string> GetCodeAsync(CodeParameterDto input)
+    public virtual Task<string> GetCodeAsync(CodeParameterDto input)
     {
-        return await _repository.GetCodeAsync(x => x.Kod, x => x.Durum == input.Durum);
+        return _repository.GetCodeAsync(x => x.Kod, x => x.Durum == input.Durum);
     }
 }

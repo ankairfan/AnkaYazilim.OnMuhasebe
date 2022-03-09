@@ -4,7 +4,6 @@ public class CreateMasrafDtoValidator : AbstractValidator<CreateMasrafDto>
 {
     public CreateMasrafDtoValidator(IStringLocalizer<OnMuhasebeResource> localizer)
     {
-
         RuleFor(x => x.Kod)
             .NotEmpty()
             .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["Code"]])
@@ -28,7 +27,7 @@ public class CreateMasrafDtoValidator : AbstractValidator<CreateMasrafDto>
                     localizer["ToZero"],
                     localizer["ThanZero"]]);
 
-        RuleFor(x => x.BirimFiyat)
+        RuleFor(x => x.AlisFiyat)
           .GreaterThanOrEqualTo(0)
           .WithMessage(
               localizer[
@@ -37,6 +36,14 @@ public class CreateMasrafDtoValidator : AbstractValidator<CreateMasrafDto>
                   localizer["ToZero"],
                   localizer["ThanZero"]]);
 
+        RuleFor(x => x.SatisFiyat)
+  .GreaterThanOrEqualTo(0)
+  .WithMessage(
+      localizer[
+          OnMuhasebeDomainErrorCodes.GreaterThanOrEqual,
+          localizer["UnitPrice"],
+          localizer["ToZero"],
+          localizer["ThanZero"]]);
 
         RuleFor(x => x.BirimId)
             .Must(x => x.HasValue && x.Value != Guid.Empty)

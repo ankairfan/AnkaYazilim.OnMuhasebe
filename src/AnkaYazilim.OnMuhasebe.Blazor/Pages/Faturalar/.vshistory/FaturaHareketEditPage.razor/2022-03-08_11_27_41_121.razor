@@ -1,0 +1,69 @@
+﻿@inherits BaseEditPage
+
+@inject FaturaService FaturaService
+@inject FaturaHareketService Service
+@inject StokService StokService
+@inject HizmetService HizmetService
+@inject DepoService DepoService
+@inject MasrafService MasrafService
+
+
+
+<DevPopupHareketEditPageLayout CancelButtonText="@L["Cancel"]"
+                               Caption="@L["InvoiceRow"]"
+                               Closed="Service.HideEditPage"
+                               Height="400px"
+                               OnSubmit="Service.OnSubmit"
+                               Service="Service"
+                               SubmitButtonText="@L["Save"]"
+                               Width="860px">
+    <EditPageContent>
+        <DevGridLayout ColumnCount="11"
+                       ColumnWidths="@ColumnWidths("85", "3", "120", "25", "90", "3", "120","25","100","3","120")"
+                       RowCount="7">
+
+            <GridLayoutItems>
+                <DevComboBoxEnumEdit Caption="@L["RowType"]"
+                                     ColumnIndex="2"
+                                     DataSource="@(FillEnumToComboBox<FaturaHareketTuru>(L))"
+                                     RowIndex="0"
+                                     SelectedItemChanged="((e)Service.FaturaHareketTuruSelectedItemChanged(e,StateHasChanged)"
+                                     TextFieldName="@nameof(ComboBoxEnumItem<FaturaHareketTuru>.DisplayName)"
+                                     TItem="FaturaHareketTuru"
+                                     @bind-Value="@Service.TempDataSource.HareketTuru"
+                                     ValueFieldName="@nameof(ComboBoxEnumItem<FaturaHareketTuru>.Value)">
+                </DevComboBoxEnumEdit>
+
+                <DevButtonEdit ButtonClickInvokeFunction="() => { DepoService.BeforeShowPopupListPage( Service.TempDataSource.DepoId); }"
+                               Caption="@L["Unit"]"
+                               ColumnIndex="2"
+                               NullText="@L["SelectCard"]"
+                               RowIndex="2"
+                               Service="BirimService"
+                               @bind-Value="@Service.DataSource.BirimAdi">
+
+                </DevButtonEdit>
+
+            </GridLayoutItems>
+        </DevGridLayout>
+
+    </EditPageContent>
+
+</DevPopupHareketEditPageLayout>
+
+@if (OzelKodService.IsPopupListPage)
+{
+    <DevPopupListpageLayout DataGridService="OzelKodService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["CustomCodeCards"]"
+                        Closed="OzelKodService.HideListPage"
+                        SelectButtonInvokeFunction="(() => { OzelKodService.SelectEntity(Service.DataSource); })"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <OzelKodListPage />
+        </ListPageContent>
+
+    </DevPopupListpageLayout>
+}

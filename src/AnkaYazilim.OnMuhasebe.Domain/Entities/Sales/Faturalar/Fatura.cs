@@ -1,12 +1,12 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.Sales.Faturalar;
 
-public class Fatura:FullAuditedAggregateRoot<Guid>
+public class Fatura : FullAuditedAggregateRoot<Guid>
 {
     public FaturaTuru FaturaTuru { get; set; }
     public string FaturaNo { get; set; }
     public DateTime Tarih { get; set; }
     public decimal BrutTutar { get; set; }
-    public decimal? IndirimTutari { get; set; }
+    public decimal IndirimTutari { get; set; }
     public decimal NetTutar { get; set; }
     public decimal KdvTutar { get; set; }
     public decimal GenelTutar { get; set; }
@@ -26,7 +26,4 @@ public class Fatura:FullAuditedAggregateRoot<Guid>
     public Donem Donem { get; set; }
 
     public ICollection<FaturaHareket> FaturaHareketleri { get; set; }
-
-
-
 }

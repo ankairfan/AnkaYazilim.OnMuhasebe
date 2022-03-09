@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.FaturaHareketler;
 
-public class FaturaHareketReportDto:EntityDto<Guid>
+public class FaturaHareketReportDto : EntityDto<Guid>
 {
     public string HareketTuru { get; set; }
     public string HareketAdi { get; set; }
@@ -14,15 +14,15 @@ public class FaturaHareketReportDto:EntityDto<Guid>
     public string DepoKodu { get; set; }
     public string DepoAdi { get; set; }
     public string BirimAdi { get; set; }
-    public decimal Miktar { get; set; }
-    public decimal Fiyat { get; set; }
+    public decimal? Miktar { get; set; }
+    public decimal? AlisFiyat { get; set; }
+    public decimal? SatisFiyat { get; set; }
     public byte? IndirimOran { get; set; }
     public byte? KdvOran { get; set; }
     public decimal BrutTutar { get; set; }
     public decimal? IndirimTutar { get; set; }
-    public decimal NetTutar { get; set; }
+    public decimal? NetTutar { get; set; }
     public decimal? KdvTutar { get; set; }
-    public decimal GenelTutar { get; set; }
+    public decimal? GenelTutar { get; set; }
     public string Aciklama { get; set; }
-
 }

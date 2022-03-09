@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.Masraflar;
 
-public class MasrafManager:DomainService
+public class MasrafManager : DomainService
 {
     private readonly IMasrafRepository _masrafRepository;
     private readonly IOzelKodRepository _ozelKodRepository;
@@ -12,6 +12,7 @@ public class MasrafManager:DomainService
         _ozelKodRepository = ozelKodRepository;
         _birimRepository = birimRepository;
     }
+
     public async Task CheckCreateAsync(string kod, Guid? birimId, Guid? ozelKod1Id, Guid? ozelKod2Id)
     {
         await _masrafRepository.KodAnyAsync(kod, x => x.Kod == kod);
@@ -28,8 +29,8 @@ public class MasrafManager:DomainService
         await _ozelKodRepository.EntityAnyAsync(ozelKod2Id, OzelKodTuru.OzelKod2, KartTuru.Masraf, entity.OzelKod2Id != ozelKod2Id);
     }
 
-    public async Task CheckDeleteAsync(Guid id)
+    public Task CheckDeleteAsync(Guid id)
     {
-        await _masrafRepository.RelationalEntityAnyAsync(x => x.FaturaHareketleri.Any(y => y.MasrafId == id));
+        return _masrafRepository.RelationalEntityAnyAsync(x => x.FaturaHareketleri.Any(y => y.MasrafId == id));
     }
 }
