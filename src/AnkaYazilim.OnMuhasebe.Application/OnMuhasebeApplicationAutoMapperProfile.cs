@@ -237,7 +237,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //Makbuz
         CreateMap<Makbuz, SelectMakbuzDto>()
-            .ForMember(x => x.CariAdi, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Ad))
             .ForMember(x => x.CariKodu, y => y.MapFrom(z => z.Cari.Kod))
             .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
@@ -246,7 +246,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<Makbuz, ListMakbuzDto>()
-            .ForMember(x => x.CariAdi, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Ad))
             .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))

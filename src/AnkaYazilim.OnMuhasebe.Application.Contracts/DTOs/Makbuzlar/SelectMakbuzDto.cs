@@ -4,10 +4,10 @@ public class SelectMakbuzDto : EntityDto<Guid>, IOzelKod
 {
     public MakbuzTuru? MakbuzTuru { get; set; }
     public string MakbuzNo { get; set; }
-    public DateTime? Tarih { get; set; }
+    public DateTime Tarih { get; set; }
     public Guid? CariId { get; set; }
     public string CariKodu { get; set; }
-    public string CariAdi { get; set; }
+    public string Unvan { get; set; }
     public Guid? KasaId { get; set; }
     public string KasaAdi { get; set; }
     public Guid? BankaHesapId { get; set; }
@@ -18,7 +18,12 @@ public class SelectMakbuzDto : EntityDto<Guid>, IOzelKod
     public decimal PosToplamTutar { get; set; }
     public decimal NakitToplamTutar { get; set; }
     public decimal BankaToplamTutar { get; set; }
-    public decimal GenelToplam => CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
+    public decimal GenelToplam
+    {
+        get => CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
+        set => throw new NotImplementedException();
+    }
+
     public Guid? OzelKod1Id { get; set; }
     public string OzelKod1Adi { get; set; }
     public Guid? OzelKod2Id { get; set; }

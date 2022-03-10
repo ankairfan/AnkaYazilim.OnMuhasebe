@@ -87,7 +87,7 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
     public virtual void GetTotal()
     { }
 
-    public void BeforeUpdate()
+    public virtual void BeforeUpdate()
     {
         DataSource = SelectedItem;
         EditPageVisible = true;
