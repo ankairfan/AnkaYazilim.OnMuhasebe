@@ -3,18 +3,18 @@
 @inject FaturaService Service
 @inject OzelKodService OzelKodService
 @inject CariService CariService
-@inject FaturaHareketService FaturaHareketService
+@inject FaturaHareketSatisService FaturaHareketService
 
 
 
 <DevPopUpEditpageLayout CancelButtonText="@L["Cancel"]"
                         EditPageService="Service"
                         Caption="@L["InvoiceCard"]"
-                        Height="870"
+                        Height="900px"
                         ListPageService="Service"
                         OnSubmit="OnSubmit"
                         SubmitButtonText="@L["Save"]"
-                        Width="870">
+                        Width="910px">
     <EditPageContent>
         <DevGridLayout ColumnCount="11"
                        ColumnWidths="@ColumnWidths("75", "3", "170", "20", "60", "3", "125","20","100","80","80")"

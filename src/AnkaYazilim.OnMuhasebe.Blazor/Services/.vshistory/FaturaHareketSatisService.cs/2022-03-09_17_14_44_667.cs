@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Services;
 
-public class FaturaHareketService : BaseHareketService<SelectFaturaHareketDto>, IScopedDependency
+public class FaturaHareketSatisService : BaseHareketService<SelectFaturaHareketDto>, IScopedDependency
 {
     public FaturaService FaturaService { get; set; }//property injection
     public AppService AppService { get; set; }//property injection
@@ -16,6 +16,7 @@ public class FaturaHareketService : BaseHareketService<SelectFaturaHareketDto>, 
 
         EditPageVisible = true;
     }
+
 
     public override void GetTotal()
     {
@@ -59,7 +60,6 @@ public class FaturaHareketService : BaseHareketService<SelectFaturaHareketDto>, 
         TempDataSource.HizmetAdi = null;
         TempDataSource.HizmetKodu = null;
         TempDataSource.AlisFiyat = 0;
-        TempDataSource.SatisFiyat = 0;
         TempDataSource.KdvOran = 0;
 
         if (TempDataSource.HareketTuru == FaturaHareketTuru.Stok)
@@ -79,12 +79,10 @@ public class FaturaHareketService : BaseHareketService<SelectFaturaHareketDto>, 
         TempDataSource.GetType().GetProperty(propertyName).SetValue(TempDataSource, value);
 
         TempDataSource.BrutTutar = TempDataSource.Miktar * TempDataSource.AlisFiyat;
-        TempDataSource.BrutTutar = TempDataSource.Miktar * TempDataSource.SatisFiyat;
 
         TempDataSource.IndirimTutar = TempDataSource.IndirimTutar > TempDataSource.BrutTutar ? TempDataSource.BrutTutar : TempDataSource.IndirimTutar;
 
         TempDataSource.NetTutar = (TempDataSource.Miktar * TempDataSource.AlisFiyat) - TempDataSource.IndirimTutar;
-        TempDataSource.NetTutar = (TempDataSource.Miktar * TempDataSource.SatisFiyat) - TempDataSource.IndirimTutar;
 
         TempDataSource.KdvTutar = TempDataSource.NetTutar * TempDataSource.KdvOran / 100;
 

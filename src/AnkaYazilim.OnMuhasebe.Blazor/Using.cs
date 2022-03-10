@@ -43,3 +43,6 @@ global using Volo.Abp.AspNetCore.Components;
 global using Volo.Abp.AspNetCore.Components.Messages;
 global using Volo.Abp.BlazoriseUI;
 global using Volo.Abp.DependencyInjection;
+global using AnkaYazilim.OnMuhasebe.DTOs.MakbuzHareketler;
+global using AnkaYazilim.OnMuhasebe.Makbuzlar;
+

@@ -25,7 +25,7 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
         return mappedDto;
     }
 
-    public virtual async Task<PagedResultDto<ListMakbuzDto>> GetListAsync(MakbuzListparameterDto input)
+    public virtual async Task<PagedResultDto<ListMakbuzDto>> GetListAsync(MakbuzListParameterDto input)
     {
         var entities = await _repository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, x => x.MakbuzTuru == input.MakbuzTuru && x.SubeId ==
           input.SubeId && x.DonemId == input.DonemId && x.Durum == input.Durum, x => x.MakbuzNo, x => x.Cari, x => x.Kasa, x => x.BankaHesap, x => x.OzelKod1, x => x.OzelKod2);

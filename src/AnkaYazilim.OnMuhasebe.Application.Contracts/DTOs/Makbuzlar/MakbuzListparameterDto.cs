@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.Makbuzlar;
 
-public class MakbuzListparameterDto : PagedResultRequestDto, IDurum, IEntityDto
+public class MakbuzListParameterDto : PagedResultRequestDto, IDurum, IEntityDto
 {
     public MakbuzTuru MakbuzTuru { get; set; }
     public Guid SubeId { get; set; }

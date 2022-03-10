@@ -3,8 +3,8 @@
 public class ListMakbuzDto : EntityDto<Guid>
 {
     public string MakbuzNo { get; set; }
-    public DateTime? Tarih { get; set; }
-    public string CariAdi { get; set; }
+    public DateTime Tarih { get; set; }
+    public string Unvan { get; set; }
     public string KasaAdi { get; set; }
     public string BankaHesapAdi { get; set; }
     public int HareketSayisi { get; set; }

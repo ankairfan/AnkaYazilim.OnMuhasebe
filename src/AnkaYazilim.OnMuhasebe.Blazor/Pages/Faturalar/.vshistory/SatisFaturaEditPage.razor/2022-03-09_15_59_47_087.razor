@@ -3,7 +3,7 @@
 @inject FaturaService Service
 @inject OzelKodService OzelKodService
 @inject CariService CariService
-@inject FaturaHareketService FaturaHareketService
+@inject FaturaHareketSatisService FaturaHareketSatisService
 
 
 
@@ -86,17 +86,17 @@
                 </DevMemoEdit>
                 <DevHareketDataGrid ColumnIndex="0"
                                     ColumnSpan="11"
-                                    DataSource="FaturaHareketService.ListDataSource.ToList()"
-                                    DoubleClick="FaturaHareketService.BeforeUpdate"
+                                    DataSource="FaturaHareketSatisService.ListDataSource.ToList()"
+                                    DoubleClick="FaturaHareketSatisService.BeforeUpdate"
                                     L="L"
                                     RowIndex="4"
-                                    Service="FaturaHareketService"
+                                    Service="FaturaHareketSatisService"
                                     ToolbarCaption="@L["InvoiceRows"]"
-                                    ToolbarDeleteButtonClick="FaturaHareketService.DeleteAsync"
-                                    ToolbarDeleteButtonEnabled="FaturaHareketService.ListDataSource.Count > 0"
-                                    ToolbarNewButtonClick="FaturaHareketService.BeforeInsert"
-                                    ToolbarUpdateButtonClick="FaturaHareketService.BeforeUpdate"
-                                    ToolbarUpdateButtonEnabled="FaturaHareketService.ListDataSource.Count > 0">
+                                    ToolbarDeleteButtonClick="FaturaHareketSatisService.DeleteAsync"
+                                    ToolbarDeleteButtonEnabled="FaturaHareketSatisService.ListDataSource.Count > 0"
+                                    ToolbarNewButtonClick="FaturaHareketSatisService.BeforeInsert"
+                                    ToolbarUpdateButtonClick="FaturaHareketSatisService.BeforeUpdate"
+                                    ToolbarUpdateButtonEnabled="FaturaHareketSatisService.ListDataSource.Count > 0">
                     <Columns>
                         <DxDataGridColumn Caption="@L["RowTypeName"]"
                                           Field="@nameof(SelectFaturaHareketDto.HareketTuruAdi)"
@@ -225,7 +225,7 @@
 
 </DevPopUpEditpageLayout>
 
-@if(FaturaHareketService.EditPageVisible)
+@if(FaturaHareketSatisService.EditPageVisible)
 {
     <FaturaHareketSatisEditPage/>
 }
@@ -268,7 +268,7 @@
 
     protected override void OnParametersSet()
     {
-        Service.FillTable(FaturaHareketService, StateHasChanged);
+        Service.FillTable(FaturaHareketSatisService, StateHasChanged);
     }
 
 }

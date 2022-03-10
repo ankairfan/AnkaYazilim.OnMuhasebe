@@ -10,14 +10,14 @@
 <DevPopUpEditpageLayout CancelButtonText="@L["Cancel"]"
                         EditPageService="Service"
                         Caption="@L["InvoiceCard"]"
-                        Height="870"
+                        Height="900px"
                         ListPageService="Service"
                         OnSubmit="OnSubmit"
                         SubmitButtonText="@L["Save"]"
-                        Width="870">
+                        Width="910px">
     <EditPageContent>
         <DevGridLayout ColumnCount="11"
-                       ColumnWidths="@ColumnWidths("75", "3", "170", "20", "60", "3", "125","20","100","80","80")"
+                       ColumnWidths="@ColumnWidths("75", "3", "170", "20", "60", "3", "125","20","100","80")"
                        RowCount="6"
                        RowHeights="@RowHeights("28","28","28","28","*","50")">
 
@@ -120,7 +120,7 @@
                                                   Width="100px" />
                         <DxDataGridSpinEditColumn Caption="@L["UnitPrice"]"
                                                   DisplayFormat="n2"
-                                                  Field="@nameof(SelectFaturaHareketDto.SatisFiyat)"
+                                                  Field="@nameof(SelectFaturaHareketDto.AlisFiyat)"
                                                   Width="113px" />
                         <DxDataGridSpinEditColumn Caption="@L["GrossTotal"]"
                                                   DisplayFormat="n2"
@@ -225,12 +225,6 @@
 
 </DevPopUpEditpageLayout>
 
-@if(FaturaHareketService.EditPageVisible)
-{
-    <FaturaHareketSatisEditPage/>
-}
-
-
 @if (CariService.IsPopupListPage)
 {
     <DevPopupListpageLayout DataGridService="CariService"
@@ -263,12 +257,4 @@
         </ListPageContent>
 
     </DevPopupListpageLayout>
-}
-@code{
-
-    protected override void OnParametersSet()
-    {
-        Service.FillTable(FaturaHareketService, StateHasChanged);
-    }
-
 }
