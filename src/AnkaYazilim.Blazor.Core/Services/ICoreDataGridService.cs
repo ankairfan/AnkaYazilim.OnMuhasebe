@@ -14,6 +14,7 @@ public interface ICoreDataGridService<TDataGridItem>
     public bool IsLoaded { get; set; }
     public bool ShowSelectionCheckBox { get; set; }
     public Guid PopupListPageFocusedRowId { get; set; }
+    public IList<string> ExcludeListItems { get; set; }
 
     void ShowListPage(bool firstRender);
 

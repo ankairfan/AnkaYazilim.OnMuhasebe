@@ -6,4 +6,7 @@ public class OdemeBelgesiService:BaseService<ListOdemeBelgesiDto,SelectMakbuzHar
 {
     public AppService AppService { get; set; }
     public MakbuzService MakbuzService { get; set; }
+    public string OdemeTurleri { get; set; }
+    public bool KendiBelgemiz { get; set; }
+    
 }
