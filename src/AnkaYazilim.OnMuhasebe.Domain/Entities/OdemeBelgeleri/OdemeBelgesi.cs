@@ -15,12 +15,12 @@ public class OdemeBelgesi:Entity<Guid>
     public string AsilBorclu { get; set; }
     public string Ciranta { get; set; }
     public Guid? BankaHesapId { get; set; }
-    public string BankaHesapAdı { get; set; }
+    public string BankaHesapAdi { get; set; }
     public decimal Tutar { get; set; }
     public BelgeDurumu BelgeDurumu { get; set; }
     public bool KendiBelgemiz { get; set; }
     public string Aciklama { get; set; }
-    
-    
-    
 }
+    
+    
+    

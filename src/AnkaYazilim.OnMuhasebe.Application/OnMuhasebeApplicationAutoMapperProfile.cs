@@ -300,6 +300,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //ÖdemeBelgesi
         CreateMap<OdemeBelgesi, ListOdemeBelgesiDto>();
+        CreateMap<ListOdemeBelgesiDto, SelectMakbuzHareketDto>();
         
         //OzelKod
         CreateMap<OzelKod, SelectOzelKodDto>();

@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Makbuzlar;
 
-public enum OdemeTuru
+public enum OdemeTuru:byte
 {
     Cek=1,
     Senet=2,
