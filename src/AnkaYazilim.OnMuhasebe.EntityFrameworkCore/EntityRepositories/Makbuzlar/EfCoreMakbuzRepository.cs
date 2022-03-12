@@ -14,9 +14,9 @@ public class EfCoreMakbuzRepository : EfCoreCommonRepository<Makbuz>, IMakbuzRep
             .Include(x => x.BankaHesap)
             .Include(x => x.OzelKod1)
             .Include(x => x.OzelKod2)
-            .Include(x => x.MakbuzHareketleri).ThenInclude(x => x.CekBanka)
-            .Include(x => x.MakbuzHareketleri).ThenInclude(x => x.CekBankaSube)
-            .Include(x => x.MakbuzHareketleri).ThenInclude(x => x.Kasa)
-            .Include(x => x.MakbuzHareketleri).ThenInclude(x => x.BankaHesap);
+            .Include(x => x.MakbuzHareketler).ThenInclude(x => x.CekBanka)
+            .Include(x => x.MakbuzHareketler).ThenInclude(x => x.CekBankaSube)
+            .Include(x => x.MakbuzHareketler).ThenInclude(x => x.Kasa)
+            .Include(x => x.MakbuzHareketler).ThenInclude(x => x.BankaHesap);
     }
 }

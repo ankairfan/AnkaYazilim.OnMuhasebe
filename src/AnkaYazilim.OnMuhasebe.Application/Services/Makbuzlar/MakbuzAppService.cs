@@ -5,6 +5,7 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
     private readonly IMakbuzRepository _repository;
     private readonly MakbuzManager _manager;
     private readonly MakbuzHareketManager _hareketManager;
+
     public MakbuzAppService(IMakbuzRepository repository, MakbuzManager manager, MakbuzHareketManager hareketManager)
     {
         _repository = repository;
@@ -35,6 +36,7 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
 
         return new PagedResultDto<ListMakbuzDto>(totalCount, ObjectMapper.Map<List<Makbuz>, List<ListMakbuzDto>>(entities));
     }
+
     public virtual async Task<SelectMakbuzDto> CreateAsync(CreateMakbuzDto input)
     {
         await _manager.CheckCreateAsync(input.MakbuzNo, input.MakbuzTuru.Value, input.CariId, input.KasaId, input.BankaHesapId,
@@ -52,7 +54,7 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
 
     public virtual async Task<SelectMakbuzDto> UpdateAsync(Guid id, UpdateMakbuzDto input)
     {
-        var entity = await _repository.GetAsync(id, x => x.Id == id, x => x.MakbuzHareketleri);
+        var entity = await _repository.GetAsync(id, x => x.Id == id, x => x.MakbuzHareketler);
 
         await _manager.CheckUpdateAsync(id, input.MakbuzNo, entity, input.CariId, input.KasaId, input.BankaHesapId, input.OzelKod1Id, input.OzelKod2Id);
 
@@ -60,18 +62,18 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
         {
             await _hareketManager.CheckUpdateAsync(makbuzHareketDto.CekBankaId, makbuzHareketDto.CekBankaSubeId, makbuzHareketDto.KasaId, makbuzHareketDto.BankaHesapId);
 
-            var makbuzHareket = entity.MakbuzHareketleri.FirstOrDefault(x => x.Id == makbuzHareketDto.Id);
+            var makbuzHareket = entity.MakbuzHareketler.FirstOrDefault(x => x.Id == makbuzHareketDto.Id);
 
             if (makbuzHareket == null)
             {
-                entity.MakbuzHareketleri.Add(ObjectMapper.Map<MakbuzHareketDto, MakbuzHareket>(makbuzHareketDto));
+                entity.MakbuzHareketler.Add(ObjectMapper.Map<MakbuzHareketDto, MakbuzHareket>(makbuzHareketDto));
                 continue;
             }
             ObjectMapper.Map(makbuzHareketDto, makbuzHareket);
         }
 
-        var deletedEntities = entity.MakbuzHareketleri.Where(x => input.MakbuzHareketler.Select(y => y.Id).ToList().IndexOf(x.Id) == -1);
-        entity.MakbuzHareketleri.RemoveAll(deletedEntities);
+        var deletedEntities = entity.MakbuzHareketler.Where(x => input.MakbuzHareketler.Select(y => y.Id).ToList().IndexOf(x.Id) == -1);
+        entity.MakbuzHareketler.RemoveAll(deletedEntities);
         ObjectMapper.Map(input, entity);
         await _repository.UpdateAsync(entity);
         return ObjectMapper.Map<Makbuz, SelectMakbuzDto>(entity);
@@ -79,9 +81,9 @@ public class MakbuzAppService : OnMuhasebeAppService, IMakbuzAppService
 
     public virtual async Task DeleteAsync(Guid id)
     {
-        var entity = await _repository.GetAsync(id, x => x.Id == id, x => x.MakbuzHareketleri);
+        var entity = await _repository.GetAsync(id, x => x.Id == id, x => x.MakbuzHareketler);
         await _repository.DeleteAsync(entity);
-        entity.MakbuzHareketleri.RemoveAll(entity.MakbuzHareketleri);
+        entity.MakbuzHareketler.RemoveAll(entity.MakbuzHareketler);
     }
 
     public virtual async Task<string> GetCodeAsync(MakbuzNoParameterDto input)

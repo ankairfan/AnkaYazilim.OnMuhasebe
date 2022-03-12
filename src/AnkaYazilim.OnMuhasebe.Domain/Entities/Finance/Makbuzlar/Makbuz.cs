@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar;
 
-public class Makbuz:FullAuditedAggregateRoot<Guid>
+public class Makbuz : FullAuditedAggregateRoot<Guid>
 {
     public MakbuzTuru MakbuzTuru { get; set; }
     public string MakbuzNo { get; set; }
@@ -16,8 +16,8 @@ public class Makbuz:FullAuditedAggregateRoot<Guid>
     public decimal? BankaToplamTutar { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public Guid? OzelKod2Id { get; set; }
-    public Guid SubeId{ get; set; }
-    public Guid DonemId{ get; set; }
+    public Guid SubeId { get; set; }
+    public Guid DonemId { get; set; }
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
 
@@ -29,6 +29,5 @@ public class Makbuz:FullAuditedAggregateRoot<Guid>
     public Sube Sube { get; set; }
     public Donem Donem { get; set; }
 
-    public ICollection<MakbuzHareket> MakbuzHareketleri { get; set; }
-
+    public ICollection<MakbuzHareket> MakbuzHareketler { get; set; }
 }

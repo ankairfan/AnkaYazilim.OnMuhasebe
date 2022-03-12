@@ -1,4 +1,7 @@
-﻿namespace AnkaYazilim.OnMuhasebe;
+﻿using AnkaYazilim.OnMuhasebe.DTOs.OdemeBelgeleri;
+using AnkaYazilim.OnMuhasebe.Entities.OdemeBelgeleri;
+
+namespace AnkaYazilim.OnMuhasebe;
 
 public class OnMuhasebeApplicationAutoMapperProfile : Profile
 {
@@ -237,7 +240,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
 
         //Makbuz
         CreateMap<Makbuz, SelectMakbuzDto>()
-            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Unvan))
             .ForMember(x => x.CariKodu, y => y.MapFrom(z => z.Cari.Kod))
             .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
@@ -246,7 +249,7 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
 
         CreateMap<Makbuz, ListMakbuzDto>()
-            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Ad))
+            .ForMember(x => x.Unvan, y => y.MapFrom(z => z.Cari.Unvan))
             .ForMember(x => x.KasaAdi, y => y.MapFrom(z => z.Kasa.Ad))
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad))
             .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
@@ -255,7 +258,10 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<CreateMakbuzDto, Makbuz>();
         CreateMap<UpdateMakbuzDto, Makbuz>()
             .ForMember(x => x.MakbuzTuru, y => y.Ignore())
-            .ForMember(x => x.MakbuzHareketleri, y => y.Ignore());
+            .ForMember(x => x.MakbuzHareketler, y => y.Ignore());
+        CreateMap<SelectMakbuzDto, CreateMakbuzDto>();
+        CreateMap<SelectMakbuzDto, UpdateMakbuzDto>();
+        CreateMap<SelectMakbuzDto, MakbuzReportDto>();
 
         //MakbuzHareket
         CreateMap<MakbuzHareket, SelectMakbuzHareketDto>()
@@ -265,6 +271,8 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.BankaHesapAdi, y => y.MapFrom(z => z.BankaHesap.Ad));
 
         CreateMap<MakbuzHareketDto, MakbuzHareket>();
+        CreateMap<SelectMakbuzHareketDto, MakbuzHareketDto>();
+        CreateMap<SelectMakbuzHareketDto, SelectMakbuzHareketDto>();
 
         //Masraf
         CreateMap<Masraf, SelectMasrafDto>()
@@ -290,6 +298,9 @@ public class OnMuhasebeApplicationAutoMapperProfile : Profile
         CreateMap<SelectMasrafDto, CreateMasrafDto>();
         CreateMap<SelectMasrafDto, UpdateMasrafDto>();
 
+        //ÖdemeBelgesi
+        CreateMap<OdemeBelgesi, ListOdemeBelgesiDto>();
+        
         //OzelKod
         CreateMap<OzelKod, SelectOzelKodDto>();
         CreateMap<OzelKod, ListOzelKodDto>();
