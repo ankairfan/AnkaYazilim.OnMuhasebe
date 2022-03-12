@@ -3741,7 +3741,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar.Makbuz", "Makbuz")
-                        .WithMany("MakbuzHareketleri")
+                        .WithMany("MakbuzHareketler")
                         .HasForeignKey("MakbuzId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -4312,7 +4312,7 @@ namespace AnkaYazilim.OnMuhasebe.Migrations
 
             modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Finance.Makbuzlar.Makbuz", b =>
                 {
-                    b.Navigation("MakbuzHareketleri");
+                    b.Navigation("MakbuzHareketler");
                 });
 
             modelBuilder.Entity("AnkaYazilim.OnMuhasebe.Entities.Hizmetler.Hizmet", b =>

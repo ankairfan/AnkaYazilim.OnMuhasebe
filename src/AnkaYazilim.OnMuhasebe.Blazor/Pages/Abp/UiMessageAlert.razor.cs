@@ -1,4 +1,5 @@
-﻿using DevExpress.Blazor;
+﻿using Blazorise;
+using Volo.Abp.BlazoriseUI;
 
 namespace AnkaYazilim.OnMuhasebe.Blazor.Pages.Abp;
 
@@ -80,7 +81,6 @@ public partial class UiMessageAlert : ComponentBase, IDisposable
     [Parameter] public ButtonRenderStyleMode OkButtonRenderStyleMode { get; set; } = ButtonRenderStyleMode.Outline;
     [Parameter] public ButtonRenderStyle OkButtonRenderStyle { get; set; } = ButtonRenderStyle.Secondary;
 
-
     [Inject] protected BlazoriseUiMessageService UiMessageService { get; set; }
 
     protected override void OnInitialized()
@@ -109,44 +109,44 @@ public partial class UiMessageAlert : ComponentBase, IDisposable
         }
     }
 
-    protected async Task OnOkClicked()
+    protected Task OnOkClicked()
     {
-        await InvokeAsync(async () =>
-        {
-            await Okayed.InvokeAsync(null);
+        return InvokeAsync(async () =>
+         {
+             await Okayed.InvokeAsync(null);
 
-            await ModalRef.CloseAsync();
-        });
+             await ModalRef.CloseAsync();
+         });
     }
 
-    protected async Task OnConfirmClicked()
+    protected Task OnConfirmClicked()
     {
-        await InvokeAsync(async () =>
-        {
-            await ModalRef.CloseAsync();
+        return InvokeAsync(async () =>
+         {
+             await ModalRef.CloseAsync();
 
-            if (IsConfirmation && Callback != null)
-            {
-                await InvokeAsync(() => Callback.SetResult(true));
-            }
+             if (IsConfirmation && Callback != null)
+             {
+                 await InvokeAsync(() => Callback.SetResult(true));
+             }
 
-            await Confirmed.InvokeAsync(null);
-        });
+             await Confirmed.InvokeAsync(null);
+         });
     }
 
-    protected async Task OnCancelClicked()
+    protected Task OnCancelClicked()
     {
-        await InvokeAsync(async () =>
-        {
-            await ModalRef.CloseAsync();
+        return InvokeAsync(async () =>
+         {
+             await ModalRef.CloseAsync();
 
-            if (IsConfirmation && Callback != null)
-            {
-                await InvokeAsync(() => Callback.SetResult(false));
-            }
+             if (IsConfirmation && Callback != null)
+             {
+                 await InvokeAsync(() => Callback.SetResult(false));
+             }
 
-            await Canceled.InvokeAsync(null);
-        });
+             await Canceled.InvokeAsync(null);
+         });
     }
 
     protected virtual Task OnModalClosing(ModalClosingEventArgs eventArgs)

@@ -1,4 +1,6 @@
-﻿namespace AnkaYazilim.OnMuhasebe.Configurations;
+﻿using AnkaYazilim.OnMuhasebe.Entities.OdemeBelgeleri;
+
+namespace AnkaYazilim.OnMuhasebe.Configurations;
 
 public static class OnMuhasebeDbContextModelBuilderExtensions
 {
@@ -845,7 +847,7 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasIndex(x => x.TakipNo);
 
             //relations
-            b.HasOne(x => x.Makbuz).WithMany(x => x.MakbuzHareketleri).OnDelete(DeleteBehavior.Cascade);
+            b.HasOne(x => x.Makbuz).WithMany(x => x.MakbuzHareketler).OnDelete(DeleteBehavior.Cascade);
 
             b.HasOne(x => x.CekBanka).WithMany(x => x.MakbuzHareketleri).OnDelete(DeleteBehavior.NoAction);
 
@@ -855,5 +857,11 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
 
             b.HasOne(x => x.BankaHesap).WithMany(x => x.MakbuzHareketler).OnDelete(DeleteBehavior.NoAction);
         });
+    }
+    
+    public static void ConfigureStoredProcedure(this ModelBuilder builder)
+    {
+        builder.Entity<OdemeBelgesi>();
+
     }
 }

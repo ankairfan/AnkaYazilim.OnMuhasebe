@@ -18,10 +18,14 @@ public class SelectMakbuzDto : EntityDto<Guid>, IOzelKod
     public decimal PosToplamTutar { get; set; }
     public decimal NakitToplamTutar { get; set; }
     public decimal BankaToplamTutar { get; set; }
+
     public decimal GenelToplam
     {
-        get => CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
-        set => throw new NotImplementedException();
+        get
+        {
+            return CekToplamTutar + SenetToplamTutar + PosToplamTutar + NakitToplamTutar + BankaToplamTutar;
+        }
+        set { }
     }
 
     public Guid? OzelKod1Id { get; set; }
@@ -34,6 +38,4 @@ public class SelectMakbuzDto : EntityDto<Guid>, IOzelKod
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
     public List<SelectMakbuzHareketDto> MakbuzHareketler { get; set; }
-
 }
-

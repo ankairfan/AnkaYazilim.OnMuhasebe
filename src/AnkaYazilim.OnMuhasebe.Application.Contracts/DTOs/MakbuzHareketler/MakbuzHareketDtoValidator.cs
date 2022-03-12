@@ -114,8 +114,8 @@ public class MakbuzHareketDtoValidator : AbstractValidator<MakbuzHareketDto>
 
         RuleFor(x => x.BankaHesapId)
         .NotEmpty()
-        .When(x => x.OdemeTuru == OdemeTuru.Banka|| x.OdemeTuru == OdemeTuru.Pos)
-        .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["Bank"]]);
+        .When(x => x.OdemeTuru == OdemeTuru.Banka || x.OdemeTuru == OdemeTuru.Pos)
+        .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["BankAccount"]]);
 
         RuleFor(x => x.Tutar)
             .GreaterThanOrEqualTo(0)
@@ -126,14 +126,12 @@ public class MakbuzHareketDtoValidator : AbstractValidator<MakbuzHareketDto>
                     localizer["ToZero"],
                     localizer["ThanZero"]]);
 
-
         RuleFor(x => x.BelgeDurumu)
            .IsInEnum()
            .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["DocumentStatus"]])
 
            .NotEmpty()
            .WithMessage(localizer[OnMuhasebeDomainErrorCodes.Required, localizer["DocumentStatus"]]);
-
 
         RuleFor(x => x.Aciklama)
             .MaximumLength(EntityConsts.MaxAciklamaLength)

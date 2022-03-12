@@ -96,5 +96,6 @@ public class OnMuhasebeDbContext :
         builder.ConfigureMasraf();
         builder.ConfigureMakbuz();
         builder.ConfigureMakbuzHareket();
+        builder.ConfigureStoredProcedure();
     }
 }
