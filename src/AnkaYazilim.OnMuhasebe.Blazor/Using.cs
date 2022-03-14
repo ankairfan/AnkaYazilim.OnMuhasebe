@@ -7,7 +7,6 @@ global using AnkaYazilim.Blazor.Core.Helpers;
 global using AnkaYazilim.Blazor.Core.Models;
 global using AnkaYazilim.Blazor.Core.Services;
 global using AnkaYazilim.OnMuhasebe.BankaHesaplar;
-global using AnkaYazilim.OnMuhasebe.Blazor.Helpers;
 global using AnkaYazilim.OnMuhasebe.Blazor.Services;
 global using AnkaYazilim.OnMuhasebe.Blazor.Services.Base;
 global using AnkaYazilim.OnMuhasebe.CommonDtos;

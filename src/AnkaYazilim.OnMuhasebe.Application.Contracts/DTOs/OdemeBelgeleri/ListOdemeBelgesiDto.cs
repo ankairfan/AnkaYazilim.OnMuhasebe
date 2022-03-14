@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.DTOs.OdemeBelgeleri;
 
-public class ListOdemeBelgesiDto:EntityDto<Guid>
+public class ListOdemeBelgesiDto : EntityDto<Guid>
 {
     public Guid MakbuzId { get; set; }
     public OdemeTuru OdemeTuru { get; set; }
@@ -17,7 +17,7 @@ public class ListOdemeBelgesiDto:EntityDto<Guid>
     public string Ciranta { get; set; }
     public Guid? KasaId { get; set; }
     public Guid? BankaHesapId { get; set; }
-    public string BankaHesapAdı { get; set; }
+    public string BankaHesapAdi { get; set; }
     public decimal Tutar { get; set; }
     public BelgeDurumu BelgeDurumu { get; set; }
     public string BelgeDurumuAdi { get; set; }

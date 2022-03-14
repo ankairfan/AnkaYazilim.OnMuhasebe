@@ -8,7 +8,8 @@ public class MakbuzService : BaseService<ListMakbuzDto, SelectMakbuzDto>, IScope
     {
         if (hareketService is MakbuzHareketService makbuzHareketService)
         {
-            makbuzHareketService.ListDataSource = DataSource.MakbuzHareketler ?? new List<SelectMakbuzHareketDto>();
+            makbuzHareketService.ListDataSource = DataSource.MakbuzHareketler ??
+                                                  new List<SelectMakbuzHareketDto>();
             makbuzHareketService.HasChanged = hasChanged;
             makbuzHareketService.GetTotal();
         }

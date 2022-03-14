@@ -15,8 +15,7 @@
                         Width="870px">
     <EditPageContent>
         <DevGridLayout ColumnCount="11"
-                       ColumnWidths="@ColumnWidths("75","3","170","20","60","3","125",
-                                                   "20","100","80","80")"
+                       ColumnWidths="@ColumnWidths("75", "3", "170", "20", "60", "3", "125", "20", "100", "80", "80")"
                        RowCount="6"
                        RowHeights="@RowHeights("28","28","28","28","*","50")">
             <GridLayoutItems>
@@ -113,7 +112,7 @@
                                                   Field="@nameof(SelectMakbuzHareketDto.Vade)"
                                                   TextAlignment="DataGridTextAlign.Center"
                                                   Visible="MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Cek|| MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Senet"
-                                                  Width="150px" />
+                                                  Width="100px" />
 
                         <DxDataGridColumn Caption="@L["SafeName"]"
                                           Field="@nameof(SelectMakbuzHareketDto.KasaAdi)"
@@ -123,23 +122,23 @@
                         <DxDataGridColumn Caption="@L["BankAccount"]"
                                           Field="@nameof(SelectMakbuzHareketDto.BankaHesapAdi)"
                                           Visible="MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Banka|| MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Pos"
-                                          Width="80px" />
+                                          Width="200px" />
 
                         <DxDataGridSpinEditColumn Caption="@L["Total"]"
                                                   DisplayFormat="n2"
                                                   Field="@nameof(SelectMakbuzHareketDto.Tutar)"
-                                                  Width="100px" />
+                                                  Width="115px" />
 
                         <DxDataGridColumn Caption="@L["Bank"]"
                                           Field="@nameof(SelectMakbuzHareketDto.CekBankaAdi)"
                                           Visible="MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Cek"
-                                          Width="80px" />
+                                          Width="200px" />
 
 
                         <DxDataGridColumn Caption="@L["BankBranch"]"
                                           Field="@nameof(SelectMakbuzHareketDto.CekBankasubeAdi)"
                                           Visible="MakbuzHareketService.SelectedItem?.OdemeTuru == OdemeTuru.Cek"
-                                          Width="80px" />
+                                          Width="200px" />
 
 
 
@@ -239,7 +238,7 @@
                                                  ColumnIndex="10"
                                                  Enabled="false"
                                                  RowIndex="3"
-                                                 @bind-Value="Service.DataSource.GenelToplam" />
+                                                 Value="Service.DataSource.GenelToplam" />
 
                             </GridLayoutItems>
                         </DevGridLayout>

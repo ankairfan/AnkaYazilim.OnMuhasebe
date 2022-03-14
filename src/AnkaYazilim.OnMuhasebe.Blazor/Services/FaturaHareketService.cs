@@ -1,4 +1,6 @@
-﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Services;
+﻿using AnkaYazilim.OnMuhasebe.Blazor.Helpers;
+
+namespace AnkaYazilim.OnMuhasebe.Blazor.Services;
 
 public class FaturaHareketService : BaseHareketService<SelectFaturaHareketDto>, IScopedDependency
 {

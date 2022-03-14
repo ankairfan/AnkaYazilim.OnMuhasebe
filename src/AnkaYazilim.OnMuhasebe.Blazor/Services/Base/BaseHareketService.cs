@@ -31,9 +31,10 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
 
     public void SetDataRowSelected(bool first)
     {
-        ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(first ? ListDataSource.FirstOrDefault() : ListDataSource.LastOrDefault(), true);
+        ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(
+            first ? ListDataSource.FirstOrDefault() :
+                ListDataSource.LastOrDefault(), true);
     }
-
     public TDataGridItem DataSource { get; set; }
 
     public void ButtonEditDeleteKeyDown(IEntityDto entity, string fieldName)
@@ -134,6 +135,11 @@ public abstract class BaseHareketService<TDataGridItem> : ICoreHareketService<TD
 
     public virtual void Hesapla(object value, string propertyName)
     {
+    }
+
+    public void AddSelectedItems()
+    {
+        throw new NotImplementedException();
     }
 
     public Action HasChanged { get; set; }

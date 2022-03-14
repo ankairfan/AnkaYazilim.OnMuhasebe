@@ -4,6 +4,7 @@ public class CariAppService : OnMuhasebeAppService, ICariAppService
 {
     private readonly ICariRepository _repository;
     private readonly CariManager _manager;
+
     public CariAppService(ICariRepository repository, CariManager manager)
     {
         _repository = repository;
@@ -32,7 +33,6 @@ public class CariAppService : OnMuhasebeAppService, ICariAppService
 
             x.Alacak = x.Faturalar.Where(y => y.FaturaTuru == FaturaTuru.Alis).Sum(y => y.NetTutar);
             x.Alacak += x.Makbuzlar.Where(y => y.MakbuzTuru == MakbuzTuru.Tahsilat).Sum(y => y.CekToplamTutar + y.SenetToplamTutar + y.PosToplamTutar + y.NakitToplamTutar + y.BankaToplamTutar);
-
         });
 
         return new PagedResultDto<ListCariDto>(totalCount, mappedDtos);
@@ -65,5 +65,4 @@ public class CariAppService : OnMuhasebeAppService, ICariAppService
     {
         return await _repository.GetCodeAsync(x => x.Kod, x => x.Durum == input.Durum);
     }
-
 }

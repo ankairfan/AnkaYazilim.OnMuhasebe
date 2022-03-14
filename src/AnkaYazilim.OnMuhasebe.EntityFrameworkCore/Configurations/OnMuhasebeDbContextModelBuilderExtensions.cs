@@ -858,10 +858,9 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             b.HasOne(x => x.BankaHesap).WithMany(x => x.MakbuzHareketler).OnDelete(DeleteBehavior.NoAction);
         });
     }
-    
+
     public static void ConfigureStoredProcedure(this ModelBuilder builder)
     {
         builder.Entity<OdemeBelgesi>();
-
     }
 }

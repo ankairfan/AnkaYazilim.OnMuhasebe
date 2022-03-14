@@ -8,7 +8,7 @@ public class MakbuzHareketReportDto:EntityDto<Guid>
     public string CekBankaSubeAdi { get; set; }
     public string CekHesapNo { get; set; }
     public string BelgeNo { get; set; }
-    public DateTime? Vade { get; set; }
+    public DateTime Vade { get; set; }
     public string AsilBorclu { get; set; }
     public string Ciranta { get; set; }
     public string KasaAdi { get; set; }

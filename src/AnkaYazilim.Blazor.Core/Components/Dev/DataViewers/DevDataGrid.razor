@@ -64,11 +64,11 @@
 
     [Parameter]
     public DataGridColumnResizeMode ColumnResizeMode { get; set; }
-           = DataGridColumnResizeMode.Component;
+        = DataGridColumnResizeMode.Component;
 
     [Parameter]
     public DataGridNavigationMode DataNavigationMode { get; set; }
-           = DataGridNavigationMode.Paging;
+        = DataGridNavigationMode.Paging;
 
     [Parameter] public EventCallback<MouseEventArgs> DoubleClick { get; set; }
     [Parameter] public bool GridSelectionColumnVisible { get; set; }
@@ -77,21 +77,21 @@
 
     [Parameter]
     public IEnumerable<int> PagerAllowedPageSizes { get; set; }
-           = new[] { 10, 20, 30, 40, 50, 100 };
+        = new[] { 10, 20, 30, 40, 50, 100 };
 
     [Parameter]
     public PagerNavigationMode PagerNavigationMode { get; set; }
-           = PagerNavigationMode.NumericButtons;
+        = PagerNavigationMode.NumericButtons;
 
     [Parameter] public bool PagerPageSizeSelectorVisible { get; set; } = true;
 
     [Parameter]
     public DataGridSelectAllMode SelectAllMode { get; set; }
-           = DataGridSelectAllMode.Page;
+        = DataGridSelectAllMode.Page;
 
     [Parameter]
     public DataGridSelectionMode SelectionMode { get; set; }
-           = DataGridSelectionMode.SingleSelectedDataRow;
+        = DataGridSelectionMode.SingleSelectedDataRow;
 
     [Parameter] public bool ShowGroupedColumns { get; set; }
     [Parameter] public int VerticalScrollableHeight { get; set; } = 310;

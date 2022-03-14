@@ -1,9 +1,11 @@
-﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Services;
+﻿using AnkaYazilim.OnMuhasebe.Blazor.Helpers;
+
+namespace AnkaYazilim.OnMuhasebe.Blazor.Services;
 
 public class MakbuzHareketService : BaseHareketService<SelectMakbuzHareketDto>, IScopedDependency
 {
-    public MakbuzService MakbuzService { get; set; }//property injection
-    public AppService AppService { get; set; }//property injection
+    public AppService AppService { get; set; } //Property injection
+    public MakbuzService MakbuzService { get; set; } //Property injection
 
     public override void BeforeUpdate()
     {
@@ -24,6 +26,7 @@ public class MakbuzHareketService : BaseHareketService<SelectMakbuzHareketDto>, 
             Vade = DateTime.Now.Date,
             TakipNo = Functions.CreateId()
         };
+
         EditPageVisible = true;
     }
 
@@ -55,7 +58,6 @@ public class MakbuzHareketService : BaseHareketService<SelectMakbuzHareketDto>, 
         {
             DataSource = TempDataSource;
             DataSource.OdemeTuruAdi = L[$"Enum:OdemeTuru:{(byte)DataSource.OdemeTuru}"];
-
             DataSource.BelgeDurumu = MakbuzService.MakbuzTuru == MakbuzTuru.Tahsilat &&
                                      (DataSource.OdemeTuru == OdemeTuru.Nakit ||
                                       DataSource.OdemeTuru == OdemeTuru.Banka)
@@ -74,7 +76,6 @@ public class MakbuzHareketService : BaseHareketService<SelectMakbuzHareketDto>, 
                             : BelgeDurumu.CiroEdildi;
             DataSource.BelgeDurumuAdi = L[$"Enum:BelgeDurumu:{(byte)DataSource.BelgeDurumu}"];
             DataSource.KendiBelgemiz = DataSource.BelgeDurumu == BelgeDurumu.Odenecek;
-
             InsertOrUpdate();
             HasChanged();
         }

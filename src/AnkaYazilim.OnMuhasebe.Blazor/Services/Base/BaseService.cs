@@ -1,4 +1,7 @@
-﻿namespace AnkaYazilim.OnMuhasebe.Blazor.Services.Base;
+﻿using Volo.Abp.Guids;
+using Volo.Abp.ObjectMapping;
+
+namespace AnkaYazilim.OnMuhasebe.Blazor.Services.Base;
 
 public abstract class BaseService<TDataGridItem, TDataSource> :
     ICoreDataGridService<TDataGridItem>, ICoreEditPageService<TDataSource>,
@@ -9,6 +12,8 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
 {
     public IStringLocalizerFactory StringLocalizerFactory { get; set; }//property injection
     public IUiMessageService MessageService { get; set; }//property injection
+    public IGuidGenerator GuidGenerator { get; set; }//property injection
+    public IObjectMapper ObjectMapper { get; set; }//property injection
     public ComponentBase DataGrid { get; set; }
     public IList<TDataGridItem> ListDataSource { get; set; }
     public TDataGridItem SelectedItem { get; set; }
@@ -113,6 +118,9 @@ public abstract class BaseService<TDataGridItem, TDataSource> :
     }
 
     public virtual void FillTable<TItem>(ICoreHareketService<TItem> hareketService, Action hasChanged)
+    { }
+
+    public virtual void AddSelectedItems()
     { }
 
     #region Localizer

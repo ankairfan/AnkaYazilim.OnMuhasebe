@@ -4,6 +4,7 @@ using AnkaYazilim.OnMuhasebe.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace AnkaYazilim.OnMuhasebe.Migrations
 {
     [DbContext(typeof(OnMuhasebeDbContext))]
-    partial class OnMuhasebeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220313104241_mig_0011")]
+    partial class mig_0011
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

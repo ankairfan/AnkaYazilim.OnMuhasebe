@@ -12,11 +12,12 @@ public partial class OdemeBelgeleriListPage
         if (!Service.IsPopupListPage)
         {
             Service.MakbuzService.MakbuzTuru = 0;
-            Service.OdemeTurleri = $"{(byte)OdemeTuru.Cek},{(byte)OdemeTuru.Senet},{(byte)OdemeTuru.Pos}";
+            Service.OdemeTurleri = $"{(byte)OdemeTuru.Cek}, {(byte)OdemeTuru.Senet}, " +
+                                   $"{(byte)OdemeTuru.Pos}";
             Service.KendiBelgemiz = false;
         }
 
-        Service.ListDataSource = (await GetListAsync(new OdemeBelgesiListParameterDto
+        var listDataSource = (await GetListAsync(new OdemeBelgesiListParameterDto
         {
             Sql = Service.MakbuzService.MakbuzTuru == MakbuzTuru.BankaIslem ||
                   Service.MakbuzService.MakbuzTuru == MakbuzTuru.KasaIslem ? "IslemYapilabilecekTumOdemeBelgeleri" :
@@ -26,7 +27,10 @@ public partial class OdemeBelgeleriListPage
             DonemId = AppService.FirmaParametre.DonemId,
             KendiBelgemiz = Service.KendiBelgemiz,
             OdemeTurleri = Service.OdemeTurleri
-        })).Items.ToList();
+        }))?.Items.ToList();
+
+        if (listDataSource != null)
+            Service.ListDataSource = listDataSource;
 
         Service.ExcludeListItems.ForEach(x =>
         {

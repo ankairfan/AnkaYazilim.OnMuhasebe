@@ -23,4 +23,5 @@ public interface ICoreDataGridService<TDataGridItem>
     void SetDataRowSelected(bool first);
 
     void FillTable<TItem>(ICoreHareketService<TItem> hareketService, Action hasChanged);
+    void AddSelectedItems();
 }

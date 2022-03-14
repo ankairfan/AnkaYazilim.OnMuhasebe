@@ -12,8 +12,8 @@ public class OdemeBelgesiAppService:OnMuhasebeAppService,IOdemeBelgesiAppService
         _repository = repository;
     }
 
-  
-    public  virtual async Task<PagedResultDto<ListOdemeBelgesiDto>> GetListAsync(OdemeBelgesiListParameterDto input)
+
+    public virtual async Task<PagedResultDto<ListOdemeBelgesiDto>> GetListAsync(OdemeBelgesiListParameterDto input)
     {
         IList<OdemeBelgesi> _odemeBelgeleri;
 
@@ -31,7 +31,7 @@ public class OdemeBelgesiAppService:OnMuhasebeAppService,IOdemeBelgesiAppService
 
         var mappedEntities = ObjectMapper.Map<List<OdemeBelgesi>, List<ListOdemeBelgesiDto>>(
             _odemeBelgeleri.ToList());
- 
+
         mappedEntities.ForEach(x =>
         {
             x.OdemeTuruAdi = L[$"Enum:OdemeTuru:{(byte)x.OdemeTuru}"];

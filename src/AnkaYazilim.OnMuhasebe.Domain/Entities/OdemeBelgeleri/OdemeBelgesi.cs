@@ -1,6 +1,6 @@
 ﻿namespace AnkaYazilim.OnMuhasebe.Entities.OdemeBelgeleri;
 
-public class OdemeBelgesi:Entity<Guid>
+public class OdemeBelgesi : Entity<Guid>
 {
     public Guid MakbuzId { get; set; }
     public OdemeTuru OdemeTuru { get; set; }
@@ -21,6 +21,3 @@ public class OdemeBelgesi:Entity<Guid>
     public bool KendiBelgemiz { get; set; }
     public string Aciklama { get; set; }
 }
-    
-    
-    
